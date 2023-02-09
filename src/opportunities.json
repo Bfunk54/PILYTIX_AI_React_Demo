@@ -1,0 +1,1694 @@
+[
+  {
+    "oppId": 1,
+    "oppName": "B2B - 2023 - New Life Financial Inc.",
+    "salesRepName": "Frank Castle",
+    "amount": 68989.0,
+    "product": "Suite",
+    "stage": "3. Initial Conversation",
+    "repProbability": 0.2,
+    "pilytixTier": "4 Stars",
+    "pilytixProbability": 0.29,
+    "probabilityHistory": [
+      {
+        "daysAgo": 28,
+        "pilytixProb": 0.11,
+        "repProb": 0.05
+      },
+      {
+        "daysAgo": 21,
+        "pilytixProb": 0.1,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 14,
+        "pilytixProb": 0.17,
+        "repProb": 0.2
+      },
+      {
+        "daysAgo": 7,
+        "pilytixProb": 0.25,
+        "repProb": 0.2
+      }
+    ],
+    "pilytixFactorsIncreasingWin": [
+      {
+        "name": "Product",
+        "message": "Rep's history with \"Suite\" deals",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Age",
+        "message": "History of similar deals at 29 days old",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Last Activity",
+        "message": "Rep last reached out to the customer 1 day ago",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Distance to Stadium",
+        "message": "Customer's main address is 32 miles from stadium",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Marketing Emails",
+        "message": "Customer has opened 3 emails sent in the last 6 months",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Inbound Emails",
+        "message": "Customer has sent the sales team 2 emails",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Calls Logged",
+        "message": "Rep's historical success with deals with 2 logged phone calls",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Last Purchase Date",
+        "message": "Customer's last purchase was 191 days ago",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Account Profile",
+        "message": "Rep's history with mid-sized B2B customers",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Account Industry",
+        "message": "Rep's history with B2B customers in Services",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      }
+    ],
+    "pilytixFactorsDecreasingWin": [
+      {
+        "name": "Amount",
+        "message": "Rep's history working on deals similar in value to $68,989",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Stage",
+        "message": "Rep's tendency to close similar deals in stage \"3. Initial Conversation\"",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Lead Source",
+        "message": "Team's historical success with \"Single Game Buyer\" leads",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Lifetime Ticket Spend",
+        "message": "Customer's total team spend is $161",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Pushed Close",
+        "message": "Rep has pushed the expected close date 1 time",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      }
+    ]
+  },
+  {
+    "oppId": 2,
+    "oppName": "B2C - 2023 - Hayley Jimenez",
+    "salesRepName": "Darren Kaplan",
+    "amount": 8500.0,
+    "product": "Mini-Plan",
+    "stage": "7. Nearing a Decision",
+    "repProbability": 0.75,
+    "pilytixTier": "5 Stars",
+    "pilytixProbability": 0.88,
+    "probabilityHistory": [
+      {
+        "daysAgo": 140,
+        "pilytixProb": 0.68,
+        "repProb": 0.2
+      },
+      {
+        "daysAgo": 133,
+        "pilytixProb": 0.71,
+        "repProb": 0.4
+      },
+      {
+        "daysAgo": 126,
+        "pilytixProb": 0.72,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 119,
+        "pilytixProb": 0.75,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 112,
+        "pilytixProb": 0.76,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 105,
+        "pilytixProb": 0.73,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 98,
+        "pilytixProb": 0.76,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 91,
+        "pilytixProb": 0.77,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 84,
+        "pilytixProb": 0.8,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 77,
+        "pilytixProb": 0.8,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 70,
+        "pilytixProb": 0.8,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 63,
+        "pilytixProb": 0.8,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 56,
+        "pilytixProb": 0.8,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 49,
+        "pilytixProb": 0.83,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 42,
+        "pilytixProb": 0.84,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 35,
+        "pilytixProb": 0.87,
+        "repProb": 0.75
+      },
+      {
+        "daysAgo": 28,
+        "pilytixProb": 0.88,
+        "repProb": 0.75
+      },
+      {
+        "daysAgo": 21,
+        "pilytixProb": 0.89,
+        "repProb": 0.75
+      },
+      {
+        "daysAgo": 14,
+        "pilytixProb": 0.86,
+        "repProb": 0.75
+      },
+      {
+        "daysAgo": 7,
+        "pilytixProb": 0.85,
+        "repProb": 0.75
+      }
+    ],
+    "pilytixFactorsIncreasingWin": [
+      {
+        "name": "Product",
+        "message": "Rep's history with \"Mini-Plan\" deals",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Stage",
+        "message": "Rep's tendency to close similar deals in stage \"7. - Nearing a Decision\"",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Last Activity",
+        "message": "Rep last reached out to the customer 7 days ago",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Lead Source",
+        "message": "Team's historical success with \"Info Request\" leads",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Household Income",
+        "message": "Customer has estimated household income of $250,000+",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Demographic",
+        "message": "Customer is identified with Personicx cluster \"Established Elite\"",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Distance to Stadium",
+        "message": "Customer's main address is 28 miles from stadium",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Marketing Emails",
+        "message": "Customer has opened 2 emails sent in the last 6 months",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Inbound Emails",
+        "message": "Customer has sent the sales team 2 emails",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Calls Logged",
+        "message": "Rep's historical success with deals with 2 logged phone calls",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Last Purchase Date",
+        "message": "Customer's last purchase was 169 days ago",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      }
+    ],
+    "pilytixFactorsDecreasingWin": null
+  },
+  {
+    "oppId": 3,
+    "oppName": "B2C - 2023 - Joan Arietta",
+    "salesRepName": "Eli James",
+    "amount": 25225.0,
+    "product": "Full Season",
+    "stage": "3. Initial Conversation",
+    "repProbability": 0.2,
+    "pilytixTier": "2 Stars",
+    "pilytixProbability": 0.03,
+    "probabilityHistory": [
+      {
+        "daysAgo": 42,
+        "pilytixProb": 0.17,
+        "repProb": 0.05
+      },
+      {
+        "daysAgo": 35,
+        "pilytixProb": 0.16,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 28,
+        "pilytixProb": 0.15,
+        "repProb": 0.2
+      },
+      {
+        "daysAgo": 21,
+        "pilytixProb": 0.12,
+        "repProb": 0.2
+      },
+      {
+        "daysAgo": 14,
+        "pilytixProb": 0.09,
+        "repProb": 0.2
+      },
+      {
+        "daysAgo": 7,
+        "pilytixProb": 0.06,
+        "repProb": 0.2
+      }
+    ],
+    "pilytixFactorsIncreasingWin": [
+      {
+        "name": "Product",
+        "message": "Rep's history with \"Full Season\" deals",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Amount",
+        "message": "Rep's history working on deals similar in value to $25,225",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      }
+    ],
+    "pilytixFactorsDecreasingWin": [
+      {
+        "name": "Stage",
+        "message": "Rep's tendency to close similar deals in stage \"3. Initial Conversation\"",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Age",
+        "message": "History of similar deals at 45 days old",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Last Activity",
+        "message": "Rep last reached out to the customer 33 days ago",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Lead Source",
+        "message": "Team's historical success with \"Purchased List\" leads",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Demographic",
+        "message": "Customer is identified with Personicx cluster \"Married Sophisticates\"",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Distance to Stadium",
+        "message": "Customer's main address is 69 miles from stadium",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Lifetime Ticket Spend",
+        "message": "Customer's total team spend is $0",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Marketing Emails",
+        "message": "Customer has opened 1 email sent in the last 6 months",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Inbound Emails",
+        "message": "Customer has sent the sales team 0 emails",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Calls Logged",
+        "message": "Rep's historical success with deals with 1 logged phone call",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Pushed Close",
+        "message": "Rep has pushed the expected close date 1 time",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Close Date",
+        "message": "Rep's estimated close date was 9 days ago",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Last Purchase Date",
+        "message": "Customer's last purchase was Never/Unknown days ago",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      }
+    ]
+  },
+  {
+    "oppId": 4,
+    "oppName": "B2C - 2023 - Maximus Blankenship",
+    "salesRepName": "Grace Burgess",
+    "amount": 37500.0,
+    "product": "Full Season",
+    "stage": "5. Meeting or Product Discovery",
+    "repProbability": 0.4,
+    "pilytixTier": "5 Stars",
+    "pilytixProbability": 0.39,
+    "probabilityHistory": [
+      {
+        "daysAgo": 70,
+        "pilytixProb": 0.25,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 63,
+        "pilytixProb": 0.26,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 56,
+        "pilytixProb": 0.29,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 49,
+        "pilytixProb": 0.32,
+        "repProb": 0.2
+      },
+      {
+        "daysAgo": 42,
+        "pilytixProb": 0.31,
+        "repProb": 0.2
+      },
+      {
+        "daysAgo": 35,
+        "pilytixProb": 0.28,
+        "repProb": 0.2
+      },
+      {
+        "daysAgo": 28,
+        "pilytixProb": 0.31,
+        "repProb": 0.2
+      },
+      {
+        "daysAgo": 21,
+        "pilytixProb": 0.32,
+        "repProb": 0.2
+      },
+      {
+        "daysAgo": 14,
+        "pilytixProb": 0.35,
+        "repProb": 0.3
+      },
+      {
+        "daysAgo": 7,
+        "pilytixProb": 0.35,
+        "repProb": 0.3
+      }
+    ],
+    "pilytixFactorsIncreasingWin": [
+      {
+        "name": "Product",
+        "message": "Rep's history with \"Full Season\" deals",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Amount",
+        "message": "Rep's history working on deals similar in value to $37,500",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Lead Source",
+        "message": "Team's historical success with \"Former STH\" leads",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Household Income",
+        "message": "Customer has estimated household income of $250,000+",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Distance to Stadium",
+        "message": "Customer's main address is 14 miles from stadium",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Lifetime Ticket Spend",
+        "message": "Customer's total team spend is $98,423",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Marketing Emails",
+        "message": "Customer has opened 2 emails sent in the last 6 months",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Inbound Emails",
+        "message": "Customer has sent the sales team 2 emails",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Calls Logged",
+        "message": "Rep's historical success with deals with 4 logged phone calls",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      }
+    ],
+    "pilytixFactorsDecreasingWin": [
+      {
+        "name": "Age",
+        "message": "History of similar deals at 75 days old",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Last Activity",
+        "message": "Rep last reached out to the customer 20 days ago",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Demographic",
+        "message": "Customer is identified with Personicx cluster \"Summit Estates\"",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Close Date",
+        "message": "Rep's estimated close date was 38 days ago",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      }
+    ]
+  },
+  {
+    "oppId": 5,
+    "oppName": "B2C - 2023 - Aarav Booth",
+    "salesRepName": "Mick Donovan",
+    "amount": 17380.0,
+    "product": "Half Season",
+    "stage": "7. Nearing a Decision",
+    "repProbability": 0.75,
+    "pilytixTier": "4 Stars",
+    "pilytixProbability": 0.41,
+    "probabilityHistory": [
+      {
+        "daysAgo": 63,
+        "pilytixProb": 0.55,
+        "repProb": 0.4
+      },
+      {
+        "daysAgo": 56,
+        "pilytixProb": 0.54,
+        "repProb": 0.4
+      },
+      {
+        "daysAgo": 49,
+        "pilytixProb": 0.53,
+        "repProb": 0.4
+      },
+      {
+        "daysAgo": 42,
+        "pilytixProb": 0.54,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 35,
+        "pilytixProb": 0.54,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 28,
+        "pilytixProb": 0.54,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 21,
+        "pilytixProb": 0.51,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 14,
+        "pilytixProb": 0.48,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 7,
+        "pilytixProb": 0.45,
+        "repProb": 0.75
+      }
+    ],
+    "pilytixFactorsIncreasingWin": [
+      {
+        "name": "Stage",
+        "message": "Rep's tendency to close similar deals in stage \"7. Nearing a Decision\"",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Lead Source",
+        "message": "Team's historical success with \"Web Form\" leads",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Household Income",
+        "message": "Customer has estimated household income of $100,000+",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Distance to Stadium",
+        "message": "Customer's main address is 5 miles from stadium",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Marketing Emails",
+        "message": "Customer has opened 3 emails sent in the last 6 months",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Inbound Emails",
+        "message": "Customer has sent the sales team 2 emails",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Calls Logged",
+        "message": "Rep's historical success with deals with 2 logged phone calls",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Last Purchase Date",
+        "message": "Customer's last purchase was 211 days ago",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      }
+    ],
+    "pilytixFactorsDecreasingWin": [
+      {
+        "name": "Product",
+        "message": "Rep's history with \"Half Season\" deals",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Amount",
+        "message": "Rep's history working on deals similar in value to $17,380",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Age",
+        "message": "History of similar deals at 69 days old",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Demographic",
+        "message": "Customer is identified with Personicx cluster \"Toys & Tots\"",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Lifetime Ticket Spend",
+        "message": "Customer's total team spend is $69.42",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Pushed Close",
+        "message": "Rep has pushed the expected close date 1 time",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      }
+    ]
+  },
+  {
+    "oppId": 6,
+    "oppName": "B2C - 2023 - Lucy Nguyen",
+    "salesRepName": "Darren Kaplan",
+    "amount": 3690.0,
+    "product": "Mini-Plan",
+    "stage": "1. No Conversation",
+    "repProbability": 0.05,
+    "pilytixTier": "2 Stars",
+    "pilytixProbability": 0.15,
+    "probabilityHistory": [
+      {
+        "daysAgo": 7,
+        "pilytixProb": 0.19,
+        "repProb": 0.05
+      }
+    ],
+    "pilytixFactorsIncreasingWin": [
+      {
+        "name": "Age",
+        "message": "History of similar deals at 10 days old",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Last Activity",
+        "message": "Rep last reached out to the customer 3 days ago",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Lead Source",
+        "message": "Team's historical success with \"Former STH\" leads",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Household Income",
+        "message": "Customer has estimated household income of $125,000+",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Distance to Stadium",
+        "message": "Customer's main address is 6 miles from stadium",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Favorite Player",
+        "message": "According to an online survey, customer's favorite player is Tom Brady, who is the undisputed greatest-of-all-time QB in NFL history, but also has made some questionable moves throughout his entire career - including (but not limited to) signing with a struggling Tampa Bay Buccaneers franchise and un-retiring (at least once), which led his supermodel wife Gisele Bundchen to divorce him as he played an ill-advised final season",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Lifetime Ticket Spend",
+        "message": "Customer's total team spend is $1,213",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Marketing Emails",
+        "message": "Customer has opened 2 emails sent in the last 6 months",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      }
+    ],
+    "pilytixFactorsDecreasingWin": [
+      {
+        "name": "Product",
+        "message": "Rep's history with \"Mini-Plan\" deals",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Amount",
+        "message": "Rep's history working on deals similar in value to $3,690",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Stage",
+        "message": "Rep's tendency to close similar deals in stage \"1. No Conversation\"",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Demographic",
+        "message": "Customer is identified with Personicx cluster \"Hard Chargers\"",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Inbound Emails",
+        "message": "Customer has sent the sales team 0 emails",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Calls Logged",
+        "message": "Rep's historical success with deals with 1 logged phone call",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Previous Losses",
+        "message": "Customer is associated with 4 previous lost opps",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Last Purchase Date",
+        "message": "Customer's last purchase was 567 days ago",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      }
+    ]
+  },
+  {
+    "oppId": 7,
+    "oppName": "B2C - 2023 - Ricky Irwin",
+    "salesRepName": "Darren Kaplan",
+    "amount": 5150.0,
+    "product": "Mini-Plan",
+    "stage": "8. Payment Pending",
+    "repProbability": 0.9,
+    "pilytixTier": "4 Stars",
+    "pilytixProbability": 0.69,
+    "probabilityHistory": [
+      {
+        "daysAgo": 133,
+        "pilytixProb": 0.29,
+        "repProb": 0.2
+      },
+      {
+        "daysAgo": 126,
+        "pilytixProb": 0.32,
+        "repProb": 0.2
+      },
+      {
+        "daysAgo": 119,
+        "pilytixProb": 0.35,
+        "repProb": 0.2
+      },
+      {
+        "daysAgo": 112,
+        "pilytixProb": 0.38,
+        "repProb": 0.3
+      },
+      {
+        "daysAgo": 105,
+        "pilytixProb": 0.41,
+        "repProb": 0.3
+      },
+      {
+        "daysAgo": 98,
+        "pilytixProb": 0.44,
+        "repProb": 0.3
+      },
+      {
+        "daysAgo": 91,
+        "pilytixProb": 0.41,
+        "repProb": 0.3
+      },
+      {
+        "daysAgo": 84,
+        "pilytixProb": 0.44,
+        "repProb": 0.3
+      },
+      {
+        "daysAgo": 77,
+        "pilytixProb": 0.43,
+        "repProb": 0.3
+      },
+      {
+        "daysAgo": 70,
+        "pilytixProb": 0.46,
+        "repProb": 0.4
+      },
+      {
+        "daysAgo": 63,
+        "pilytixProb": 0.49,
+        "repProb": 0.4
+      },
+      {
+        "daysAgo": 56,
+        "pilytixProb": 0.52,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 49,
+        "pilytixProb": 0.56,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 42,
+        "pilytixProb": 0.56,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 35,
+        "pilytixProb": 0.56,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 28,
+        "pilytixProb": 0.56,
+        "repProb": 0.5
+      },
+      {
+        "daysAgo": 21,
+        "pilytixProb": 0.56,
+        "repProb": 0.75
+      },
+      {
+        "daysAgo": 14,
+        "pilytixProb": 0.63,
+        "repProb": 0.9
+      },
+      {
+        "daysAgo": 7,
+        "pilytixProb": 0.63,
+        "repProb": 0.9
+      }
+    ],
+    "pilytixFactorsIncreasingWin": [
+      {
+        "name": "Product",
+        "message": "Rep's history with \"Mini-Plan\" deals",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Amount",
+        "message": "Rep's history working on deals similar in value to $5,150",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Stage",
+        "message": "Rep's tendency to close similar deals in stage \"8. Payment Pending\"",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Last Activity",
+        "message": "Rep last reached out to the customer 7 days ago",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Household Income",
+        "message": "Customer has estimated household income of $250,000+",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Demographic",
+        "message": "Customer is identified with Personicx cluster \"Corporate Clout\"",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Lifetime Ticket Spend",
+        "message": "Customer's total team spend is $1,200",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Marketing Emails",
+        "message": "Customer has opened 2 emails sent in the last 6 months",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Calls Logged",
+        "message": "Rep's historical success with deals with 2 logged phone calls",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      }
+    ],
+    "pilytixFactorsDecreasingWin": [
+      {
+        "name": "Lead Source",
+        "message": "Team's historical success with \"Cold Call\" leads",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Distance to Stadium",
+        "message": "Customer's main address is 98 miles from stadium",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Age",
+        "message": "History of similar deals at 136 days old",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Inbound Emails",
+        "message": "Customer has sent the sales team 0 emails",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      }
+    ]
+  },
+  {
+    "oppId": 8,
+    "oppName": "B2B - 2023 - Deluga Corp.",
+    "salesRepName": "Frank Castle",
+    "amount": 289000.0,
+    "product": "Suite",
+    "stage": "3. Initial Conversation",
+    "repProbability": 0.2,
+    "pilytixTier": "3 Stars",
+    "pilytixProbability": 0.13,
+    "probabilityHistory": null,
+    "pilytixFactorsIncreasingWin": [
+      {
+        "name": "Stage",
+        "message": "Rep's tendency to close similar deals in stage \"3. Initial Conversation\"",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Age",
+        "message": "History of similar deals at 6 days old",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Last Activity",
+        "message": "Rep last reached out to the customer 6 days ago",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Distance to Stadium",
+        "message": "Customer's main address is 18 miles from stadium",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Lifetime Ticket Spend",
+        "message": "Customer's total team spend is $53,134",
+        "weight": {
+          "value": 3,
+          "description": "Strong Positive"
+        }
+      },
+      {
+        "name": "Marketing Emails",
+        "message": "Customer has opened 2 emails sent in the last 6 months",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Account Profile",
+        "message": "Rep's history with mid-sized B2B customers",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Account Industry",
+        "message": "Rep's history with B2B customers in Media / Production",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      }
+    ],
+    "pilytixFactorsDecreasingWin": [
+      {
+        "name": "Product",
+        "message": "Rep's history with \"Suite\" deals",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Amount",
+        "message": "Rep's history working on deals similar in value to $289,000",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Lead Source",
+        "message": "Team's historical success with \"Former Partial Member\" leads",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Inbound Emails",
+        "message": "Customer has sent the sales team 0 emails",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Calls Logged",
+        "message": "Rep's historical success with deals with 0 logged phone calls",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Last Purchase Date",
+        "message": "Customer's last purchase was 588 days ago",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      }
+    ]
+  },
+  {
+    "oppId": 9,
+    "oppName": "B2C - 2023 - Mackenzie O'Connell",
+    "salesRepName": "Mick Donovan",
+    "amount": 18500.0,
+    "product": "Half Season",
+    "stage": "2. Attempted Contact",
+    "repProbability": 0.1,
+    "pilytixTier": "1 Star",
+    "pilytixProbability": 0.03,
+    "probabilityHistory": [
+      {
+        "daysAgo": 14,
+        "pilytixProb": 0.21,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 7,
+        "pilytixProb": 0.11,
+        "repProb": 0.1
+      }
+    ],
+    "pilytixFactorsIncreasingWin": null,
+    "pilytixFactorsDecreasingWin": [
+      {
+        "name": "Product",
+        "message": "Rep's history with \"Half Season\" deals",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Amount",
+        "message": "Rep's history working on deals similar in value to $18,500",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Last Activity",
+        "message": "Rep last reached out to the customer 19 days ago",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Lead Source",
+        "message": "Team's historical success with \"Personal Network\" leads",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Household Income",
+        "message": "Customer has estimated household income of $50,000-$75,000",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Demographic",
+        "message": "Customer is identified with Personicx cluster \"Early Parents\"",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Lifetime Ticket Spend",
+        "message": "Customer's total team spend is $0",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Marketing Emails",
+        "message": "Customer has opened 1 email sent in the last 6 months",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Inbound Emails",
+        "message": "Customer has sent the sales team 0 emails",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Calls Logged",
+        "message": "Rep's historical success with deals with 1 logged phone call",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Last Purchase Date",
+        "message": "Customer's last purchase was Never/Unknown days ago",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      }
+    ]
+  },
+  {
+    "oppId": 10,
+    "oppName": "B2B - 2023 - Ditto, LLC",
+    "salesRepName": "Frank Castle",
+    "amount": 187500.0,
+    "product": "Full Season",
+    "stage": "2. Attempted Contact",
+    "repProbability": 0.1,
+    "pilytixTier": "3 Stars",
+    "pilytixProbability": 0.07,
+    "probabilityHistory": [
+      {
+        "daysAgo": 126,
+        "pilytixProb": 0.05,
+        "repProb": 0.05
+      },
+      {
+        "daysAgo": 119,
+        "pilytixProb": 0.08,
+        "repProb": 0.05
+      },
+      {
+        "daysAgo": 112,
+        "pilytixProb": 0.11,
+        "repProb": 0.05
+      },
+      {
+        "daysAgo": 105,
+        "pilytixProb": 0.1,
+        "repProb": 0.05
+      },
+      {
+        "daysAgo": 98,
+        "pilytixProb": 0.11,
+        "repProb": 0.05
+      },
+      {
+        "daysAgo": 91,
+        "pilytixProb": 0.1,
+        "repProb": 0.05
+      },
+      {
+        "daysAgo": 84,
+        "pilytixProb": 0.13,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 77,
+        "pilytixProb": 0.16,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 70,
+        "pilytixProb": 0.15,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 63,
+        "pilytixProb": 0.12,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 56,
+        "pilytixProb": 0.11,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 49,
+        "pilytixProb": 0.11,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 42,
+        "pilytixProb": 0.11,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 35,
+        "pilytixProb": 0.11,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 28,
+        "pilytixProb": 0.11,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 21,
+        "pilytixProb": 0.08,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 14,
+        "pilytixProb": 0.08,
+        "repProb": 0.1
+      },
+      {
+        "daysAgo": 7,
+        "pilytixProb": 0.08,
+        "repProb": 0.1
+      }
+    ],
+    "pilytixFactorsIncreasingWin": [
+      {
+        "name": "Product",
+        "message": "Rep's history with \"Full Season\" deals",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Lead Source",
+        "message": "Team's historical success with \"Info Request\" leads",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      },
+      {
+        "name": "Marketing Emails",
+        "message": "Customer has opened 2 emails sent in the last 6 months",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Calls Logged",
+        "message": "Rep's historical success with deals with 2 logged phone calls",
+        "weight": {
+          "value": 2,
+          "description": "Medium Positive"
+        }
+      },
+      {
+        "name": "Account Industry",
+        "message": "Rep's history with B2B customers in Services",
+        "weight": {
+          "value": 1,
+          "description": "Weak Positive"
+        }
+      }
+    ],
+    "pilytixFactorsDecreasingWin": [
+      {
+        "name": "Amount",
+        "message": "Rep's history working on deals similar in value to $187,500",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Age",
+        "message": "History of similar deals at 129 days old",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Last Activity",
+        "message": "Rep last reached out to the customer 88 days ago",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Distance to Stadium",
+        "message": "Customer's main address is 68 miles from stadium",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Lifetime Ticket Spend",
+        "message": "Customer's total team spend is $0",
+        "weight": {
+          "value": -3,
+          "description": "Strong Negative"
+        }
+      },
+      {
+        "name": "Inbound Emails",
+        "message": "Customer has sent the sales team 0 emails",
+        "weight": {
+          "value": -2,
+          "description": "Medium Negative"
+        }
+      },
+      {
+        "name": "Last Purchase Date",
+        "message": "Customer's last purchase was 420 days ago",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      },
+      {
+        "name": "Account Profile",
+        "message": "Rep's history with small B2B customers",
+        "weight": {
+          "value": -1,
+          "description": "Weak Negative"
+        }
+      }
+    ]
+  }
+]
