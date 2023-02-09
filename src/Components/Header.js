@@ -1,13 +1,11 @@
 import * as React from "react";
-import {
-  Box,
-  Toolbar,
-  Typography,
-  Container,
-  AppBar,
-  Link,
-  Button,
-} from "@mui/material";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 import logo from "../images/pilytix-logo.png";
 import "./Header/Header.css";
 
@@ -20,13 +18,6 @@ export default function NavBar() {
     >
       <Container>
         <Toolbar disableGutters>
-          <Box
-            sx={{
-              display: "flex",
-              flexWrap: "nowrap",
-              alignItems: "center",
-            }}
-          >
             <Box
               sx={{
                 alignItems: "center",
@@ -41,14 +32,14 @@ export default function NavBar() {
             </Box>
             <Box
               sx={{
-                justifyContent: "flex-end",
+                justifyContent: "space-evenly",
                 alignItems: "center",
                 flexGrow: 1,
                 marginLeft: "20px",
                 display: { xs: "none", sm: "none", md: "flex" },
               }}
             >
-              <Link to="/solutions" sx={{ textDecoration: "none" }}>
+              <Link to="/solutions" style={{ textDecoration: "none" }}>
                 <Button
                   size="small"
                   variant="contained"
@@ -66,7 +57,7 @@ export default function NavBar() {
                 </Button>
               </Link>
 
-              <Link to="/insights" sx={{ textDecoration: "none" }}>
+              <Link to="/insights" style={{ textDecoration: "none" }}>
                 <Button
                   size="small"
                   variant="contained"
@@ -84,7 +75,7 @@ export default function NavBar() {
                 </Button>
               </Link>
 
-              <Link to="/about-us" sx={{ textDecoration: "none" }}>
+              <Link to="/about-us" style={{ textDecoration: "none" }}>
                 <Button
                   size="small"
                   variant="contained"
@@ -102,7 +93,7 @@ export default function NavBar() {
                 </Button>
               </Link>
 
-              <Link to="/contact-us" sx={{ textDecoration: "none" }}>
+              <Link to="/contact-us" style={{ textDecoration: "none" }}>
                 <Button
                   size="small"
                   variant="contained"
@@ -120,7 +111,6 @@ export default function NavBar() {
                 </Button>
               </Link>
             </Box>
-          </Box>
           <Box
             sx={{
               justifyContent: "flex-end",
@@ -130,13 +120,13 @@ export default function NavBar() {
               display: { xs: "none", sm: "none", md: "flex" },
             }}
           >
-            <Link to="/request-demo" sx={{ textDecoration: "none" }}>
+            <Link to="/request-demo" style={{ textDecoration: "none" }}>
               <Button
                 size="small"
                 variant="contained"
                 sx={{
                   my: 2,
-                  backgroundColor: "#34e4c4",
+                  backgroundColor: "#2ecdb0",
                   color: "white",
                   display: "block",
                   marginLeft: "-1px",

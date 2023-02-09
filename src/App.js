@@ -1,14 +1,17 @@
 import "./styles.css";
 import BasicTable from "./Components/Table";
-import NavBar from "./Components/Header"
-import Typography from "@mui/material/Typography"
+import NavBar from "./Components/Header";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default function App() {
   return (
-    <div className="App">
-      <NavBar/>
-      <Typography className="scored" variant="h4" component="h2">PILYTIX Scored Opportunities</Typography>
-      <BasicTable></BasicTable>
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<BasicTable />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
