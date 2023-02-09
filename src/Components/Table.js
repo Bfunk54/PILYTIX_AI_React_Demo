@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-import * as opportunities from "./opportunities.json";
+import * as opportunities from "./Table/opportunities.json";
 
 export default function BasicTable() {
   /**
