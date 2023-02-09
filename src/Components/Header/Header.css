@@ -1,0 +1,16 @@
+.nav {
+  background-color: rgba(245, 245, 245, 0.7) !important;
+}
+
+.buttonsBox {
+  justify-content: flex-end;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.buttons {
+  background-color: #34e4c4;
+  color: white;
+  display: block;
+  margin-right: 20px;
+}
