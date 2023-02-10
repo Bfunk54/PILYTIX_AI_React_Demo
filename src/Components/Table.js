@@ -28,9 +28,9 @@ export default function BasicTable() {
       <Typography className="scored" variant="h4" component="h2">
     PILYTIX Scored Opportunities
   </Typography>
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
+    <TableContainer sx={{overflowX: "initial"}} component={Paper}>
+      <Table stickyHeader sx={{ minWidth: 650 }} aria-label="sticky table">
+        <TableHead sx={{ position: "sticky", top: "83.5px" }}>
           <TableRow>
             <TableCell align="left">Opp Name</TableCell>
             <TableCell align="left">Opp Stage</TableCell>
