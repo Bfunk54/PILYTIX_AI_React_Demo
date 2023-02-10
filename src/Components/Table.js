@@ -115,32 +115,32 @@ export default function BasicTable() {
   </Typography>
     <TableContainer sx={{overflowX: "initial", borderRadius: "20px"}} component={Paper}>
       <Table stickyHeader sx={{ minWidth: 650 }} aria-label="sticky table">
-        <TableHead sx={{ position: "sticky", top: "83.5px" }}>
+        <TableHead sx={{ position: "sticky", top: "83.5px"}}>
           <TableRow>
-            <TableCell align="left">Opp Name</TableCell>
-            <TableCell align="left">Opp Stage</TableCell>
-            <TableCell align="right" onClick={handleRepProbSortRequest}>
+            <TableCell sx={{ backgroundColor: "#3abaff", borderTopLeftRadius: "20px" }} align="left">Opp Name</TableCell>
+            <TableCell sx={{ backgroundColor: "#3abaff"}} align="left">Opp Stage</TableCell>
+            <TableCell sx={{ backgroundColor: "#3abaff"}} align="right" onClick={handleRepProbSortRequest}>
             <TableSortLabel active={true} direction={repProbOrderDirection}>
               Rep Probability
               </TableSortLabel>
               </TableCell>
-            <TableCell align="right" onClick={handlePxProbSortRequest}>
+            <TableCell sx={{ backgroundColor: "#3abaff"}} align="right" onClick={handlePxProbSortRequest}>
             <TableSortLabel active={true} direction={pxProbOrderDirection}>
               PX Probability
               </TableSortLabel>
               </TableCell>
-            <TableCell align="left" onClick={handlePxTierSortRequest}>
+            <TableCell sx={{ backgroundColor: "#3abaff"}} align="left" onClick={handlePxTierSortRequest}>
             <TableSortLabel active={true} direction={pxTierOrderDirection}>
               PX Tier
               </TableSortLabel>
               </TableCell>
-            <TableCell align="right" onClick={handleAmountSortRequest}>
+            <TableCell sx={{ backgroundColor: "#3abaff"}} align="right" onClick={handleAmountSortRequest}>
             <TableSortLabel active={true} direction={amountOrderDirection}>
               Amount
               </TableSortLabel>
               </TableCell>
-            <TableCell align="left">Product</TableCell>
-            <TableCell align="left">Sales Rep</TableCell>
+            <TableCell sx={{ backgroundColor: "#3abaff"}} align="left">Product</TableCell>
+            <TableCell sx={{ backgroundColor: "#3abaff", borderTopRightRadius: "20px" }} align="left">Sales Rep</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
