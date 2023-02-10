@@ -26,7 +26,7 @@ export default function BasicTable() {
   const [rowData, setRowData] = useState(data);
   const [orderDirection, setOrderDirection] = useState("asc");
 
-  const sortArray = (arr, orderBy) => {
+  const sortAmountArray = (arr, orderBy) => {
     switch (orderBy) {
       case "asc":
       default:
@@ -40,10 +40,68 @@ export default function BasicTable() {
     }
   };
    
-  const handleSortRequest = () => {
-    setRowData(sortArray(data, orderDirection));
+  const handleAmountSortRequest = () => {
+    setRowData(sortAmountArray(data, orderDirection));
     setOrderDirection(orderDirection === "asc" ? "desc" : "asc");
   };
+
+  const sortPxProbArray = (arr, orderBy) => {
+    switch (orderBy) {
+      case "asc":
+      default:
+        return arr.sort((a, b) =>
+          a.pilytixProbability > b.pilytixProbability ? 1 : b.pilytixProbability > a.pilytixProbability ? -1 : 0
+        ); 
+      case "desc":
+        return arr.sort((a, b) =>
+          a.pilytixProbability < b.pilytixProbability ? 1 : b.pilytixProbability < a.pilytixProbability ? -1 : 0
+        );
+    }
+  };
+   
+  const handlePxProbSortRequest = () => {
+    setRowData(sortPxProbArray(data, orderDirection));
+    setOrderDirection(orderDirection === "asc" ? "desc" : "asc");
+  };
+
+  const sortPxTierArray = (arr, orderBy) => {
+    switch (orderBy) {
+      case "asc":
+      default:
+        return arr.sort((a, b) =>
+          a.pilytixTier > b.pilytixTier ? 1 : b.pilytixTier > a.pilytixTier ? -1 : 0
+        ); 
+      case "desc":
+        return arr.sort((a, b) =>
+          a.pilytixTier < b.pilytixTier ? 1 : b.pilytixTier < a.pilytixTier ? -1 : 0
+        );
+    }
+  };
+   
+  const handlePxTierSortRequest = () => {
+    setRowData(sortPxTierArray(data, orderDirection));
+    setOrderDirection(orderDirection === "asc" ? "desc" : "asc");
+  };
+
+  const sortRepProbArray = (arr, orderBy) => {
+    switch (orderBy) {
+      case "asc":
+      default:
+        return arr.sort((a, b) =>
+          a.repProbability > b.repProbability ? 1 : b.repProbability > a.repProbability ? -1 : 0
+        ); 
+      case "desc":
+        return arr.sort((a, b) =>
+          a.repProbability < b.repProbability ? 1 : b.repProbability < a.repProbability ? -1 : 0
+        );
+    }
+  };
+   
+  const handleRepProbSortRequest = () => {
+    setRowData(sortRepProbArray(data, orderDirection));
+    setOrderDirection(orderDirection === "asc" ? "desc" : "asc");
+  };
+  
 
   return (
 
@@ -58,10 +116,22 @@ export default function BasicTable() {
           <TableRow>
             <TableCell align="left">Opp Name</TableCell>
             <TableCell align="left">Opp Stage</TableCell>
-            <TableCell align="right">Rep Probability</TableCell>
-            <TableCell align="right">PX Probability</TableCell>
-            <TableCell align="left">PX Tier</TableCell>
-            <TableCell align="right" onClick={handleSortRequest}>
+            <TableCell align="right" onClick={handleRepProbSortRequest}>
+            <TableSortLabel active={true} direction={orderDirection}>
+              Rep Probability
+              </TableSortLabel>
+              </TableCell>
+            <TableCell align="right" onClick={handlePxProbSortRequest}>
+            <TableSortLabel active={true} direction={orderDirection}>
+              PX Probability
+              </TableSortLabel>
+              </TableCell>
+            <TableCell align="left" onClick={handlePxTierSortRequest}>
+            <TableSortLabel active={true} direction={orderDirection}>
+              PX Tier
+              </TableSortLabel>
+              </TableCell>
+            <TableCell align="right" onClick={handleAmountSortRequest}>
             <TableSortLabel active={true} direction={orderDirection}>
               Amount
               </TableSortLabel>
