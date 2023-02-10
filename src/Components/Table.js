@@ -24,7 +24,10 @@ export default function BasicTable() {
   }
   
   const [rowData, setRowData] = useState(data);
-  const [orderDirection, setOrderDirection] = useState("asc");
+  const [amountOrderDirection, setAmountOrderDirection] = useState("asc");
+  const [pxProbOrderDirection, setPxProbOrderDirection] = useState("asc");
+  const [pxTierOrderDirection, setPxTierOrderDirection] = useState("asc");
+  const [repProbOrderDirection, setRepProbOrderDirection] = useState("asc");
 
   const sortAmountArray = (arr, orderBy) => {
     switch (orderBy) {
@@ -41,8 +44,8 @@ export default function BasicTable() {
   };
    
   const handleAmountSortRequest = () => {
-    setRowData(sortAmountArray(data, orderDirection));
-    setOrderDirection(orderDirection === "asc" ? "desc" : "asc");
+    setRowData(sortAmountArray(data, amountOrderDirection));
+    setAmountOrderDirection(amountOrderDirection === "asc" ? "desc" : "asc");
   };
 
   const sortPxProbArray = (arr, orderBy) => {
@@ -60,8 +63,8 @@ export default function BasicTable() {
   };
    
   const handlePxProbSortRequest = () => {
-    setRowData(sortPxProbArray(data, orderDirection));
-    setOrderDirection(orderDirection === "asc" ? "desc" : "asc");
+    setRowData(sortPxProbArray(data, pxProbOrderDirection));
+    setPxProbOrderDirection(pxProbOrderDirection === "asc" ? "desc" : "asc");
   };
 
   const sortPxTierArray = (arr, orderBy) => {
@@ -79,8 +82,8 @@ export default function BasicTable() {
   };
    
   const handlePxTierSortRequest = () => {
-    setRowData(sortPxTierArray(data, orderDirection));
-    setOrderDirection(orderDirection === "asc" ? "desc" : "asc");
+    setRowData(sortPxTierArray(data, pxTierOrderDirection));
+    setPxTierOrderDirection(pxTierOrderDirection === "asc" ? "desc" : "asc");
   };
 
   const sortRepProbArray = (arr, orderBy) => {
@@ -98,8 +101,8 @@ export default function BasicTable() {
   };
    
   const handleRepProbSortRequest = () => {
-    setRowData(sortRepProbArray(data, orderDirection));
-    setOrderDirection(orderDirection === "asc" ? "desc" : "asc");
+    setRowData(sortRepProbArray(data, repProbOrderDirection));
+    setRepProbOrderDirection(repProbOrderDirection === "asc" ? "desc" : "asc");
   };
   
 
@@ -110,29 +113,29 @@ export default function BasicTable() {
       <Typography className="scored" variant="h4" component="h2">
     PILYTIX Scored Opportunities
   </Typography>
-    <TableContainer sx={{overflowX: "initial"}} component={Paper}>
+    <TableContainer sx={{overflowX: "initial", borderRadius: "20px"}} component={Paper}>
       <Table stickyHeader sx={{ minWidth: 650 }} aria-label="sticky table">
         <TableHead sx={{ position: "sticky", top: "83.5px" }}>
           <TableRow>
             <TableCell align="left">Opp Name</TableCell>
             <TableCell align="left">Opp Stage</TableCell>
             <TableCell align="right" onClick={handleRepProbSortRequest}>
-            <TableSortLabel active={true} direction={orderDirection}>
+            <TableSortLabel active={true} direction={repProbOrderDirection}>
               Rep Probability
               </TableSortLabel>
               </TableCell>
             <TableCell align="right" onClick={handlePxProbSortRequest}>
-            <TableSortLabel active={true} direction={orderDirection}>
+            <TableSortLabel active={true} direction={pxProbOrderDirection}>
               PX Probability
               </TableSortLabel>
               </TableCell>
             <TableCell align="left" onClick={handlePxTierSortRequest}>
-            <TableSortLabel active={true} direction={orderDirection}>
+            <TableSortLabel active={true} direction={pxTierOrderDirection}>
               PX Tier
               </TableSortLabel>
               </TableCell>
             <TableCell align="right" onClick={handleAmountSortRequest}>
-            <TableSortLabel active={true} direction={orderDirection}>
+            <TableSortLabel active={true} direction={amountOrderDirection}>
               Amount
               </TableSortLabel>
               </TableCell>
