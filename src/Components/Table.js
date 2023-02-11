@@ -10,6 +10,8 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import Popover from "@mui/material/Popover";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 import "./Table/Table.css";
 
 import * as opportunities from "./Table/opportunities.json";
@@ -21,9 +23,7 @@ export default function BasicTable() {
   const data = opportunities.default;
 
   function handleRowClick(event, row) {
-    console.log("row", row);
     setTheRow(row);
-    console.log(theRow);
     setAnchorEl(event.currentTarget);
   }
 
@@ -148,6 +148,16 @@ export default function BasicTable() {
     setRepProbOrderDirection(repProbOrderDirection === "asc" ? "desc" : "asc");
   };
 
+  const cards = document.querySelectorAll(`.card`);
+
+  cards.forEach((card) => {
+    [`top`, `right`, `bottom`, `left`].forEach((side) => {
+      const tail = document.createElement(`div`);
+      tail.classList.add(`tail`, side);
+      card.appendChild(tail);
+    });
+  });
+
   return (
     /*  */
     <div>
@@ -242,21 +252,55 @@ export default function BasicTable() {
           </TableBody>
         </Table>
       </TableContainer>
-      {/* {theRow.map((row) => ( */}
-            <Popover
+      <Popover
         id={theRow.oppId}
         key={theRow.oppId}
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
+          vertical: "bottom",
+          horizontal: "left",
         }}
       >
-        <Typography sx={{ p: 2 }}>The content of the Popover.{theRow.oppName}</Typography>
+        <div className="card snake" sx={{ p: 2 }}>
+          <Card className="inner">
+            <CardContent>
+              The content of the Popover.{theRow.oppName}
+              <h2>Probability History</h2>
+              {(theRow.probabilityHistory || []).map((row, i) => (
+                <div key={i}>
+                  <Typography>Days Ago: {row.daysAgo}</Typography>
+                  <Typography>PX Probability: {row.pilytixProb}</Typography>
+                  <Typography>Rep Probability: {row.repProb}</Typography>
+                </div>
+              ))}
+              <h2>PX Factors Increasing Win</h2>
+              {(theRow.pilytixFactorsIncreasingWin || []).map((row, i) => (
+                <div key={i}>
+                  <Typography>Name: {row.name}</Typography>
+                  <Typography>Message: {row.message}</Typography>
+                  <Typography>Weight Value: {row.weight.value}</Typography>
+                  <Typography>
+                    Weight Description: {row.weight.description}
+                  </Typography>
+                </div>
+              ))}
+              <h2>PX Factors Decreasing Win</h2>
+              {(theRow.pilytixFactorsDecreasingWin || []).map((row, i) => (
+                <div key={i}>
+                  <Typography>Name: {row.name}</Typography>
+                  <Typography>Message: {row.message}</Typography>
+                  <Typography>Weight Value: {row.weight.value}</Typography>
+                  <Typography>
+                    Weight Description: {row.weight.description}
+                  </Typography>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        </div>
       </Popover>
-      {/* ))} */}
     </div>
   );
 }
