@@ -148,16 +148,6 @@ export default function BasicTable() {
     setRepProbOrderDirection(repProbOrderDirection === "asc" ? "desc" : "asc");
   };
 
-  const cards = document.querySelectorAll(`.card`);
-
-  cards.forEach((card) => {
-    [`top`, `right`, `bottom`, `left`].forEach((side) => {
-      const tail = document.createElement(`div`);
-      tail.classList.add(`tail`, side);
-      card.appendChild(tail);
-    });
-  });
-
   return (
     /*  */
     <div>
@@ -263,9 +253,10 @@ export default function BasicTable() {
           horizontal: "left",
         }}
       >
-        <div className="card snake" sx={{ p: 2 }}>
-          <Card className="inner">
-            <CardContent>
+        {/* <div className="card snake" >
+          <div className="inner"> */}
+          <Card className="popCard">
+            <CardContent className="popCard">
               The content of the Popover.{theRow.oppName}
               <h2>Probability History</h2>
               {(theRow.probabilityHistory || []).map((row, i) => (
@@ -299,7 +290,8 @@ export default function BasicTable() {
               ))}
             </CardContent>
           </Card>
-        </div>
+        {/* </div>
+        </div> */}
       </Popover>
     </div>
   );
