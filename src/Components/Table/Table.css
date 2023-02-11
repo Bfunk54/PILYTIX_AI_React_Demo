@@ -3,22 +3,6 @@
 }
 
 .card {
-  --yellow: #ffc600;
-  --pink: #ff3f8e;
-  --color1: var(--yellow);
-  --color2: var(--pink);
-  --inline: 10px;
-  --block: 0;
-  --duration: 150ms;
-  --padding: 4px;
-  --border: 1px;
-  --radius: 20px;
-  box-shadow: inset 0 0 0 var(--border) grey;
-  border-radius: calc(var(--radius) + var(--padding));
-  overflow: hidden;
-  display: grid;
-  margin-bottom: var(--gap);
-  cursor: pointer;
   background: rgba(255, 255, 255, .7) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
@@ -34,7 +18,6 @@
     background: black;
     z-index: 2;
     padding: 20px;
-    border-radius: var(--radius);
   }
 
   .MuiPopover-paper {
@@ -44,26 +27,3 @@
 	backdrop-filter: blur(10px) !important;
   }
 
-  .snake:where(.start, :hover) .tail.top {
-    transition-delay: var(--duration);
-  }
-  .snake:where(.start, :hover) .tail.right {
-    transition-delay: calc(var(--duration) * 2);
-  }
-  .snake:where(.start, :hover) .tail.bottom {
-    transition-delay: calc(var(--duration) * 3);
-  }
-  .snake:where(.start, :hover) .tail.left {
-    transition-delay: 0ms;
-  }
-
-  .snake {
-    position: relative;
-  }
-
-  .snake.start .tail {
-    --block: 0;
-  }
-  .snake:hover .tail {
-    --block: 100%;
-  }

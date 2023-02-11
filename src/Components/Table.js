@@ -252,6 +252,9 @@ export default function BasicTable() {
           vertical: "bottom",
           horizontal: "left",
         }}
+        sx={{background: "rgba(255, 255, 255, .55)",
+        backdropFilter: "blur(10px)"
+      }}
       >
         {/* <div className="card snake" >
           <div className="inner"> */}
