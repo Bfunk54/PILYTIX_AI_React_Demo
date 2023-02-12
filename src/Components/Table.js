@@ -21,8 +21,9 @@ import {
   Title,
   Tooltip,
   Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+import { Scatter } from 'react-chartjs-2';
 import "./Table/Table.css";
 
 import * as opportunities from "./Table/opportunities.json";
@@ -37,15 +38,29 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+export const probOptions = {
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
-      position: 'top',
+      position: "top",
     },
     title: {
       display: true,
-      text: 'Chart.js Line Chart',
+      text: "Probability History",
+    },
+  },
+};
+
+export const pxIncreaseOptions = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top",
+    },
+    title: {
+      display: true,
+      text: "Probability History",
     },
   },
 };
@@ -58,12 +73,15 @@ export default function BasicTable() {
 
   function handleRowClick(event, row) {
     setTheRow(row);
+    setIncreaseData(row.pilytixFactorsIncreasingWin);
+    setDecreaseData(row.pilytixFactorsDecreasingWin);
     setAnchorEl(event.currentTarget);
-    setProbChartData(row);
-    setHaveData(true);
+    probChartData(row);
   }
 
   const [theRow, setTheRow] = React.useState([]);
+  const [increaseData, setIncreaseData] = React.useState([]);
+  const [decreaseData, setDecreaseData] = React.useState([]);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -79,12 +97,14 @@ export default function BasicTable() {
   const id = open ? "simple-popover" : undefined;
 
   const [rowData, setRowData] = useState(data);
+  const [incWeightData, setIncWeightData] = useState();
   const [amountOrderDirection, setAmountOrderDirection] = useState("asc");
   const [pxProbOrderDirection, setPxProbOrderDirection] = useState("asc");
   const [pxTierOrderDirection, setPxTierOrderDirection] = useState("asc");
   const [repProbOrderDirection, setRepProbOrderDirection] = useState("asc");
-  const [chartData, setChartData] = useState([]);
-  const [haveData, setHaveData] = useState(false);
+  const [incWeightValDirection, setIncWeightValDirection] = useState("asc");
+  const [decWeightValDirection, setDecWeightValDirection] = useState("asc");
+  const [theProbChartData, setProbChartData] = useState([]);
 
   const sortAmountArray = (arr, orderBy) => {
     switch (orderBy) {
@@ -186,26 +206,115 @@ export default function BasicTable() {
     setRepProbOrderDirection(repProbOrderDirection === "asc" ? "desc" : "asc");
   };
 
-  let probHistoryData = [];
-  let probHistoryDatasets = []; 
+  const sortIncWeightVal = (arr, orderBy) => {
+    // let weightVal = (arr.probabilityHistory || []);
+    console.log(arr);
+    // // arr = [];
+    // arr = weightVal;
+    switch (orderBy) {
+      case "asc":
+      default:
+        return arr.sort((a, b) =>
+          a.weight.value > b.weight.value
+            ? 1
+            : b.weight.value > a.weight.value
+            ? -1
+            : 0
+        );
+      case "desc":
+        return arr.sort((a, b) =>
+          a.weight.value < b.weight.value
+            ? 1
+            : b.weight.value < a.weight.value
+            ? -1
+            : 0
+        );
+    }
+  };
 
-  const setProbChartData = (row) => {
-    console.log(row.probabilityHistory || []);
-    let daysAgo = (row.probabilityHistory || []).map(({daysAgo}) => daysAgo);
-    let pilytixProb = (row.probabilityHistory || []).map(({pilytixProb}) => pilytixProb);
-    let repProb = (row.probabilityHistory || []).map(({repProb}) => repProb);
-    // daysAgo.push([(row.daysAgo)])
-    // ))};
-    
-    probHistoryDatasets.push(daysAgo, pilytixProb, repProb)
-    console.log(repProb);
-//   {(row.probabilityHistory || []).map((row, i) => (
-//     probHistoryDatasets.push({ datasets: [(row.daysAgo, row.pilytixProb, row.repProb)]})
-  probHistoryData = {labels: "label", datasets: [{label: 'Days Ago', data: daysAgo}, {label: 'PX Prob', data: pilytixProb}, {label: 'Rep Prob', data: repProb}]};
-    // ))};
-    setChartData(probHistoryData);
-    console.log(chartData);
-  }
+  const handleIncWeightValSort = (event) => {
+    // setAnchorEl(event.currentTarget);
+    setIncreaseData(sortIncWeightVal(increaseData, incWeightValDirection));
+    setIncWeightValDirection(incWeightValDirection === "asc" ? "desc" : "asc");
+  };
+
+  const sortDecWeightVal = (arr, orderBy) => {
+    // let weightVal = (arr.probabilityHistory || []);
+    console.log(arr);
+    // // arr = [];
+    // arr = weightVal;
+    switch (orderBy) {
+      case "asc":
+      default:
+        return arr.sort((a, b) =>
+          a.weight.value > b.weight.value
+            ? 1
+            : b.weight.value > a.weight.value
+            ? -1
+            : 0
+        );
+      case "desc":
+        return arr.sort((a, b) =>
+          a.weight.value < b.weight.value
+            ? 1
+            : b.weight.value < a.weight.value
+            ? -1
+            : 0
+        );
+    }
+  };
+
+  const handleDecWeightValSort = (event) => {
+    // setAnchorEl(event.currentTarget);
+    setDecreaseData(sortDecWeightVal(decreaseData, decWeightValDirection));
+    setDecWeightValDirection(decWeightValDirection === "asc" ? "desc" : "asc");
+  };
+
+  let probHistoryData = [];
+
+  const probChartData = (row) => {
+    let daysAgo = (row.probabilityHistory || []).map(({ daysAgo }) => daysAgo);
+    let pilytixProb = (row.probabilityHistory || []).map(
+      ({ pilytixProb }) => pilytixProb
+    );
+    let repProb = (row.probabilityHistory || []).map(({ repProb }) => repProb);
+    daysAgo.sort(function (a, b) {
+      return a - b;
+    });
+    probHistoryData = {
+      labels: daysAgo,
+      datasets: [
+        { label: "PX Probability", data: pilytixProb },
+        { label: "Rep Probability", data: repProb },
+      ],
+    };
+    setProbChartData(probHistoryData);
+  };
+
+  // let pxIncreaseData = [];
+
+  // const pxIncreaseChartData = (row) => {
+  //   let name = (row.pilytixFactorsIncreasingWin || []).map(({ name }) => name);
+  //   let message = (row.pilytixFactorsIncreasingWin || []).map(
+  //     ({ message }) => message
+  //   );
+  //   let weightVal = (row.pilytixFactorsIncreasingWin || []).map(({ weight }) => weight.value);
+  //   let weightDesc = (row.pilytixFactorsIncreasingWin || []).map(({ weight }) => weight.description);
+  //   weightDesc.sort(function (a, b) {
+  //     return a - b;
+  //   });
+  //   console.log(weightVal, weightDesc, message, name);
+  //   pxIncreaseData = {
+  //     labels: weightDesc,
+  //     datasets: [
+  //       { label: name, data: weightVal },
+  //       // {label: message}
+  //     ],
+  //   };
+  //   setPxIncreaseChartData(pxIncreaseData);
+  //   console.log(pxIncreaseData);
+  // };
+
   return (
     /*  */
     <div>
@@ -318,40 +427,123 @@ export default function BasicTable() {
         {/* <div className="card snake" >
           <div className="inner"> */}
         <Card className="popCard">
-          <CardContent className="popCard">
-            The content of the Popover.{theRow.oppName}
-            <h2>Probability History</h2>
+          <CardContent sx={{display: "flex", justifyContent: "space-evenly", flexWrap: "wrap"}} className="popCard">
+          <div>
+            <h2>{theRow.oppName}</h2>
             {/* {(theRow.probabilityHistory || []).map((row, i) => ( */}
-              <div >
-                <Line options={options} data={chartData} />
-                {console.log(chartData)}
-                {/* <Typography>Days Ago: {row.daysAgo}</Typography>
+            <div style={{height: "350px", width: "600px"}}>
+              <Line height= "350px" width= "600px" options={probOptions} data={theProbChartData} />
+              </div>
+              {/* <Typography>Days Ago: {row.daysAgo}</Typography>
                 <Typography>PX Probability: {row.pilytixProb}</Typography>
                 <Typography>Rep Probability: {row.repProb}</Typography> */}
-              </div>
+            </div>
             {/* ))}  */}
-            <h2>PX Factors Increasing Win</h2>
-            {(theRow.pilytixFactorsIncreasingWin || []).map((row, i) => (
-              <div key={i}>
-                <Typography>Name: {row.name}</Typography>
+            <div>
+            <h3>PX Factors Increasing Win</h3>
+                {/* <Scatter options={pxIncreaseOptions} data={thePxIncreaseChartData} /> */}
+                <TableContainer
+        sx={{ overflowX: "initial", borderRadius: "20px" }}
+        component={Paper}
+      >
+        <Table stickyHeader aria-label="sticky table">
+          <TableHead sx={{ position: "sticky", top: "83.5px" }}>
+            <TableRow sx={{ height: "40px" }} >
+              <TableCell
+                sx={{ backgroundColor: "#3abaff", borderTopLeftRadius: "20px" }}
+                align="left"
+              >Name</TableCell>
+              <TableCell
+                sx={{ backgroundColor: "#3abaff" }}
+                align="left"
+              >Message</TableCell>
+              <TableCell
+                sx={{ backgroundColor: "#3abaff" }}
+                align="left"
+                onClick={handleIncWeightValSort}
+              >
+                <TableSortLabel active={true} direction={incWeightValDirection}>
+                Weight Value
+                </TableSortLabel>
+                </TableCell>
+              <TableCell
+                sx={{ backgroundColor: "#3abaff", borderTopRightRadius: "20px" }}
+                align="left"
+              >Weight Description</TableCell>
+              </TableRow>
+              </TableHead>
+              <TableBody>
+              {(theRow.pilytixFactorsIncreasingWin || []).map((row, i) => (
+                <TableRow key={i}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell>{row.name}</TableCell>
+                  <TableCell>{row.message}</TableCell>
+                  <TableCell>{row.weight.value}</TableCell>
+                  <TableCell>{row.weight.description}</TableCell>
+                </TableRow>
+                ))}
+              </TableBody>
+              </Table>
+              </TableContainer>
+                {/* <Typography>Name: {row.name}</Typography>
                 <Typography>Message: {row.message}</Typography>
                 <Typography>Weight Value: {row.weight.value}</Typography>
                 <Typography>
                   Weight Description: {row.weight.description}
-                </Typography>
-              </div>
-            ))}
-            <h2>PX Factors Decreasing Win</h2>
-            {(theRow.pilytixFactorsDecreasingWin || []).map((row, i) => (
-              <div key={i}>
-                <Typography>Name: {row.name}</Typography>
-                <Typography>Message: {row.message}</Typography>
-                <Typography>Weight Value: {row.weight.value}</Typography>
-                <Typography>
-                  Weight Description: {row.weight.description}
-                </Typography>
-              </div>
-            ))}
+                </Typography> */}
+
+</div>
+
+<div>
+             
+            <h3>PX Factors Decreasing Win</h3>
+              <TableContainer
+              sx={{ overflowX: "initial", borderRadius: "20px" }}
+              component={Paper}
+            >
+              <Table stickyHeader aria-label="sticky table">
+                <TableHead sx={{ position: "sticky", top: "83.5px" }}>
+                  <TableRow>
+                    <TableCell
+                      sx={{ backgroundColor: "#3abaff", borderTopLeftRadius: "20px" }}
+                      align="left"
+                    >Name</TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#3abaff" }}
+                      align="left"
+                    >Message</TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#3abaff" }}
+                      align="left"
+                      onClick={handleDecWeightValSort}
+                    >
+                      <TableSortLabel active={true} direction={decWeightValDirection}>
+                      Weight Value
+                      </TableSortLabel>
+                      </TableCell>
+                    <TableCell
+                      sx={{ backgroundColor: "#3abaff", borderTopRightRadius: "20px" }}
+                      align="left"
+                    >Weight Description</TableCell>
+                    </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    {(theRow.pilytixFactorsDecreasingWin || []).map((row, i) => (
+                      <TableRow key={i}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                      >
+                        <TableCell>{row.name}</TableCell>
+                        <TableCell>{row.message}</TableCell>
+                        <TableCell>{row.weight.value}</TableCell>
+                        <TableCell>{row.weight.description}</TableCell>
+                      </TableRow>
+                      ))}
+                    </TableBody>
+                    </Table>
+                    </TableContainer>
+
+                    </div>
           </CardContent>
         </Card>
         {/* </div>
