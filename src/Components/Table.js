@@ -12,9 +12,43 @@ import TableSortLabel from "@mui/material/TableSortLabel";
 import Popover from "@mui/material/Popover";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
 import "./Table/Table.css";
 
 import * as opportunities from "./Table/opportunities.json";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: 'top',
+    },
+    title: {
+      display: true,
+      text: 'Chart.js Line Chart',
+    },
+  },
+};
 
 export default function BasicTable() {
   /**
@@ -25,6 +59,8 @@ export default function BasicTable() {
   function handleRowClick(event, row) {
     setTheRow(row);
     setAnchorEl(event.currentTarget);
+    setProbChartData(row);
+    setHaveData(true);
   }
 
   const [theRow, setTheRow] = React.useState([]);
@@ -47,6 +83,8 @@ export default function BasicTable() {
   const [pxProbOrderDirection, setPxProbOrderDirection] = useState("asc");
   const [pxTierOrderDirection, setPxTierOrderDirection] = useState("asc");
   const [repProbOrderDirection, setRepProbOrderDirection] = useState("asc");
+  const [chartData, setChartData] = useState([]);
+  const [haveData, setHaveData] = useState(false);
 
   const sortAmountArray = (arr, orderBy) => {
     switch (orderBy) {
@@ -148,6 +186,26 @@ export default function BasicTable() {
     setRepProbOrderDirection(repProbOrderDirection === "asc" ? "desc" : "asc");
   };
 
+  let probHistoryData = [];
+  let probHistoryDatasets = []; 
+
+  const setProbChartData = (row) => {
+    console.log(row.probabilityHistory || []);
+    let daysAgo = (row.probabilityHistory || []).map(({daysAgo}) => daysAgo);
+    let pilytixProb = (row.probabilityHistory || []).map(({pilytixProb}) => pilytixProb);
+    let repProb = (row.probabilityHistory || []).map(({repProb}) => repProb);
+    // daysAgo.push([(row.daysAgo)])
+    // ))};
+    
+    probHistoryDatasets.push(daysAgo, pilytixProb, repProb)
+    console.log(repProb);
+//   {(row.probabilityHistory || []).map((row, i) => (
+//     probHistoryDatasets.push({ datasets: [(row.daysAgo, row.pilytixProb, row.repProb)]})
+  probHistoryData = {labels: "label", datasets: [{label: 'Days Ago', data: daysAgo}, {label: 'PX Prob', data: pilytixProb}, {label: 'Rep Prob', data: repProb}]};
+    // ))};
+    setChartData(probHistoryData);
+    console.log(chartData);
+  }
   return (
     /*  */
     <div>
@@ -252,47 +310,50 @@ export default function BasicTable() {
           vertical: "bottom",
           horizontal: "left",
         }}
-        sx={{background: "rgba(255, 255, 255, .55)",
-        backdropFilter: "blur(10px)"
-      }}
+        sx={{
+          background: "rgba(255, 255, 255, .55)",
+          backdropFilter: "blur(10px)",
+        }}
       >
         {/* <div className="card snake" >
           <div className="inner"> */}
-          <Card className="popCard">
-            <CardContent className="popCard">
-              The content of the Popover.{theRow.oppName}
-              <h2>Probability History</h2>
-              {(theRow.probabilityHistory || []).map((row, i) => (
-                <div key={i}>
-                  <Typography>Days Ago: {row.daysAgo}</Typography>
-                  <Typography>PX Probability: {row.pilytixProb}</Typography>
-                  <Typography>Rep Probability: {row.repProb}</Typography>
-                </div>
-              ))}
-              <h2>PX Factors Increasing Win</h2>
-              {(theRow.pilytixFactorsIncreasingWin || []).map((row, i) => (
-                <div key={i}>
-                  <Typography>Name: {row.name}</Typography>
-                  <Typography>Message: {row.message}</Typography>
-                  <Typography>Weight Value: {row.weight.value}</Typography>
-                  <Typography>
-                    Weight Description: {row.weight.description}
-                  </Typography>
-                </div>
-              ))}
-              <h2>PX Factors Decreasing Win</h2>
-              {(theRow.pilytixFactorsDecreasingWin || []).map((row, i) => (
-                <div key={i}>
-                  <Typography>Name: {row.name}</Typography>
-                  <Typography>Message: {row.message}</Typography>
-                  <Typography>Weight Value: {row.weight.value}</Typography>
-                  <Typography>
-                    Weight Description: {row.weight.description}
-                  </Typography>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
+        <Card className="popCard">
+          <CardContent className="popCard">
+            The content of the Popover.{theRow.oppName}
+            <h2>Probability History</h2>
+            {/* {(theRow.probabilityHistory || []).map((row, i) => ( */}
+              <div >
+                <Line options={options} data={chartData} />
+                {console.log(chartData)}
+                {/* <Typography>Days Ago: {row.daysAgo}</Typography>
+                <Typography>PX Probability: {row.pilytixProb}</Typography>
+                <Typography>Rep Probability: {row.repProb}</Typography> */}
+              </div>
+            {/* ))}  */}
+            <h2>PX Factors Increasing Win</h2>
+            {(theRow.pilytixFactorsIncreasingWin || []).map((row, i) => (
+              <div key={i}>
+                <Typography>Name: {row.name}</Typography>
+                <Typography>Message: {row.message}</Typography>
+                <Typography>Weight Value: {row.weight.value}</Typography>
+                <Typography>
+                  Weight Description: {row.weight.description}
+                </Typography>
+              </div>
+            ))}
+            <h2>PX Factors Decreasing Win</h2>
+            {(theRow.pilytixFactorsDecreasingWin || []).map((row, i) => (
+              <div key={i}>
+                <Typography>Name: {row.name}</Typography>
+                <Typography>Message: {row.message}</Typography>
+                <Typography>Weight Value: {row.weight.value}</Typography>
+                <Typography>
+                  Weight Description: {row.weight.description}
+                </Typography>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
         {/* </div>
         </div> */}
       </Popover>
