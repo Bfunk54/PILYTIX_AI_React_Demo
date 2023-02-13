@@ -12,7 +12,7 @@ import TableSortLabel from "@mui/material/TableSortLabel";
 import Popover from "@mui/material/Popover";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import  Tooltip from "@mui/material/Tooltip";
+import Tooltip from "@mui/material/Tooltip";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -23,7 +23,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { Scatter } from 'react-chartjs-2';
+import { Scatter } from "react-chartjs-2";
 import "./Table/Table.css";
 
 import * as opportunities from "./Table/opportunities.json";
@@ -206,10 +206,6 @@ export default function BasicTable() {
   };
 
   const sortIncWeightVal = (arr, orderBy) => {
-    // let weightVal = (arr.probabilityHistory || []);
-    console.log(arr);
-    // // arr = [];
-    // arr = weightVal;
     switch (orderBy) {
       case "asc":
       default:
@@ -232,16 +228,11 @@ export default function BasicTable() {
   };
 
   const handleIncWeightValSort = (event) => {
-    // setAnchorEl(event.currentTarget);
     setIncreaseData(sortIncWeightVal(increaseData, incWeightValDirection));
     setIncWeightValDirection(incWeightValDirection === "asc" ? "desc" : "asc");
   };
 
   const sortDecWeightVal = (arr, orderBy) => {
-    // let weightVal = (arr.probabilityHistory || []);
-    console.log(arr);
-    // // arr = [];
-    // arr = weightVal;
     switch (orderBy) {
       case "asc":
       default:
@@ -264,7 +255,6 @@ export default function BasicTable() {
   };
 
   const handleDecWeightValSort = (event) => {
-    // setAnchorEl(event.currentTarget);
     setDecreaseData(sortDecWeightVal(decreaseData, decWeightValDirection));
     setDecWeightValDirection(decWeightValDirection === "asc" ? "desc" : "asc");
   };
@@ -289,30 +279,6 @@ export default function BasicTable() {
     };
     setProbChartData(probHistoryData);
   };
-
-  // let pxIncreaseData = [];
-
-  // const pxIncreaseChartData = (row) => {
-  //   let name = (row.pilytixFactorsIncreasingWin || []).map(({ name }) => name);
-  //   let message = (row.pilytixFactorsIncreasingWin || []).map(
-  //     ({ message }) => message
-  //   );
-  //   let weightVal = (row.pilytixFactorsIncreasingWin || []).map(({ weight }) => weight.value);
-  //   let weightDesc = (row.pilytixFactorsIncreasingWin || []).map(({ weight }) => weight.description);
-  //   weightDesc.sort(function (a, b) {
-  //     return a - b;
-  //   });
-  //   console.log(weightVal, weightDesc, message, name);
-  //   pxIncreaseData = {
-  //     labels: weightDesc,
-  //     datasets: [
-  //       { label: name, data: weightVal },
-  //       // {label: message}
-  //     ],
-  //   };
-  //   setPxIncreaseChartData(pxIncreaseData);
-  //   console.log(pxIncreaseData);
-  // };
 
   return (
     /*  */
@@ -389,22 +355,36 @@ export default function BasicTable() {
           <TableBody sx={{ borderBottomLeftRadius: "20px" }}>
             {rowData.map((row) => (
               <Tooltip title="Click on any row for more info" followCursor>
-              <TableRow
-                onClick={(event) => handleRowClick(event, row)}
-                key={row.oppId}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 }, ":hover": {backgroundColor: "#2ecdb0"}, "&:last-child th": { borderBottomLeftRadius: "20px" }, "&:last-child div": { borderBottomRightRadius: "20px", border: "0px solid" } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.oppName}
-                </TableCell>
-                <TableCell align="left">{row.stage}</TableCell>
-                <TableCell align="right">{row.repProbability}</TableCell>
-                <TableCell align="right">{row.pilytixProbability}</TableCell>
-                <TableCell align="left">{row.pilytixTier}</TableCell>
-                <TableCell align="right">{row.amount}</TableCell>
-                <TableCell align="left">{row.product}</TableCell>
-                <TableCell component="div" style={{color: "black"}} align="left">{row.salesRepName}</TableCell>
-              </TableRow>
+                <TableRow
+                  onClick={(event) => handleRowClick(event, row)}
+                  key={row.oppId}
+                  sx={{
+                    "&:last-child td, &:last-child th": { border: 0 },
+                    ":hover": { backgroundColor: "#2ecdb0" },
+                    "&:last-child th": { borderBottomLeftRadius: "20px" },
+                    "&:last-child div": {
+                      borderBottomRightRadius: "20px",
+                      border: "0px solid",
+                    },
+                  }}
+                >
+                  <TableCell component="th" scope="row">
+                    {row.oppName}
+                  </TableCell>
+                  <TableCell align="left">{row.stage}</TableCell>
+                  <TableCell align="right">{row.repProbability}</TableCell>
+                  <TableCell align="right">{row.pilytixProbability}</TableCell>
+                  <TableCell align="left">{row.pilytixTier}</TableCell>
+                  <TableCell align="right">{row.amount}</TableCell>
+                  <TableCell align="left">{row.product}</TableCell>
+                  <TableCell
+                    component="div"
+                    style={{ color: "black" }}
+                    align="left"
+                  >
+                    {row.salesRepName}
+                  </TableCell>
+                </TableRow>
               </Tooltip>
             ))}
           </TableBody>
@@ -420,154 +400,244 @@ export default function BasicTable() {
           vertical: "bottom",
           horizontal: "left",
         }}
-  BackdropProps={{
-    style: {
-      backgroundColor: 'transparent',
-      boxShadow: 'none',
-    },
-  }}
+        BackdropProps={{
+          style: {
+            backgroundColor: "transparent",
+            boxShadow: "none",
+          },
+        }}
       >
-        {/* <div className="card snake" >
-          <div className="inner"> */}
-        <Card sx={{backdropFilter: "blur"}} className="backCard">
+        <Card sx={{ backdropFilter: "blur" }} className="backCard">
           <CardContent className="theCard">
-          <h3 style={{textAlign: "center"}}>{theRow.oppName}</h3>
-            <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
-            
-          <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
-            {/* {(theRow.probabilityHistory || []).map((row, i) => ( */}
-            {theRow.probabilityHistory
-             ?
-            <div className="chart" style={{height: "350px", width: "550px"}}>
-              <Line height= "350px" width= "550px" options={probOptions} data={theProbChartData} />
-              </div>
-              :<h4 style={{textAlign: "center", marginTop: "40px"}}>No Probability Chart Data</h4>}
-              {/* <Typography>Days Ago: {row.daysAgo}</Typography>
-                <Typography>PX Probability: {row.pilytixProb}</Typography>
-                <Typography>Rep Probability: {row.repProb}</Typography> */}
-                {theRow.pilytixFactorsDecreasingWin
-             ?
-                <div>
-             <h4 style={{textAlign: "center"}}>PX Factors Decreasing Win</h4>
-               <TableContainer
-               sx={{ overflowX: "initial", borderRadius: "20px", maxWidth: "540px" }}
-               component={Paper}
-             >
-               <Table size="small" style={{tableLayout: "fixed", maxWidth: "540px"}} stickyHeader aria-label="sticky table">
-                 <TableHead sx={{ position: "sticky", top: "83.5px" }}>
-                   <TableRow>
-                     <TableCell
-                       sx={{ backgroundColor: "#3abaff", borderTopLeftRadius: "20px", width:'12%' }}
-                       align="left"
-                     >Name</TableCell>
-                     <TableCell
-                       sx={{ backgroundColor: "#3abaff", width:'38%' }}
-                       align="left"
-                     >Message</TableCell>
-                     <TableCell
-                       sx={{ backgroundColor: "#3abaff", width:'8%'  }}
-                       align="left"
-                       onClick={handleDecWeightValSort}
-                     >
-                       <TableSortLabel active={true} direction={decWeightValDirection}>
-                       Weight Value
-                       </TableSortLabel>
-                       </TableCell>
-                     <TableCell
-                       sx={{ backgroundColor: "#3abaff", borderTopRightRadius: "20px", width:'12%'  }}
-                       align="left"
-                     >Weight Description</TableCell>
-                     </TableRow>
-                     </TableHead>
-                     <TableBody>
-                     {(theRow.pilytixFactorsDecreasingWin || []).map((row, i) => (
-                       <TableRow key={i}
-                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                       >
-                         <TableCell sx={{height: '8%'}}>{row.name}</TableCell>
-                         <TableCell sx={{height: '8%'}}>{row.message}</TableCell>
-                         <TableCell sx={{height: '8%'}}>{row.weight.value}</TableCell>
-                         <TableCell sx={{height: '8%'}}>{row.weight.description}</TableCell>
-                       </TableRow>
-                       ))}
-                     </TableBody>
-                     </Table>
-                     </TableContainer>
- 
-                     </div>
-                     : <h4 style={{textAlign: "center", marginTop: "40px"}}>No PX Factors Decreasing Win</h4>}
-            </div>
-            {/* ))}  */}
-            {theRow.pilytixFactorsIncreasingWin
-             ?
-            <div>
-            <h4 style={{textAlign: "center"}}>PX Factors Increasing Win</h4>
-                {/* <Scatter options={pxIncreaseOptions} data={thePxIncreaseChartData} /> */}
-                <TableContainer
-        sx={{ overflowX: "initial", borderRadius: "20px", marginLeft: "10px", maxWidth: "550px" }}
-        component={Paper}
-      >
-        <Table size="small" style={{tableLayout: "fixed", maxWidth: "550px"}} stickyHeader aria-label="sticky table">
-        {/* <colgroup>
-      <col style={{width:'3%'}}/>
-      <col style={{width:'3%'}}/>
-      <col style={{width:'3%'}}/>
-      <col style={{width:'8%'}}/>
-   </colgroup> */}
-          <TableHead sx={{ position: "sticky", top: "83.5px" }}>
-            <TableRow sx={{ height: "40px" }} >
-              <TableCell
-                sx={{ backgroundColor: "#3abaff", borderTopLeftRadius: "20px", width:'8%' }}
-                align="left"
-              >Name</TableCell>
-              <TableCell
-                sx={{ backgroundColor: "#3abaff", width:'42%' }}
-                align="left"
-              >Message</TableCell>
-              <TableCell
-                sx={{ backgroundColor: "#3abaff", width:'8%' }}
-                align="left"
-                onClick={handleIncWeightValSort}
+            <h3 style={{ textAlign: "center" }}>{theRow.oppName}</h3>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                flexWrap: "wrap",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  flexDirection: "column",
+                }}
               >
-                <TableSortLabel active={true} direction={incWeightValDirection}>
-                Weight Value
-                </TableSortLabel>
-                </TableCell>
-              <TableCell
-                sx={{ backgroundColor: "#3abaff", borderTopRightRadius: "20px", width:'12%' }}
-                align="left"
-              >Weight Description</TableCell>
-              </TableRow>
-              </TableHead>
-              <TableBody>
-              {(theRow.pilytixFactorsIncreasingWin || []).map((row, i) => (
-                <TableRow key={i}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell sx={{height: '10%'}}>{row.name}</TableCell>
-                  <TableCell sx={{height: '10%'}}>{row.message}</TableCell>
-                  <TableCell sx={{height: '10%'}}>{row.weight.value}</TableCell>
-                  <TableCell sx={{height: '10%'}}>{row.weight.description}</TableCell>
-                </TableRow>
-                ))}
-              </TableBody>
-              </Table>
-              </TableContainer>
-                {/* <Typography>Name: {row.name}</Typography>
-                <Typography>Message: {row.message}</Typography>
-                <Typography>Weight Value: {row.weight.value}</Typography>
-                <Typography>
-                  Weight Description: {row.weight.description}
-                </Typography> */}
-
-</div>
-: <h4 style={{textAlign: "center", marginTop: "40px"}}>No PX Factors Increasing Win</h4>}
-
-                    </div>
+                {theRow.probabilityHistory ? (
+                  <div
+                    className="chart"
+                    style={{ height: "350px", width: "550px" }}
+                  >
+                    <Line
+                      height="350px"
+                      width="550px"
+                      options={probOptions}
+                      data={theProbChartData}
+                    />
+                  </div>
+                ) : (
+                  <h4 style={{ textAlign: "center", marginTop: "40px" }}>
+                    No Probability Chart Data
+                  </h4>
+                )}
+                {theRow.pilytixFactorsDecreasingWin ? (
+                  <div>
+                    <h4 style={{ textAlign: "center" }}>
+                      PX Factors Decreasing Win
+                    </h4>
+                    <TableContainer
+                      sx={{
+                        overflowX: "initial",
+                        borderRadius: "20px",
+                        maxWidth: "540px",
+                      }}
+                      component={Paper}
+                    >
+                      <Table
+                        size="small"
+                        style={{ tableLayout: "fixed", maxWidth: "540px" }}
+                        stickyHeader
+                        aria-label="sticky table"
+                      >
+                        <TableHead sx={{ position: "sticky", top: "83.5px" }}>
+                          <TableRow>
+                            <TableCell
+                              sx={{
+                                backgroundColor: "#3abaff",
+                                borderTopLeftRadius: "20px",
+                                width: "12%",
+                              }}
+                              align="left"
+                            >
+                              Name
+                            </TableCell>
+                            <TableCell
+                              sx={{ backgroundColor: "#3abaff", width: "38%" }}
+                              align="left"
+                            >
+                              Message
+                            </TableCell>
+                            <TableCell
+                              sx={{ backgroundColor: "#3abaff", width: "8%" }}
+                              align="left"
+                              onClick={handleDecWeightValSort}
+                            >
+                              <TableSortLabel
+                                active={true}
+                                direction={decWeightValDirection}
+                              >
+                                Weight Value
+                              </TableSortLabel>
+                            </TableCell>
+                            <TableCell
+                              sx={{
+                                backgroundColor: "#3abaff",
+                                borderTopRightRadius: "20px",
+                                width: "12%",
+                              }}
+                              align="left"
+                            >
+                              Weight Description
+                            </TableCell>
+                          </TableRow>
+                        </TableHead>
+                        <TableBody>
+                          {(theRow.pilytixFactorsDecreasingWin || []).map(
+                            (row, i) => (
+                              <TableRow
+                                key={i}
+                                sx={{
+                                  "&:last-child td, &:last-child th": {
+                                    border: 0,
+                                  },
+                                }}
+                              >
+                                <TableCell sx={{ height: "8%" }}>
+                                  {row.name}
+                                </TableCell>
+                                <TableCell sx={{ height: "8%" }}>
+                                  {row.message}
+                                </TableCell>
+                                <TableCell sx={{ height: "8%" }}>
+                                  {row.weight.value}
+                                </TableCell>
+                                <TableCell sx={{ height: "8%" }}>
+                                  {row.weight.description}
+                                </TableCell>
+                              </TableRow>
+                            )
+                          )}
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+                  </div>
+                ) : (
+                  <h4 style={{ textAlign: "center", marginTop: "40px" }}>
+                    No PX Factors Decreasing Win
+                  </h4>
+                )}
+              </div>
+              {theRow.pilytixFactorsIncreasingWin ? (
+                <div>
+                  <h4 style={{ textAlign: "center" }}>
+                    PX Factors Increasing Win
+                  </h4>
+                  <TableContainer
+                    sx={{
+                      overflowX: "initial",
+                      borderRadius: "20px",
+                      marginLeft: "10px",
+                      maxWidth: "550px",
+                    }}
+                    component={Paper}
+                  >
+                    <Table
+                      size="small"
+                      style={{ tableLayout: "fixed", maxWidth: "550px" }}
+                      stickyHeader
+                      aria-label="sticky table"
+                    >
+                      <TableHead sx={{ position: "sticky", top: "83.5px" }}>
+                        <TableRow sx={{ height: "40px" }}>
+                          <TableCell
+                            sx={{
+                              backgroundColor: "#3abaff",
+                              borderTopLeftRadius: "20px",
+                              width: "8%",
+                            }}
+                            align="left"
+                          >
+                            Name
+                          </TableCell>
+                          <TableCell
+                            sx={{ backgroundColor: "#3abaff", width: "42%" }}
+                            align="left"
+                          >
+                            Message
+                          </TableCell>
+                          <TableCell
+                            sx={{ backgroundColor: "#3abaff", width: "8%" }}
+                            align="left"
+                            onClick={handleIncWeightValSort}
+                          >
+                            <TableSortLabel
+                              active={true}
+                              direction={incWeightValDirection}
+                            >
+                              Weight Value
+                            </TableSortLabel>
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              backgroundColor: "#3abaff",
+                              borderTopRightRadius: "20px",
+                              width: "12%",
+                            }}
+                            align="left"
+                          >
+                            Weight Description
+                          </TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {(theRow.pilytixFactorsIncreasingWin || []).map(
+                          (row, i) => (
+                            <TableRow
+                              key={i}
+                              sx={{
+                                "&:last-child td, &:last-child th": {
+                                  border: 0,
+                                },
+                              }}
+                            >
+                              <TableCell sx={{ height: "10%" }}>
+                                {row.name}
+                              </TableCell>
+                              <TableCell sx={{ height: "10%" }}>
+                                {row.message}
+                              </TableCell>
+                              <TableCell sx={{ height: "10%" }}>
+                                {row.weight.value}
+                              </TableCell>
+                              <TableCell sx={{ height: "10%" }}>
+                                {row.weight.description}
+                              </TableCell>
+                            </TableRow>
+                          )
+                        )}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </div>
+              ) : (
+                <h4 style={{ textAlign: "center", marginTop: "40px" }}>
+                  No PX Factors Increasing Win
+                </h4>
+              )}
+            </div>
           </CardContent>
         </Card>
-        {/* </div>
-        </div> */}
       </Popover>
     </div>
   );
