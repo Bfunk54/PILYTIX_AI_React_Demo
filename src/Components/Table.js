@@ -386,13 +386,13 @@ export default function BasicTable() {
               </TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody sx={{ borderBottomLeftRadius: "20px" }}>
             {rowData.map((row) => (
               <Tooltip title="Click on any row for more info" followCursor>
               <TableRow
                 onClick={(event) => handleRowClick(event, row)}
                 key={row.oppId}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 }, ":hover": {backgroundColor: "#2ecdb0"}, "&:last-child th": { borderBottomLeftRadius: "20px" }, "&:nth-last-child(-n) td": { borderBottomRightRadius: "20px" } }}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 }, ":hover": {backgroundColor: "#2ecdb0"}, "&:last-child th": { borderBottomLeftRadius: "20px" }, "&:last-child caption": { borderBottomRightRadius: "20px" } }}
               >
                 <TableCell component="th" scope="row">
                   {row.oppName}
@@ -403,7 +403,7 @@ export default function BasicTable() {
                 <TableCell align="left">{row.pilytixTier}</TableCell>
                 <TableCell align="right">{row.amount}</TableCell>
                 <TableCell align="left">{row.product}</TableCell>
-                <TableCell align="left">{row.salesRepName}</TableCell>
+                <TableCell component="caption" style={{color: "black", border: "0, solid"}} align="left">{row.salesRepName}</TableCell>
               </TableRow>
               </Tooltip>
             ))}
@@ -420,15 +420,17 @@ export default function BasicTable() {
           vertical: "bottom",
           horizontal: "left",
         }}
-        sx={{
-          background: "rgba(255, 255, 255, .55)",
-          backdropFilter: "blur(10px)",
-        }}
+  BackdropProps={{
+    style: {
+      backgroundColor: 'transparent',
+      boxShadow: 'none',
+    },
+  }}
       >
         {/* <div className="card snake" >
           <div className="inner"> */}
-        <Card className="popCard">
-          <CardContent className="popCard">
+        <Card sx={{backdropFilter: "blur"}} className="backCard">
+          <CardContent className="theCard">
           <h3 style={{textAlign: "center"}}>{theRow.oppName}</h3>
             <div style={{display: "flex", justifyContent: "center", flexWrap: "wrap"}}>
             
@@ -436,7 +438,7 @@ export default function BasicTable() {
             {/* {(theRow.probabilityHistory || []).map((row, i) => ( */}
             {theRow.probabilityHistory
              ?
-            <div style={{height: "350px", width: "550px"}}>
+            <div className="chart" style={{height: "350px", width: "550px"}}>
               <Line height= "350px" width= "550px" options={probOptions} data={theProbChartData} />
               </div>
               :<h4 style={{textAlign: "center", marginTop: "40px"}}>No Probability Chart Data</h4>}
@@ -459,7 +461,7 @@ export default function BasicTable() {
                        align="left"
                      >Name</TableCell>
                      <TableCell
-                       sx={{ backgroundColor: "#3abaff", width:'36%' }}
+                       sx={{ backgroundColor: "#3abaff", width:'38%' }}
                        align="left"
                      >Message</TableCell>
                      <TableCell
@@ -502,7 +504,7 @@ export default function BasicTable() {
             <h4 style={{textAlign: "center"}}>PX Factors Increasing Win</h4>
                 {/* <Scatter options={pxIncreaseOptions} data={thePxIncreaseChartData} /> */}
                 <TableContainer
-        sx={{ overflowX: "initial", borderRadius: "20px", marginLeft: "10px" }}
+        sx={{ overflowX: "initial", borderRadius: "20px", marginLeft: "10px", maxWidth: "550px" }}
         component={Paper}
       >
         <Table size="small" style={{tableLayout: "fixed", maxWidth: "550px"}} stickyHeader aria-label="sticky table">
@@ -519,7 +521,7 @@ export default function BasicTable() {
                 align="left"
               >Name</TableCell>
               <TableCell
-                sx={{ backgroundColor: "#3abaff", width:'32%' }}
+                sx={{ backgroundColor: "#3abaff", width:'42%' }}
                 align="left"
               >Message</TableCell>
               <TableCell
