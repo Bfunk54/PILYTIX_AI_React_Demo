@@ -392,7 +392,7 @@ export default function BasicTable() {
               <TableRow
                 onClick={(event) => handleRowClick(event, row)}
                 key={row.oppId}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 }, ":hover": {backgroundColor: "#2ecdb0"}, "&:last-child th": { borderBottomLeftRadius: "20px" }, "&:last-child caption": { borderBottomRightRadius: "20px" } }}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 }, ":hover": {backgroundColor: "#2ecdb0"}, "&:last-child th": { borderBottomLeftRadius: "20px" }, "&:last-child div": { borderBottomRightRadius: "20px", border: "0px solid" } }}
               >
                 <TableCell component="th" scope="row">
                   {row.oppName}
@@ -403,7 +403,7 @@ export default function BasicTable() {
                 <TableCell align="left">{row.pilytixTier}</TableCell>
                 <TableCell align="right">{row.amount}</TableCell>
                 <TableCell align="left">{row.product}</TableCell>
-                <TableCell component="caption" style={{color: "black", border: "0, solid"}} align="left">{row.salesRepName}</TableCell>
+                <TableCell component="div" style={{color: "black"}} align="left">{row.salesRepName}</TableCell>
               </TableRow>
               </Tooltip>
             ))}
