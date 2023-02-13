@@ -34,3 +34,7 @@
   backdrop-filter: blur(10px) !important;
   }
 
+  table > *:last-child > tr:last-of-type > td:last-of-type {
+    border-bottom-right-radius: 20px;
+  }
+

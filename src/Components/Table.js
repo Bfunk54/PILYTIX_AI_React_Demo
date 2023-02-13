@@ -362,10 +362,6 @@ export default function BasicTable() {
                     "&:last-child td, &:last-child th": { border: 0 },
                     ":hover": { backgroundColor: "#2ecdb0" },
                     "&:last-child th": { borderBottomLeftRadius: "20px" },
-                    "&:last-child div": {
-                      borderBottomRightRadius: "20px",
-                      border: "0px solid",
-                    },
                   }}
                 >
                   <TableCell component="th" scope="row">
@@ -378,7 +374,7 @@ export default function BasicTable() {
                   <TableCell align="right">{row.amount}</TableCell>
                   <TableCell align="left">{row.product}</TableCell>
                   <TableCell
-                    component="div"
+                    
                     style={{ color: "black" }}
                     align="left"
                   >
