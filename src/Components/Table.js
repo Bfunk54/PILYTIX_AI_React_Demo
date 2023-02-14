@@ -45,8 +45,7 @@ export const probOptions = {
       position: "top",
     },
     title: {
-      display: true,
-      text: "Probability History",
+      display: false
     },
   },
 };
@@ -416,32 +415,40 @@ export default function BasicTable() {
       >
         <Card sx={{ backdropFilter: "blur" }} className="backCard">
           <CardContent className="theCard">
-            <h3 style={{ textAlign: "center" }}>{theRow.oppName}</h3>
+            <h3 style={{ textAlign: "center", margin: 0 }}>{theRow.oppName}</h3>
             <div
               style={{
                 display: "flex",
                 justifyContent: "center",
                 flexWrap: "wrap",
+                alignItems: "center"
               }}
             >
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  flexDirection: "column",
+                  flexDirection: "column"
                 }}
               >
                 {theRow.probabilityHistory ? (
                   <div
+                    style={{ height: "340px", width: "550px", background: "rgba(255, 255, 255, .0)", marginRight: 10, marginBottom: 10 }}
+                  >
+                    <h4 style={{ textAlign: "center" }}>
+                      Probability History
+                    </h4>
+                    <div
                     className="chart"
-                    style={{ height: "350px", width: "550px" }}
+                    style={{ height: "300px", width: "550px" }}
                   >
                     <Line
-                      height="350px"
+                      height="300px"
                       width="550px"
                       options={probOptions}
                       data={theProbChartData}
                     />
+                    </div>
                   </div>
                 ) : (
                   <h4 style={{ textAlign: "center", marginTop: "40px" }}>
@@ -454,20 +461,16 @@ export default function BasicTable() {
                       PX Factors Decreasing Win
                     </h4>
                     <TableContainer
-                      sx={{
-                        overflowX: "initial",
-                        borderRadius: "20px",
-                        maxWidth: "540px",
-                      }}
-                      component={Paper}
+                       sx={{ borderRadius: "20px", maxHeight: 300 }}
+                       className="theCard"
                     >
                       <Table
                         size="small"
-                        style={{ tableLayout: "fixed", maxWidth: "540px" }}
+                        style={{ maxWidth: "540px" }}
                         stickyHeader
                         aria-label="sticky table"
                       >
-                        <TableHead sx={{ position: "sticky", top: "83.5px" }}>
+                        <TableHead>
                           <TableRow>
                             <TableCell
                               sx={{
@@ -476,25 +479,34 @@ export default function BasicTable() {
                                 width: "12%",
                               }}
                               align="left"
-                            >
+                              className="headers"
+                              >
+                                <Typography sx={{padding: 1}} className="headersText">
                               Name
+                              </Typography>
                             </TableCell>
                             <TableCell
                               sx={{ backgroundColor: "#3abaff", width: "38%" }}
                               align="left"
-                            >
+                              className="headers"
+                              >
+                              <Typography sx={{padding: 1}} className="headersText">
                               Message
+                              </Typography>
                             </TableCell>
                             <TableCell
                               sx={{ backgroundColor: "#3abaff", width: "8%" }}
                               align="left"
                               onClick={handleDecWeightValSort}
+                              className="headers"
                             >
                               <TableSortLabel
                                 active={true}
                                 direction={decWeightValDirection}
-                              >
+                                >
+                                <Typography sx={{padding: 1}} className="headersText">
                                 Weight Value
+                                </Typography>
                               </TableSortLabel>
                             </TableCell>
                             <TableCell
@@ -504,8 +516,11 @@ export default function BasicTable() {
                                 width: "12%",
                               }}
                               align="left"
+                              className="headers"
                             >
+                              <Typography sx={{padding: 1}} className="headersText">
                               Weight Description
+                              </Typography>
                             </TableCell>
                           </TableRow>
                         </TableHead>
@@ -551,48 +566,52 @@ export default function BasicTable() {
                     PX Factors Increasing Win
                   </h4>
                   <TableContainer
-                    sx={{
-                      overflowX: "initial",
-                      borderRadius: "20px",
-                      marginLeft: "10px",
-                      maxWidth: "550px",
-                    }}
-                    component={Paper}
+                    sx={{ borderRadius: "20px", maxHeight: 300 }}
+                    className="theCard"
                   >
                     <Table
                       size="small"
-                      style={{ tableLayout: "fixed", maxWidth: "550px" }}
+                      style={{ maxWidth: "550px" }}
                       stickyHeader
                       aria-label="sticky table"
                     >
-                      <TableHead sx={{ position: "sticky", top: "83.5px" }}>
-                        <TableRow sx={{ height: "40px" }}>
+                      <TableHead>
+                        <TableRow>
                           <TableCell
                             sx={{
                               backgroundColor: "#3abaff",
                               borderTopLeftRadius: "20px",
-                              width: "8%",
+                              width: "12%",
                             }}
                             align="left"
-                          >
+                            className="headers"
+                            >
+                              <Typography sx={{padding: 1}} className="headersText">
                             Name
+                            </Typography>
                           </TableCell>
                           <TableCell
-                            sx={{ backgroundColor: "#3abaff", width: "42%" }}
+                            sx={{ backgroundColor: "#3abaff", width: "38%" }}
                             align="left"
-                          >
+                            className="headers"
+                            >
+                              <Typography sx={{padding: 1}} className="headersText">
                             Message
+                            </Typography>
                           </TableCell>
                           <TableCell
                             sx={{ backgroundColor: "#3abaff", width: "8%" }}
                             align="left"
                             onClick={handleIncWeightValSort}
+                            className="headers"
                           >
                             <TableSortLabel
                               active={true}
                               direction={incWeightValDirection}
                             >
+                              <Typography sx={{padding: 1}} className="headersText">
                               Weight Value
+                              </Typography>
                             </TableSortLabel>
                           </TableCell>
                           <TableCell
@@ -602,8 +621,11 @@ export default function BasicTable() {
                               width: "12%",
                             }}
                             align="left"
-                          >
+                            className="headers"
+                            >
+                              <Typography sx={{padding: 1}} className="headersText">
                             Weight Description
+                            </Typography>
                           </TableCell>
                         </TableRow>
                       </TableHead>
