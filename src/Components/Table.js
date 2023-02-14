@@ -297,12 +297,12 @@ export default function BasicTable() {
                 sx={{ borderTopLeftRadius: "20px" }}
                 align="left"
                 className="headers"
-              > <Typography className="headersText">
+              > <Typography sx={{padding: 1, width: "60%"}} className="headersText">
                 Opp Name
                 </Typography>
               </TableCell>
               <TableCell className="headers" align="left">
-              <Typography className="headersText">
+              <Typography sx={{padding: 1, width: "60%"}} className="headersText">
                 Opp Stage
                 </Typography>
               </TableCell>
@@ -312,7 +312,7 @@ export default function BasicTable() {
                 className="headers"
               >
                 <TableSortLabel active={true} direction={repProbOrderDirection}>
-                <Typography className="headersText">
+                <Typography sx={{padding: 1}} className="headersText">
                   Rep Probability
                   </Typography>
                 </TableSortLabel>
@@ -323,7 +323,7 @@ export default function BasicTable() {
                 className="headers"
               >
                 <TableSortLabel active={true} direction={pxProbOrderDirection}>
-                <Typography className="headersText">
+                <Typography sx={{padding: 1}} className="headersText">
                   PX Probability
                   </Typography>
                 </TableSortLabel>
@@ -334,7 +334,7 @@ export default function BasicTable() {
                 className="headers"
               >
                 <TableSortLabel active={true} direction={pxTierOrderDirection}>
-                <Typography className="headersText">
+                <Typography sx={{padding: 1}} className="headersText">
                   PX Tier
                   </Typography>
                 </TableSortLabel>
@@ -345,13 +345,13 @@ export default function BasicTable() {
                 className="headers"
               >
                 <TableSortLabel active={true} direction={amountOrderDirection}>
-                <Typography className="headersText">
+                <Typography sx={{padding: 1}} className="headersText">
                   Amount
                   </Typography>
                 </TableSortLabel>
               </TableCell>
               <TableCell align="left" className="headers">
-              <Typography className="headersText">
+              <Typography sx={{padding: 1}} className="headersText">
                 Product
                 </Typography>
               </TableCell>
@@ -362,7 +362,7 @@ export default function BasicTable() {
                 align="left"
                 className="headers"
               >
-                <Typography className="headersText">
+                <Typography sx={{padding: 1}} className="headersText">
                 Sales Rep
                 </Typography>
               </TableCell>
