@@ -282,79 +282,95 @@ export default function BasicTable() {
 
   return (
     /*  */
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: 18 }}>
       <Typography className="scored" variant="h4" component="h2">
         PILYTIX Scored Opportunities
       </Typography>
       <TableContainer
-        sx={{ overflowX: "initial", borderRadius: "20px" }}
-        component={Paper}
+        sx={{ borderRadius: "20px", maxHeight: 620 }}
+        className="theCard"
       >
-        <Table stickyHeader sx={{ minWidth: 650 }} aria-label="sticky table">
-          <TableHead sx={{ position: "sticky", top: "83.5px" }}>
+        <Table stickyHeader aria-label="sticky table">
+          <TableHead>
             <TableRow>
               <TableCell
-                sx={{ backgroundColor: "#3abaff", borderTopLeftRadius: "20px" }}
+                sx={{ borderTopLeftRadius: "20px" }}
                 align="left"
-              >
+                className="headers"
+              > <Typography className="headersText">
                 Opp Name
+                </Typography>
               </TableCell>
-              <TableCell sx={{ backgroundColor: "#3abaff" }} align="left">
+              <TableCell className="headers" align="left">
+              <Typography className="headersText">
                 Opp Stage
+                </Typography>
               </TableCell>
               <TableCell
-                sx={{ backgroundColor: "#3abaff" }}
                 align="right"
                 onClick={handleRepProbSortRequest}
+                className="headers"
               >
                 <TableSortLabel active={true} direction={repProbOrderDirection}>
+                <Typography className="headersText">
                   Rep Probability
+                  </Typography>
                 </TableSortLabel>
               </TableCell>
               <TableCell
-                sx={{ backgroundColor: "#3abaff" }}
                 align="right"
                 onClick={handlePxProbSortRequest}
+                className="headers"
               >
                 <TableSortLabel active={true} direction={pxProbOrderDirection}>
+                <Typography className="headersText">
                   PX Probability
+                  </Typography>
                 </TableSortLabel>
               </TableCell>
               <TableCell
-                sx={{ backgroundColor: "#3abaff" }}
                 align="left"
                 onClick={handlePxTierSortRequest}
+                className="headers"
               >
                 <TableSortLabel active={true} direction={pxTierOrderDirection}>
+                <Typography className="headersText">
                   PX Tier
+                  </Typography>
                 </TableSortLabel>
               </TableCell>
               <TableCell
-                sx={{ backgroundColor: "#3abaff" }}
                 align="right"
                 onClick={handleAmountSortRequest}
+                className="headers"
               >
                 <TableSortLabel active={true} direction={amountOrderDirection}>
+                <Typography className="headersText">
                   Amount
+                  </Typography>
                 </TableSortLabel>
               </TableCell>
-              <TableCell sx={{ backgroundColor: "#3abaff" }} align="left">
+              <TableCell align="left" className="headers">
+              <Typography className="headersText">
                 Product
+                </Typography>
               </TableCell>
               <TableCell
                 sx={{
-                  backgroundColor: "#3abaff",
                   borderTopRightRadius: "20px",
                 }}
                 align="left"
+                className="headers"
               >
+                <Typography className="headersText">
                 Sales Rep
+                </Typography>
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody sx={{ borderBottomLeftRadius: "20px" }}>
             {rowData.map((row) => (
-              <Tooltip title="Click on any row for more info" followCursor>
+              <Tooltip key={row.name} title="Click on any row for more info" followCursor>
                 <TableRow
                   onClick={(event) => handleRowClick(event, row)}
                   key={row.oppId}
@@ -362,6 +378,7 @@ export default function BasicTable() {
                     "&:last-child td, &:last-child th": { border: 0 },
                     ":hover": { backgroundColor: "#2ecdb0" },
                     "&:last-child th": { borderBottomLeftRadius: "20px" },
+                    "&tr td": { fontSize: "14px" }
                   }}
                 >
                   <TableCell component="th" scope="row">
@@ -373,11 +390,7 @@ export default function BasicTable() {
                   <TableCell align="left">{row.pilytixTier}</TableCell>
                   <TableCell align="right">{row.amount}</TableCell>
                   <TableCell align="left">{row.product}</TableCell>
-                  <TableCell
-                    
-                    style={{ color: "black" }}
-                    align="left"
-                  >
+                  <TableCell style={{ color: "black" }} align="left">
                     {row.salesRepName}
                   </TableCell>
                 </TableRow>
@@ -392,16 +405,14 @@ export default function BasicTable() {
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
+        anchorReference={"none"}
         BackdropProps={{
           style: {
             backgroundColor: "transparent",
             boxShadow: "none",
           },
         }}
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <Card sx={{ backdropFilter: "blur" }} className="backCard">
           <CardContent className="theCard">

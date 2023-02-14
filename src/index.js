@@ -1,5 +1,5 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -15,8 +15,11 @@ const router = createBrowserRouter([
   },
 ]);
 
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
+if (module.hot) {
+  module.hot.accept();
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <StrictMode>

@@ -1,11 +1,14 @@
-.scored {
-  margin-top: 100px !important;
-}
-
 .theCard {
-  background: rgba(255, 255, 255, .55) !important;
+  background: rgba(255, 255, 255, .5) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
+}
+
+.scored {
+    margin-bottom: 20px !important;
+    background-color: rgba(245, 245, 245, 0.6);
+    width: 56%;
+    border-radius: 20px;
 }
 
 .backCard {
@@ -22,7 +25,7 @@
 
   .MuiPopover-paper {
     border-radius: 20px !important;
-    background: rgba(255, 255, 255, .0) !important;
+    background-color: rgba(23, 185, 255, .3) !important;
 	-webkit-backdrop-filter: blur(10px) !important;
 	backdrop-filter: blur(10px) !important;
   }
@@ -37,4 +40,24 @@
   table > *:last-child > tr:last-of-type > td:last-of-type {
     border-bottom-right-radius: 20px;
   }
+
+  .headers {
+    background-color: rgba(23, 185, 255, 0.92) !important;
+    font-size: 16px !important;
+  }
+
+  .headersText {
+    background-color: rgba(245, 245, 245, 0.6);
+    width: 56%;
+    border-radius: 20px;
+  }
+
+  table > *:last-child > tr:last-of-type > th,td {
+    font-size: 15px !important;
+ }
+
+ table > *:last-child > tr:last-of-type > td,th {
+    font-size: 15px !important;
+ }
+
 
