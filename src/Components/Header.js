@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
-import ButtonUnstyled from '@mui/base/ButtonUnstyled';
+import ButtonUnstyled from "@mui/base/ButtonUnstyled";
 import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
 import logo from "../images/pilytix-logo.png";
@@ -31,7 +31,6 @@ export default function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
-    console.log(event);
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -42,47 +41,45 @@ export default function NavBar() {
 
   return (
     <div>
-    <AppBar
-      sx={{ borderBottomLeftRadius: "40px", borderBottomRightRadius: "40px" }}
-      position="fixed"
-      className="wholeNav"
-    >
-      <Box
-        className="headerBox"
-        sx={{
-          alignItems: "center",
-          display: "flex",
-        }}
+      <AppBar
+        sx={{ borderBottomLeftRadius: "40px", borderBottomRightRadius: "40px" }}
+        position="fixed"
+        className="wholeNav"
       >
-        <Box sx={{ display: "flex" }}>
-          <Link to="/" style={{ color: "white", textDecoration: "none" }}>
-            <img height="80px" width="210px" src={logo} />
-          </Link>
-        </Box>
-      </Box>
-      {isMobile ? (
-        <>
-          <ButtonUnstyled style={{background: "transparent", border: "none"}} onClick={(event) => handleClick(event)}>
-        <Hamburger
-        onToggle={(event) => handleClick(event)}
-        toggled={open}
-        color="rgb(23, 154, 211)"
-        rounded={true}
-        size={38}
-      />
-      </ButtonUnstyled>
-        <Menu 
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        justifyContent= "center"
+        <Box
+          className="headerBox"
+          sx={{
+            alignItems: "center",
+            display: "flex",
+          }}
         >
-      <MobileDrawer />
-      </Menu>
-      </>
-       ) : (
-        <Toolbar className="toolbar" disableGutters>
-          {/* <Box className="hambugerBox" sx={{display: { xs: "flex", sm: "flex", md: "none" }, marginBottom: "5px"}}>
+          <Box sx={{ display: "flex" }}>
+            <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+              <img height="80px" width="210px" src={logo} />
+            </Link>
+          </Box>
+        </Box>
+        {isMobile ? (
+          <>
+            <ButtonUnstyled
+              style={{ background: "transparent", border: "none" }}
+              onClick={(event) => handleClick(event)}
+            >
+              <Hamburger
+                onToggle={(event) => handleClick(event)}
+                toggled={open}
+                color="rgb(23, 154, 211)"
+                rounded={true}
+                size={38}
+              />
+            </ButtonUnstyled>
+            <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+              <MobileDrawer />
+            </Menu>
+          </>
+        ) : (
+          <Toolbar className="toolbar" disableGutters>
+            {/* <Box className="hambugerBox" sx={{display: { xs: "flex", sm: "flex", md: "none" }, marginBottom: "5px"}}>
           <Hamburger
             onToggle={toggleDrawer(true)}
             color="rgb(23, 154, 211)"
@@ -90,71 +87,71 @@ export default function NavBar() {
             size={38}
           />
             </Box> */}
-          <Box
-            sx={{
-              justifyContent: "space-evenly",
-              alignItems: "center",
-              flexGrow: 1,
-              marginLeft: "50px",
-              display: { xs: "none", sm: "none", md: "flex" },
-            }}
-          >
-            <Link to="/solutions" style={{ textDecoration: "none" }}>
-              <Buttons size="small" variant="contained">
-                Solutions
-              </Buttons>
-            </Link>
+            <Box
+              sx={{
+                justifyContent: "space-evenly",
+                alignItems: "center",
+                flexGrow: 1,
+                marginLeft: "50px",
+                display: { xs: "none", sm: "none", md: "flex" },
+              }}
+            >
+              <Link to="/solutions" style={{ textDecoration: "none" }}>
+                <Buttons size="small" variant="contained">
+                  Solutions
+                </Buttons>
+              </Link>
 
-            <Link to="/insights" style={{ textDecoration: "none" }}>
-              <Buttons size="small" variant="contained">
-                Insights
-              </Buttons>
-            </Link>
+              <Link to="/insights" style={{ textDecoration: "none" }}>
+                <Buttons size="small" variant="contained">
+                  Insights
+                </Buttons>
+              </Link>
 
-            <Link to="/about-us" style={{ textDecoration: "none" }}>
-              <Buttons size="small" variant="contained">
-                About Us
-              </Buttons>
-            </Link>
+              <Link to="/about-us" style={{ textDecoration: "none" }}>
+                <Buttons size="small" variant="contained">
+                  About Us
+                </Buttons>
+              </Link>
 
-            <Link to="/contact-us" style={{ textDecoration: "none" }}>
-              <Buttons size="small" variant="contained">
-                Contact Us
-              </Buttons>
-            </Link>
-          </Box>
-          <Box
-            sx={{
-              justifyContent: "flex-end",
-              alignItems: "center",
-              flexGrow: 1,
-              marginLeft: "20px",
-              display: { xs: "none", sm: "none", md: "flex" },
-            }}
-          >
-            <Link to="/request-demo" style={{ textDecoration: "none" }}>
-              <Button
-                size="small"
-                variant="contained"
-                sx={{
-                  my: 2,
-                  backgroundColor: "#2ecdb0",
-                  color: "white",
-                  display: "block",
-                  marginLeft: "-1px",
-                  marginRight: "10px",
-                  borderRadius: "30px",
-                  textTransform: "none",
-                  fontSize: "20px",
-                }}
-              >
-                Request Demo
-              </Button>
-            </Link>
-          </Box>
-        </Toolbar>
+              <Link to="/contact-us" style={{ textDecoration: "none" }}>
+                <Buttons size="small" variant="contained">
+                  Contact Us
+                </Buttons>
+              </Link>
+            </Box>
+            <Box
+              sx={{
+                justifyContent: "flex-end",
+                alignItems: "center",
+                flexGrow: 1,
+                marginLeft: "20px",
+                display: { xs: "none", sm: "none", md: "flex" },
+              }}
+            >
+              <Link to="/request-demo" style={{ textDecoration: "none" }}>
+                <Button
+                  size="small"
+                  variant="contained"
+                  sx={{
+                    my: 2,
+                    backgroundColor: "#2ecdb0",
+                    color: "white",
+                    display: "block",
+                    marginLeft: "-1px",
+                    marginRight: "10px",
+                    borderRadius: "30px",
+                    textTransform: "none",
+                    fontSize: "20px",
+                  }}
+                >
+                  Request Demo
+                </Button>
+              </Link>
+            </Box>
+          </Toolbar>
         )}
-    </AppBar>
-        </div>
-  )
+      </AppBar>
+    </div>
+  );
 }
