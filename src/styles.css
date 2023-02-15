@@ -6,3 +6,9 @@
 body {
   margin: 0;
 }
+
+@media screen and (max-width: 900px) {
+    main {
+      padding-top: 135px !important;
+    }
+}

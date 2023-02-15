@@ -687,7 +687,7 @@ export default function BasicTable() {
                 </h4>
               )}
             </div>
-            <div style={{ marginTop: 20, marginBottom: 26 }}>
+            <div className="nextButtonContainer" style={{ marginTop: 20, marginBottom: 26 }}>
               <NextButtons
                 sx={{ marginRight: 5 }}
                 onClick={(event) => handlePreviousClick(event, theRow)}

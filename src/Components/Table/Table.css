@@ -9,9 +9,15 @@
 
 .MuiPopover-paper {
   border-radius: 20px !important;
-  background-color: rgba(23, 185, 255, 0) !important;
+  background-color: rgba(23, 185, 255, .2) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
+}
+
+@media screen and (max-width: 1174px) {
+    .nextButtonContainer {
+        order: -1 !important;
+    }
 }
 
 table > *:last-child > tr:last-of-type > td:last-of-type {
