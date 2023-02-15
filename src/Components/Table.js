@@ -13,9 +13,16 @@ import Popover from "@mui/material/Popover";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Tooltip from "@mui/material/Tooltip";
+import "./Table/Table.css";
+import { styled } from "@mui/system";
+
+// Data JSON Import
+import * as opportunities from "./Table/opportunities.json";
+
+// Chart Js Imports
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -26,11 +33,8 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { Scatter } from "react-chartjs-2";
-import "./Table/Table.css";
 
-import * as opportunities from "./Table/opportunities.json";
-
+// Register Chart Js Components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -40,6 +44,42 @@ ChartJS.register(
   Legend
 );
 
+// MUI Styled Components
+
+const NextButtons = styled(Button)({
+  borderRadius: "40px",
+  backgroundColor: "rgba(23, 185, 255, 0.35)",
+  border: "1px solid",
+  borderColor: "rgb(23, 129, 221)",
+  color: "rgb(2, 47, 41)",
+  backdropFilter: "blur(10px)",
+  textTransform: "none",
+  fontSize: "14px",
+  ":hover": { backgroundColor: "rgb(23, 162, 221)", fontSize: "14.2px" },
+});
+
+const HeadersText = styled(Typography)({
+  backgroundColor: "rgba(245, 245, 245, 0.6)",
+  backdropFilter: "blur(10px)",
+  width: "86%",
+  borderRadius: "20px",
+  textAlign: "center",
+  padding: "6px",
+});
+
+const HeaderCell = styled(TableCell)({
+  backgroundColor: "rgba(23, 185, 255, 0.85)",
+  fontSize: "16px",
+});
+
+const ChartDiv = styled("div")({
+  borderRadius: "20px",
+  background: "rgba(255, 255, 255, 0.45)",
+  backdropFilter: "blur(10px)",
+  height: "280px",
+  width: "550px",
+});
+
 export const probOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -48,7 +88,7 @@ export const probOptions = {
       position: "top",
     },
     title: {
-      display: false
+      display: false,
     },
   },
 };
@@ -81,21 +121,23 @@ export default function BasicTable() {
   }
 
   function handleNextClick(event, row) {
-    if(row.oppId < 10) {
-    const newRowId = row.oppId + 1;
-    const newRow = data.find(({ oppId }) => oppId === newRowId);
-    setTheRow(newRow)
-  }
-  else{return}
+    if (row.oppId < 10) {
+      const newRowId = row.oppId + 1;
+      const newRow = data.find(({ oppId }) => oppId === newRowId);
+      setTheRow(newRow);
+    } else {
+      return;
+    }
   }
 
   function handlePreviousClick(event, row) {
-    if(row.oppId > 1) {
-    const newRowId = row.oppId - 1;
-    const newRow = data.find(({ oppId }) => oppId === newRowId);
-    setTheRow(newRow)
+    if (row.oppId > 1) {
+      const newRowId = row.oppId - 1;
+      const newRow = data.find(({ oppId }) => oppId === newRowId);
+      setTheRow(newRow);
+    } else {
+      return;
     }
-    else{return}
   }
 
   const [theRow, setTheRow] = React.useState([]);
@@ -301,9 +343,25 @@ export default function BasicTable() {
   };
 
   return (
-    /*  */
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: 18 }}>
-      <Typography className="scored" variant="h4" component="h2">
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        padding: 18,
+      }}
+    >
+      <Typography
+        sx={{
+          marginBottom: "20px",
+          backgroundColor: "rgba(245, 245, 245, 0.65)",
+          backdropFilter: "blur(10px)",
+          width: "48%",
+          borderRadius: "20px",
+        }}
+        variant="h4"
+        component="h2"
+      >
         PILYTIX Scored Opportunities
       </Typography>
       <TableContainer
@@ -313,106 +371,71 @@ export default function BasicTable() {
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              <TableCell
-                sx={{ borderTopLeftRadius: "20px" }}
-                align="left"
-                className="headers"
-              > <Typography sx={{padding: 1, width: "60%"}} className="headersText">
-                Opp Name
-                </Typography>
-              </TableCell>
-              <TableCell className="headers" align="left">
-              <Typography sx={{padding: 1, width: "60%"}} className="headersText">
-                Opp Stage
-                </Typography>
-              </TableCell>
-              <TableCell
-                align="right"
-                onClick={handleRepProbSortRequest}
-                className="headers"
-              >
+              <HeaderCell sx={{ borderTopLeftRadius: "20px" }} align="left">
+                {" "}
+                <HeadersText sx={{ width: "60%" }}>Opp Name</HeadersText>
+              </HeaderCell>
+              <HeaderCell align="left">
+                <HeadersText sx={{ width: "60%" }}>Opp Stage</HeadersText>
+              </HeaderCell>
+              <HeaderCell align="right" onClick={handleRepProbSortRequest}>
                 <TableSortLabel active={true} direction={repProbOrderDirection}>
-                <Typography sx={{padding: 1}} className="headersText">
-                  Rep Probability
-                  </Typography>
+                  <HeadersText>Rep Probability</HeadersText>
                 </TableSortLabel>
-              </TableCell>
-              <TableCell
-                align="right"
-                onClick={handlePxProbSortRequest}
-                className="headers"
-              >
+              </HeaderCell>
+              <HeaderCell align="right" onClick={handlePxProbSortRequest}>
                 <TableSortLabel active={true} direction={pxProbOrderDirection}>
-                <Typography sx={{padding: 1}} className="headersText">
-                  PX Probability
-                  </Typography>
+                  <HeadersText>PX Probability</HeadersText>
                 </TableSortLabel>
-              </TableCell>
-              <TableCell
-                align="left"
-                onClick={handlePxTierSortRequest}
-                className="headers"
-              >
+              </HeaderCell>
+              <HeaderCell align="left" onClick={handlePxTierSortRequest}>
                 <TableSortLabel active={true} direction={pxTierOrderDirection}>
-                <Typography sx={{padding: 1}} className="headersText">
-                  PX Tier
-                  </Typography>
+                  <HeadersText>PX Tier</HeadersText>
                 </TableSortLabel>
-              </TableCell>
-              <TableCell
-                align="right"
-                onClick={handleAmountSortRequest}
-                className="headers"
-              >
+              </HeaderCell>
+              <HeaderCell align="right" onClick={handleAmountSortRequest}>
                 <TableSortLabel active={true} direction={amountOrderDirection}>
-                <Typography sx={{padding: 1}} className="headersText">
-                  Amount
-                  </Typography>
+                  <HeadersText>Amount</HeadersText>
                 </TableSortLabel>
-              </TableCell>
-              <TableCell align="left" className="headers">
-              <Typography sx={{padding: 1}} className="headersText">
-                Product
-                </Typography>
-              </TableCell>
-              <TableCell
+              </HeaderCell>
+              <HeaderCell align="left">
+                <HeadersText>Product</HeadersText>
+              </HeaderCell>
+              <HeaderCell
                 sx={{
                   borderTopRightRadius: "20px",
                 }}
                 align="left"
-                className="headers"
               >
-                <Typography sx={{padding: 1}} className="headersText">
-                Sales Rep
-                </Typography>
-              </TableCell>
+                <HeadersText>Sales Rep</HeadersText>
+              </HeaderCell>
             </TableRow>
           </TableHead>
           <TableBody sx={{ borderBottomLeftRadius: "20px" }}>
             {rowData.map((row) => (
-                <TableRow
-                  onClick={(event) => handleRowClick(event, row)}
-                  key={row.oppId}
-                  sx={{
-                    "&:last-child td, &:last-child th": { border: 0 },
-                    ":hover": { backgroundColor: "#2ecdb0" },
-                    "&:last-child th": { borderBottomLeftRadius: "20px" },
-                    "&tr td": { fontSize: "14px" }
-                  }}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.oppName}
-                  </TableCell>
-                  <TableCell align="left">{row.stage}</TableCell>
-                  <TableCell align="right">{row.repProbability}</TableCell>
-                  <TableCell align="right">{row.pilytixProbability}</TableCell>
-                  <TableCell align="left">{row.pilytixTier}</TableCell>
-                  <TableCell align="right">{row.amount}</TableCell>
-                  <TableCell align="left">{row.product}</TableCell>
-                  <TableCell style={{ color: "black" }} align="left">
-                    {row.salesRepName}
-                  </TableCell>
-                </TableRow>
+              <TableRow
+                onClick={(event) => handleRowClick(event, row)}
+                key={row.oppId}
+                sx={{
+                  "&:last-child td, &:last-child th": { border: 0 },
+                  ":hover": { backgroundColor: "#2ecdb0" },
+                  "&:last-child th": { borderBottomLeftRadius: "20px" },
+                  "&tr td": { fontSize: "14px" },
+                }}
+              >
+                <TableCell component="th" scope="row">
+                  {row.oppName}
+                </TableCell>
+                <TableCell align="left">{row.stage}</TableCell>
+                <TableCell align="right">{row.repProbability}</TableCell>
+                <TableCell align="right">{row.pilytixProbability}</TableCell>
+                <TableCell align="left">{row.pilytixTier}</TableCell>
+                <TableCell align="right">{row.amount}</TableCell>
+                <TableCell align="left">{row.product}</TableCell>
+                <TableCell style={{ color: "black" }} align="left">
+                  {row.salesRepName}
+                </TableCell>
+              </TableRow>
             ))}
           </TableBody>
         </Table>
@@ -432,7 +455,13 @@ export default function BasicTable() {
         }}
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <Card className="backCard">
+        <Card
+          sx={{
+            backgroundColor: "rgba(255, 255, 255, 0)",
+            backdropFilter: "blur(10px)",
+            marginBottom: "-40px",
+          }}
+        >
           <CardContent className="theCard">
             <h3 style={{ textAlign: "center", margin: 0 }}>{theRow.oppName}</h3>
             <div
@@ -441,34 +470,35 @@ export default function BasicTable() {
                 justifyContent: "center",
                 flexWrap: "wrap",
                 alignItems: "center",
-                maxWidth: 1260
+                maxWidth: 1260,
               }}
             >
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  flexDirection: "column"
+                  flexDirection: "column",
                 }}
               >
                 {theRow.probabilityHistory ? (
                   <div
-                    style={{ height: "320px", width: "550px", background: "rgba(255, 255, 255, .0)", marginRight: 10, marginBottom: 10 }}
+                    style={{
+                      height: "320px",
+                      width: "550px",
+                      background: "rgba(255, 255, 255, .0)",
+                      marginRight: 10,
+                      marginBottom: 10,
+                    }}
                   >
-                    <h4 style={{ textAlign: "center" }}>
-                      Probability History
-                    </h4>
-                    <div
-                    className="chart"
-                    style={{ height: "280px", width: "550px" }}
-                  >
-                    <Line
-                      height="280px"
-                      width="550px"
-                      options={probOptions}
-                      data={theProbChartData}
-                    />
-                    </div>
+                    <h4 style={{ textAlign: "center" }}>Probability History</h4>
+                    <ChartDiv>
+                      <Line
+                        height="280px"
+                        width="550px"
+                        options={probOptions}
+                        data={theProbChartData}
+                      />
+                    </ChartDiv>
                   </div>
                 ) : (
                   <h4 style={{ textAlign: "center", marginTop: "40px" }}>
@@ -476,13 +506,16 @@ export default function BasicTable() {
                   </h4>
                 )}
                 {theRow.pilytixFactorsDecreasingWin ? (
-                  <div style={{marginTop: 10, marginRight: 10}}>
+                  <div style={{ marginTop: 10, marginRight: 10 }}>
                     <h4 style={{ textAlign: "center" }}>
                       PX Factors Decreasing Win
                     </h4>
                     <TableContainer
-                       sx={{ borderRadius: "20px", maxHeight: 260 }}
-                       className="popCard"
+                      sx={{
+                        background: "rgba(255, 255, 255, 0.2)",
+                        borderRadius: "20px",
+                        maxHeight: 260,
+                      }}
                     >
                       <Table
                         size="small"
@@ -492,56 +525,39 @@ export default function BasicTable() {
                       >
                         <TableHead>
                           <TableRow>
-                            <TableCell
+                            <HeaderCell
                               sx={{
-                                backgroundColor: "#3abaff",
                                 borderTopLeftRadius: "20px",
                                 width: "12%",
                               }}
                               align="left"
-                              className="headers"
-                              >
-                                <Typography sx={{padding: 1}} className="headersText">
-                              Name
-                              </Typography>
-                            </TableCell>
-                            <TableCell
-                              sx={{ backgroundColor: "#3abaff", width: "38%" }}
-                              align="left"
-                              className="headers"
-                              >
-                              <Typography sx={{padding: 1}} className="headersText">
-                              Message
-                              </Typography>
-                            </TableCell>
-                            <TableCell
-                              sx={{ backgroundColor: "#3abaff", width: "8%" }}
+                            >
+                              <HeadersText>Name</HeadersText>
+                            </HeaderCell>
+                            <HeaderCell sx={{ width: "38%" }} align="left">
+                              <HeadersText>Message</HeadersText>
+                            </HeaderCell>
+                            <HeaderCell
+                              sx={{ width: "8%" }}
                               align="left"
                               onClick={handleDecWeightValSort}
-                              className="headers"
                             >
                               <TableSortLabel
                                 active={true}
                                 direction={decWeightValDirection}
-                                >
-                                <Typography sx={{padding: 1}} className="headersText">
-                                Weight Value
-                                </Typography>
+                              >
+                                <HeadersText>Weight Value</HeadersText>
                               </TableSortLabel>
-                            </TableCell>
-                            <TableCell
+                            </HeaderCell>
+                            <HeaderCell
                               sx={{
-                                backgroundColor: "#3abaff",
                                 borderTopRightRadius: "20px",
                                 width: "12%",
                               }}
                               align="left"
-                              className="headers"
                             >
-                              <Typography sx={{padding: 1}} className="headersText">
-                              Weight Description
-                              </Typography>
-                            </TableCell>
+                              <HeadersText>Weight Description</HeadersText>
+                            </HeaderCell>
                           </TableRow>
                         </TableHead>
                         <TableBody>
@@ -586,8 +602,11 @@ export default function BasicTable() {
                     PX Factors Increasing Win
                   </h4>
                   <TableContainer
-                    sx={{ borderRadius: "20px", maxHeight: 300 }}
-                    className="popCard"
+                    sx={{
+                      background: "rgba(255, 255, 255, 0.2)",
+                      borderRadius: "20px",
+                      maxHeight: 300,
+                    }}
                   >
                     <Table
                       size="small"
@@ -597,56 +616,39 @@ export default function BasicTable() {
                     >
                       <TableHead>
                         <TableRow>
-                          <TableCell
+                          <HeaderCell
                             sx={{
-                              backgroundColor: "#3abaff",
                               borderTopLeftRadius: "20px",
                               width: "12%",
                             }}
                             align="left"
-                            className="headers"
-                            >
-                              <Typography sx={{padding: 1}} className="headersText">
-                            Name
-                            </Typography>
-                          </TableCell>
-                          <TableCell
-                            sx={{ backgroundColor: "#3abaff", width: "38%" }}
-                            align="left"
-                            className="headers"
-                            >
-                              <Typography sx={{padding: 1}} className="headersText">
-                            Message
-                            </Typography>
-                          </TableCell>
-                          <TableCell
-                            sx={{ backgroundColor: "#3abaff", width: "8%" }}
+                          >
+                            <HeadersText>Name</HeadersText>
+                          </HeaderCell>
+                          <HeaderCell sx={{ width: "38%" }} align="left">
+                            <HeadersText>Message</HeadersText>
+                          </HeaderCell>
+                          <HeaderCell
+                            sx={{ width: "8%" }}
                             align="left"
                             onClick={handleIncWeightValSort}
-                            className="headers"
                           >
                             <TableSortLabel
                               active={true}
                               direction={incWeightValDirection}
                             >
-                              <Typography sx={{padding: 1}} className="headersText">
-                              Weight Value
-                              </Typography>
+                              <HeadersText>Weight Value</HeadersText>
                             </TableSortLabel>
-                          </TableCell>
-                          <TableCell
+                          </HeaderCell>
+                          <HeaderCell
                             sx={{
-                              backgroundColor: "#3abaff",
                               borderTopRightRadius: "20px",
                               width: "12%",
                             }}
                             align="left"
-                            className="headers"
-                            >
-                              <Typography sx={{padding: 1}} className="headersText">
-                            Weight Description
-                            </Typography>
-                          </TableCell>
+                          >
+                            <HeadersText>Weight Description</HeadersText>
+                          </HeaderCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
@@ -685,10 +687,18 @@ export default function BasicTable() {
                 </h4>
               )}
             </div>
-            <div style={{marginTop: 20, marginBottom: 26}}>
-          <Button sx={{marginRight: 5}} className="nextButtons" onClick={(event) => handlePreviousClick(event, theRow)}><ArrowBackIosNewIcon fontSize="small"></ArrowBackIosNewIcon>Previous</Button>
-          <Button className="nextButtons" onClick={(event) => handleNextClick(event, theRow)}>Next<ArrowForwardIosIcon fontSize="small"></ArrowForwardIosIcon></Button>
-        </div>
+            <div style={{ marginTop: 20, marginBottom: 26 }}>
+              <NextButtons
+                sx={{ marginRight: 5 }}
+                onClick={(event) => handlePreviousClick(event, theRow)}
+              >
+                <ArrowBackIosNewIcon fontSize="small"></ArrowBackIosNewIcon>
+                Previous
+              </NextButtons>
+              <NextButtons onClick={(event) => handleNextClick(event, theRow)}>
+                Next<ArrowForwardIosIcon fontSize="small"></ArrowForwardIosIcon>
+              </NextButtons>
+            </div>
           </CardContent>
         </Card>
       </Popover>

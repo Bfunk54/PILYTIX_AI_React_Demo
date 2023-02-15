@@ -1,5 +1,7 @@
 .nav {
-  background-color: rgba(245, 245, 245, 0.85) !important;
+  background-color: rgba(245, 245, 245, 0.6) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
 }
 
 .buttonsBox {

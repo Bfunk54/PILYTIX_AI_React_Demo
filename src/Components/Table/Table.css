@@ -7,30 +7,6 @@
   align-items: center;
 }
 
-.popCard {
-  background: rgba(255, 255, 255, 0.2) !important;
-}
-
-.scored {
-  margin-bottom: 20px !important;
-  background-color: rgba(245, 245, 245, 0.75);
-  width: 48%;
-  border-radius: 20px;
-}
-
-.backCard {
-  background-color: rgba(255, 255, 255, 0) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
-  margin-bottom: -40px;
-}
-
-.inner {
-  background: black;
-  z-index: 2;
-  padding: 20px;
-}
-
 .MuiPopover-paper {
   border-radius: 20px !important;
   background-color: rgba(23, 185, 255, 0) !important;
@@ -38,27 +14,8 @@
   backdrop-filter: blur(10px) !important;
 }
 
-.chart {
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.25) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
-}
-
 table > *:last-child > tr:last-of-type > td:last-of-type {
   border-bottom-right-radius: 20px;
-}
-
-.headers {
-  background-color: rgba(23, 185, 255, 0.85) !important;
-  font-size: 16px !important;
-}
-
-.headersText {
-  background-color: rgba(245, 245, 245, 0.75);
-  width: 86%;
-  border-radius: 20px;
-  text-align: center;
 }
 
 table > *:last-child > tr:last-of-type > th,
@@ -69,21 +26,4 @@ td {
 table > *:last-child > tr:last-of-type > td,
 th {
   font-size: 15px !important;
-}
-
-.nextButtons {
-  border-radius: 40px !important;
-  background-color: rgba(23, 185, 255, 0.35) !important;
-  border: 1px solid !important;
-  border-color:  rgb(23, 129, 221) !important;
-  color: rgb(2, 47, 41) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
-  text-transform: none !important;
-  font-size: 14px !important;
-}
-
-.nextButtons:hover {
-    background-color: rgb(23, 162, 221) !important;
-    font-size: 14.3px !important;
 }
