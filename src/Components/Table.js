@@ -358,6 +358,9 @@ export default function BasicTable() {
           backdropFilter: "blur(10px)",
           width: "48%",
           borderRadius: "20px",
+          "@media (max-width: 525px)": {
+            width: "78%",
+          },
         }}
         variant="h4"
         component="h2"
@@ -687,7 +690,10 @@ export default function BasicTable() {
                 </h4>
               )}
             </div>
-            <div className="nextButtonContainer" style={{ marginTop: 20, marginBottom: 26 }}>
+            <div
+              className="nextButtonContainer"
+              style={{ marginTop: 20, marginBottom: 26 }}
+            >
               <NextButtons
                 sx={{ marginRight: 5 }}
                 onClick={(event) => handlePreviousClick(event, theRow)}

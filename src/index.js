@@ -16,10 +16,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-if (module.hot) {
-  module.hot.accept();
-}
-
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 

@@ -79,14 +79,6 @@ export default function NavBar() {
           </>
         ) : (
           <Toolbar className="toolbar" disableGutters>
-            {/* <Box className="hambugerBox" sx={{display: { xs: "flex", sm: "flex", md: "none" }, marginBottom: "5px"}}>
-          <Hamburger
-            onToggle={toggleDrawer(true)}
-            color="rgb(23, 154, 211)"
-            rounded={true}
-            size={38}
-          />
-            </Box> */}
             <Box
               sx={{
                 justifyContent: "space-evenly",
