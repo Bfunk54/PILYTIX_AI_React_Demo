@@ -1,8 +1,12 @@
 .theCard {
-  background: rgba(255, 255, 255, .6) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
+  background: rgba(255, 255, 255, .5) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
 }
+
+.popCard {
+    background: rgba(255, 255, 255, .2) !important;
+  }
 
 .scored {
     margin-bottom: 20px !important;
@@ -15,6 +19,7 @@
     background-color: rgba(255, 255, 255, .0) !important;
 	-webkit-backdrop-filter: blur(10px) !important;
 	backdrop-filter: blur(10px) !important;
+    margin-bottom: -40px;
 }
 
 .inner {
@@ -25,14 +30,14 @@
 
   .MuiPopover-paper {
     border-radius: 20px !important;
-    background-color: rgba(23, 185, 255, .3) !important;
+    background-color: rgba(23, 185, 255, .0) !important;
 	-webkit-backdrop-filter: blur(10px) !important;
 	backdrop-filter: blur(10px) !important;
   }
 
   .chart {
     border-radius: 20px;
-    background: rgba(255, 255, 255, .65) !important;
+    background: rgba(255, 255, 255, .25) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   }

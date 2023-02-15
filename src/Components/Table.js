@@ -12,6 +12,7 @@ import TableSortLabel from "@mui/material/TableSortLabel";
 import Popover from "@mui/material/Popover";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import {
   Chart as ChartJS,
@@ -75,6 +76,24 @@ export default function BasicTable() {
     setDecreaseData(row.pilytixFactorsDecreasingWin);
     setAnchorEl(event.currentTarget);
     probChartData(row);
+  }
+
+  function handleNextClick(event, row) {
+    if(row.oppId < 10) {
+    const newRowId = row.oppId + 1;
+    const newRow = data.find(({ oppId }) => oppId === newRowId);
+    setTheRow(newRow)
+  }
+  else{return}
+  }
+
+  function handlePreviousClick(event, row) {
+    if(row.oppId > 1) {
+    const newRowId = row.oppId - 1;
+    const newRow = data.find(({ oppId }) => oppId === newRowId);
+    setTheRow(newRow)
+    }
+    else{return}
   }
 
   const [theRow, setTheRow] = React.useState([]);
@@ -369,7 +388,6 @@ export default function BasicTable() {
           </TableHead>
           <TableBody sx={{ borderBottomLeftRadius: "20px" }}>
             {rowData.map((row) => (
-              <Tooltip key={row.name} title="Click on any row for more info" followCursor>
                 <TableRow
                   onClick={(event) => handleRowClick(event, row)}
                   key={row.oppId}
@@ -393,7 +411,6 @@ export default function BasicTable() {
                     {row.salesRepName}
                   </TableCell>
                 </TableRow>
-              </Tooltip>
             ))}
           </TableBody>
         </Table>
@@ -414,14 +431,15 @@ export default function BasicTable() {
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
         <Card sx={{ backdropFilter: "blur" }} className="backCard">
-          <CardContent className="theCard">
+          <CardContent sx={{ height: 770 }} className="theCard">
             <h3 style={{ textAlign: "center", margin: 0 }}>{theRow.oppName}</h3>
             <div
               style={{
                 display: "flex",
                 justifyContent: "center",
                 flexWrap: "wrap",
-                alignItems: "center"
+                alignItems: "center",
+                maxWidth: 1260
               }}
             >
               <div
@@ -433,7 +451,7 @@ export default function BasicTable() {
               >
                 {theRow.probabilityHistory ? (
                   <div
-                    style={{ height: "340px", width: "550px", background: "rgba(255, 255, 255, .0)", marginRight: 10, marginBottom: 10 }}
+                    style={{ height: "320px", width: "550px", background: "rgba(255, 255, 255, .0)", marginRight: 10, marginBottom: 10 }}
                   >
                     <h4 style={{ textAlign: "center" }}>
                       Probability History
@@ -456,13 +474,13 @@ export default function BasicTable() {
                   </h4>
                 )}
                 {theRow.pilytixFactorsDecreasingWin ? (
-                  <div>
+                  <div style={{marginTop: 20, marginRight: 10}}>
                     <h4 style={{ textAlign: "center" }}>
                       PX Factors Decreasing Win
                     </h4>
                     <TableContainer
-                       sx={{ borderRadius: "20px", maxHeight: 300 }}
-                       className="theCard"
+                       sx={{ borderRadius: "20px", maxHeight: 280 }}
+                       className="popCard"
                     >
                       <Table
                         size="small"
@@ -567,7 +585,7 @@ export default function BasicTable() {
                   </h4>
                   <TableContainer
                     sx={{ borderRadius: "20px", maxHeight: 300 }}
-                    className="theCard"
+                    className="popCard"
                   >
                     <Table
                       size="small"
@@ -664,6 +682,10 @@ export default function BasicTable() {
                   No PX Factors Increasing Win
                 </h4>
               )}
+              <div>
+          <Button onClick={(event) => handlePreviousClick(event, theRow)}>Previous</Button>
+          <Button onClick={(event) => handleNextClick(event, theRow)}>Next</Button>
+        </div>
             </div>
           </CardContent>
         </Card>

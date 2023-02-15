@@ -5,11 +5,18 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
+import Collapse from "@mui/material/Collapse";
 import { Link } from "react-router-dom";
+import Hamburger from "hamburger-react";
 import logo from "../images/pilytix-logo.png";
 import "./Header/Header.css";
 
 export default function NavBar() {
+  const [open, setOpen] = React.useState(false);
+
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
+  };
   return (
     <AppBar
       sx={{ borderBottomLeftRadius: "40px", borderBottomRightRadius: "40px" }}
@@ -23,12 +30,32 @@ export default function NavBar() {
                 alignItems: "center",
                 display: "flex",
               }}
-            >
+            ><Collapse
+            in={true}
+            appear={open}
+            onEnter={toggleDrawer(true)}
+            onExit={toggleDrawer(false)}
+            dimension="width"
+            timeout={9999}
+          >
               <Box sx={{ display: "flex" }}>
                 <Link to="/" style={{ color: "white", textDecoration: "none" }}>
                   <img height="80px" width="210px" src={logo} />
                 </Link>
               </Box>
+              </Collapse>
+            </Box>
+            <Box sx={{display: "none"}}>
+            <button
+          sx={{ marginTop: "-25px", textDecoration: "none" }}
+        >
+          <Hamburger
+            onToggle={toggleDrawer(true)}
+            color="#4FD1C5"
+            rounded={true}
+            style={{ justifyContent: "center" }}
+          />
+        </button>
             </Box>
             <Box
               sx={{
