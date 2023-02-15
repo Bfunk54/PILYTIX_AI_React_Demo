@@ -13,6 +13,8 @@ import Popover from "@mui/material/Popover";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Tooltip from "@mui/material/Tooltip";
 import {
   Chart as ChartJS,
@@ -430,8 +432,8 @@ export default function BasicTable() {
         }}
         sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
       >
-        <Card sx={{ backdropFilter: "blur" }} className="backCard">
-          <CardContent sx={{ height: 770 }} className="theCard">
+        <Card className="backCard">
+          <CardContent className="theCard">
             <h3 style={{ textAlign: "center", margin: 0 }}>{theRow.oppName}</h3>
             <div
               style={{
@@ -458,10 +460,10 @@ export default function BasicTable() {
                     </h4>
                     <div
                     className="chart"
-                    style={{ height: "300px", width: "550px" }}
+                    style={{ height: "280px", width: "550px" }}
                   >
                     <Line
-                      height="300px"
+                      height="280px"
                       width="550px"
                       options={probOptions}
                       data={theProbChartData}
@@ -474,12 +476,12 @@ export default function BasicTable() {
                   </h4>
                 )}
                 {theRow.pilytixFactorsDecreasingWin ? (
-                  <div style={{marginTop: 20, marginRight: 10}}>
+                  <div style={{marginTop: 10, marginRight: 10}}>
                     <h4 style={{ textAlign: "center" }}>
                       PX Factors Decreasing Win
                     </h4>
                     <TableContainer
-                       sx={{ borderRadius: "20px", maxHeight: 280 }}
+                       sx={{ borderRadius: "20px", maxHeight: 260 }}
                        className="popCard"
                     >
                       <Table
@@ -682,11 +684,11 @@ export default function BasicTable() {
                   No PX Factors Increasing Win
                 </h4>
               )}
-              <div>
-          <Button onClick={(event) => handlePreviousClick(event, theRow)}>Previous</Button>
-          <Button onClick={(event) => handleNextClick(event, theRow)}>Next</Button>
-        </div>
             </div>
+            <div style={{marginTop: 20, marginBottom: 26}}>
+          <Button sx={{marginRight: 5}} className="nextButtons" onClick={(event) => handlePreviousClick(event, theRow)}><ArrowBackIosNewIcon fontSize="small"></ArrowBackIosNewIcon>Previous</Button>
+          <Button className="nextButtons" onClick={(event) => handleNextClick(event, theRow)}>Next<ArrowForwardIosIcon fontSize="small"></ArrowForwardIosIcon></Button>
+        </div>
           </CardContent>
         </Card>
       </Popover>
