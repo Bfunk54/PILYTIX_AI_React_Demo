@@ -18,6 +18,10 @@
   margin-right: 20px;
 }
 
+.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+    margin-left: -55px !important;
+  }
+
 @media screen and (max-width: 899px) {
     .headerBox {
         flex-direction: column !important;
@@ -27,6 +31,7 @@
     .wholeNav { 
         flex-direction: column !important;
         justify-content: center !important;
+        align-items: center !important;
     }
 
     .toolbar {

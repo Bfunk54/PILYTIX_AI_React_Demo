@@ -1,16 +1,18 @@
 import * as React from "react";
-import Drawer from "@mui/material/Collapse";
+import { useState } from "react";
+import Menu from "@mui/material/Menu";
 import Hamburger from "hamburger-react";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/system";
 
 export default function MobileDrawer() {
-    const [open, setOpen] = React.useState(false);
+    const [menuOpen, setMenuOpen] = React.useState(false);
     const toggleDrawer = (newOpen) => () => {
-        setOpen(newOpen);
+        setMenuOpen(newOpen);
         console.log(open);
       };
   
@@ -26,20 +28,18 @@ export default function MobileDrawer() {
 
     return (
         <>
-        <Drawer 
-        open={open}
-        onClose={() => setOpen(false)}
-        >
-            <Toolbar className="toolbar" disableGutters>
+            <Toolbar disableGutters>
             <Box
               sx={{
                 justifyContent: "space-evenly",
                 alignItems: "center",
                 flexGrow: 1,
                 marginLeft: "20px",
-                display: { xs: "none", sm: "none", md: "flex" },
+                display: { xs: "flex", sm: "flex", md: "none" },
+                flexDirection: "column"
               }}
             >
+                <MenuItem>
               <Link to="/solutions" style={{ textDecoration: "none" }}>
                 <Buttons
                   size="small"
@@ -48,7 +48,9 @@ export default function MobileDrawer() {
                   Solutions
                 </Buttons>
               </Link>
+              </MenuItem>
 
+              <MenuItem>
               <Link to="/insights" style={{ textDecoration: "none" }}>
                 <Buttons
                   size="small"
@@ -57,7 +59,9 @@ export default function MobileDrawer() {
                   Insights
                 </Buttons>
               </Link>
+              </MenuItem>
 
+              <MenuItem>
               <Link to="/about-us" style={{ textDecoration: "none" }}>
                 <Buttons
                   size="small"
@@ -66,7 +70,9 @@ export default function MobileDrawer() {
                   About Us
                 </Buttons>
               </Link>
+              </MenuItem>
 
+              <MenuItem>
               <Link to="/contact-us" style={{ textDecoration: "none" }}>
                 <Buttons
                   size="small"
@@ -75,15 +81,9 @@ export default function MobileDrawer() {
                   Contact Us
                 </Buttons>
               </Link>
+              </MenuItem>
             </Box>
             </Toolbar>
-        </Drawer>
-        <Hamburger
-        onToggle={() => setOpen(!open)}
-        color="rgb(23, 154, 211)"
-        rounded={true}
-        size={38}
-      />
       </>
     );
 }

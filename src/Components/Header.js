@@ -5,7 +5,8 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import Collapse from "@mui/material/Collapse";
+import Menu from "@mui/material/Menu";
+import ButtonUnstyled from '@mui/base/ButtonUnstyled';
 import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
 import logo from "../images/pilytix-logo.png";
@@ -26,10 +27,21 @@ const Buttons = styled(Button)({
 });
 
 export default function NavBar() {
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    console.log(event);
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
+    <div>
     <AppBar
       sx={{ borderBottomLeftRadius: "40px", borderBottomRightRadius: "40px" }}
       position="fixed"
@@ -48,9 +60,27 @@ export default function NavBar() {
           </Link>
         </Box>
       </Box>
-      {/* {isMobile ? ( */}
-        <MobileDrawer />
-      {/* ) : ( */}
+      {isMobile ? (
+        <>
+          <ButtonUnstyled style={{background: "transparent", border: "none"}} onClick={(event) => handleClick(event)}>
+        <Hamburger
+        onToggle={(event) => handleClick(event)}
+        toggled={open}
+        color="rgb(23, 154, 211)"
+        rounded={true}
+        size={38}
+      />
+      </ButtonUnstyled>
+        <Menu 
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        justifyContent= "center"
+        >
+      <MobileDrawer />
+      </Menu>
+      </>
+       ) : (
         <Toolbar className="toolbar" disableGutters>
           {/* <Box className="hambugerBox" sx={{display: { xs: "flex", sm: "flex", md: "none" }, marginBottom: "5px"}}>
           <Hamburger
@@ -123,7 +153,8 @@ export default function NavBar() {
             </Link>
           </Box>
         </Toolbar>
-      {/* )} */}
+        )}
     </AppBar>
-  );
+        </div>
+  )
 }
