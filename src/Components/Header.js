@@ -11,152 +11,88 @@ import Hamburger from "hamburger-react";
 import logo from "../images/pilytix-logo.png";
 import { styled } from "@mui/system";
 import "./Header/Header.css";
+import useTheme from "@mui/material/styles/useTheme";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import MobileDrawer from "./Drawer";
 
 const Buttons = styled(Button)({
-    my: 2,
-    backgroundColor: "#3abaff",
-    color: "white",
-    display: "block",
-    marginRight: "20px",
-    textTransform: "none",
-    fontSize: "16px"
+  my: 2,
+  backgroundColor: "#3abaff",
+  color: "white",
+  display: "block",
+  marginRight: "20px",
+  textTransform: "none",
+  fontSize: "16px",
 });
 
 export default function NavBar() {
-  const [open, setOpen] = React.useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const toggleDrawer = (newOpen) => () => {
-    setOpen(newOpen);
-  };
   return (
     <AppBar
       sx={{ borderBottomLeftRadius: "40px", borderBottomRightRadius: "40px" }}
       position="fixed"
       className="wholeNav"
     >
-            <Box
-            className="headerBox"
-              sx={{
-                alignItems: "center",
-                display: "flex",
-              }}
-            >
-              <Box sx={{ display: "flex" }}>
-                <Link to="/" style={{ color: "white", textDecoration: "none" }}>
-                  <img height="80px" width="210px" src={logo} />
-                </Link>
-              </Box>
-            </Box>
-            <Collapse
-            in={false}
-            appear={open}
-            onEnter={toggleDrawer(true)}
-            onExit={toggleDrawer(false)}
-            dimension="width"
-            timeout={9999}
-            className="collapse"
-            sx={{width: 0}}
-          >
-                        <Box
-              sx={{
-                justifyContent: "space-evenly",
-                alignItems: "center",
-                flexGrow: 1,
-                marginLeft: "20px",
-                display: { xs: "none", sm: "none", md: "flex" },
-              }}
-            >
-              <Link to="/solutions" style={{ textDecoration: "none" }}>
-                <Buttons
-                  size="small"
-                  variant="contained"
-                >
-                  Solutions
-                </Buttons>
-              </Link>
-
-              <Link to="/insights" style={{ textDecoration: "none" }}>
-                <Buttons
-                  size="small"
-                  variant="contained"
-                >
-                  Insights
-                </Buttons>
-              </Link>
-
-              <Link to="/about-us" style={{ textDecoration: "none" }}>
-                <Buttons
-                  size="small"
-                  variant="contained"
-                >
-                  About Us
-                </Buttons>
-              </Link>
-
-              <Link to="/contact-us" style={{ textDecoration: "none" }}>
-                <Buttons
-                  size="small"
-                  variant="contained"
-                >
-                  Contact Us
-                </Buttons>
-              </Link>
-            </Box>
-          </Collapse>
-            <Toolbar className="toolbar" disableGutters>
-            <Box className="hambugerBox" sx={{display: { xs: "flex", sm: "flex", md: "none" }, marginBottom: "5px"}}>
+      <Box
+        className="headerBox"
+        sx={{
+          alignItems: "center",
+          display: "flex",
+        }}
+      >
+        <Box sx={{ display: "flex" }}>
+          <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+            <img height="80px" width="210px" src={logo} />
+          </Link>
+        </Box>
+      </Box>
+      {/* {isMobile ? ( */}
+        <MobileDrawer />
+      {/* ) : ( */}
+        <Toolbar className="toolbar" disableGutters>
+          {/* <Box className="hambugerBox" sx={{display: { xs: "flex", sm: "flex", md: "none" }, marginBottom: "5px"}}>
           <Hamburger
             onToggle={toggleDrawer(true)}
             color="rgb(23, 154, 211)"
             rounded={true}
             size={38}
           />
-            </Box>
-            <Box
-              sx={{
-                justifyContent: "space-evenly",
-                alignItems: "center",
-                flexGrow: 1,
-                marginLeft: "50px",
-                display: { xs: "none", sm: "none", md: "flex" },
-              }}
-            >
-              <Link to="/solutions" style={{ textDecoration: "none" }}>
-                <Buttons
-                  size="small"
-                  variant="contained"
-                >
-                  Solutions
-                </Buttons>
-              </Link>
+            </Box> */}
+          <Box
+            sx={{
+              justifyContent: "space-evenly",
+              alignItems: "center",
+              flexGrow: 1,
+              marginLeft: "50px",
+              display: { xs: "none", sm: "none", md: "flex" },
+            }}
+          >
+            <Link to="/solutions" style={{ textDecoration: "none" }}>
+              <Buttons size="small" variant="contained">
+                Solutions
+              </Buttons>
+            </Link>
 
-              <Link to="/insights" style={{ textDecoration: "none" }}>
-                <Buttons
-                  size="small"
-                  variant="contained"
-                >
-                  Insights
-                </Buttons>
-              </Link>
+            <Link to="/insights" style={{ textDecoration: "none" }}>
+              <Buttons size="small" variant="contained">
+                Insights
+              </Buttons>
+            </Link>
 
-              <Link to="/about-us" style={{ textDecoration: "none" }}>
-                <Buttons
-                  size="small"
-                  variant="contained"
-                >
-                  About Us
-                </Buttons>
-              </Link>
+            <Link to="/about-us" style={{ textDecoration: "none" }}>
+              <Buttons size="small" variant="contained">
+                About Us
+              </Buttons>
+            </Link>
 
-              <Link to="/contact-us" style={{ textDecoration: "none" }}>
-                <Buttons
-                  size="small"
-                  variant="contained"
-                >
-                  Contact Us
-                </Buttons>
-              </Link>
-            </Box>
+            <Link to="/contact-us" style={{ textDecoration: "none" }}>
+              <Buttons size="small" variant="contained">
+                Contact Us
+              </Buttons>
+            </Link>
+          </Box>
           <Box
             sx={{
               justifyContent: "flex-end",
@@ -186,7 +122,8 @@ export default function NavBar() {
               </Button>
             </Link>
           </Box>
-          </Toolbar>
+        </Toolbar>
+      {/* )} */}
     </AppBar>
   );
 }
