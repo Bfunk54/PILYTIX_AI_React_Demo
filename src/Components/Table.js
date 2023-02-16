@@ -66,10 +66,53 @@ const HeaderCell = styled(TableCell)({
 });
 
 const ChartDiv = styled("div")({
+  height: "280px",
+  width: "550px",
+  background: "rgba(255, 255, 255, .0)",
+  marginRight: 10,
+  marginBottom: 10,
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  "@media (max-width: 1196px)": {
+    margin: 0,
+  },
+  "@media (max-width: 640px)": {
+    width: "320px",
+  },
+});
+
+const PopTableDiv = styled("div")({
+  background: "rgba(255, 255, 255, 0.2)",
+  borderRadius: "20px",
+  maxHeight: 260,
+  width: 560,
+  paddingLeft: 0,
+  paddingRight: 0,
+  "@media (max-width: 640px)": {
+    width: "320px",
+    marginTop: "10px"
+  },
+});
+
+const DecreaseDiv = styled("div")({
+  marginTop: 10,
+  marginRight: 10,
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  "@media (max-width: 1196px)": {
+    margin: 0,
+  },
+  "@media (max-width: 640px)": {
+    width: "320px",
+  },
+});
+
+const InnerChartDiv = styled("div")({
   borderRadius: "20px",
   background: "rgba(255, 255, 255, 0.3)",
   height: "280px",
-  width: "550px",
 });
 
 export const probOptions = {
@@ -354,19 +397,29 @@ export default function BasicTable() {
             marginBottom: "-40px",
           }}
         >
-          <CardContent className="theCard">
-            <h3
-              style={{
+          <CardContent
+            style={{ background: "rgba(255, 255, 255, 0.4)" }}
+            className="theCard"
+          >
+            <Typography
+            variant="h5"
+              sx={{
                 textAlign: "center",
-                backgroundColor: "rgba(245, 245, 245, 0.6)",
+                backgroundColor: "rgba(245, 245, 245, 0.4)",
                 width: "24%",
                 borderRadius: "20px",
                 margin: 0,
-                padding: 8,
+                padding: 2,
+                "@media (max-width: 770px)": {
+                  width: "68%",
+                },
+                "@media (max-width: 525px)": {
+                  width: "98%",
+                },
               }}
             >
               {theRow.oppName}
-            </h3>
+            </Typography>
             <div
               style={{
                 display: "flex",
@@ -384,18 +437,7 @@ export default function BasicTable() {
                 }}
               >
                 {theRow.probabilityHistory ? (
-                  <div
-                    style={{
-                      height: "280px",
-                      width: "550px",
-                      background: "rgba(255, 255, 255, .0)",
-                      marginRight: 10,
-                      marginBottom: 10,
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}
-                  >
+                  <ChartDiv>
                     <h4
                       style={{
                         textAlign: "center",
@@ -407,15 +449,16 @@ export default function BasicTable() {
                     >
                       Probability History
                     </h4>
-                    <ChartDiv>
+                    <InnerChartDiv>
                       <Line
                         height="270px"
                         width="550px"
                         options={probOptions}
                         data={theProbChartData}
+                        className="lineChart"
                       />
-                    </ChartDiv>
-                  </div>
+                    </InnerChartDiv>
+                  </ChartDiv>
                 ) : (
                   <h4
                     style={{
@@ -431,15 +474,7 @@ export default function BasicTable() {
                   </h4>
                 )}
                 {theRow.pilytixFactorsDecreasingWin ? (
-                  <div
-                    style={{
-                      marginTop: 10,
-                      marginRight: 10,
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}
-                  >
+                  <DecreaseDiv>
                     <h4
                       style={{
                         textAlign: "center",
@@ -451,16 +486,7 @@ export default function BasicTable() {
                     >
                       PX Factors Decreasing Win
                     </h4>
-                    <div
-                      style={{
-                        background: "rgba(255, 255, 255, 0.2)",
-                        borderRadius: "20px",
-                        maxHeight: 260,
-                        width: 560,
-                        paddingLeft: 0,
-                        paddingRight: 0,
-                      }}
-                    >
+                    <PopTableDiv>
                       <DataGrid
                         sx={{
                           height: 260,
@@ -477,8 +503,8 @@ export default function BasicTable() {
                         disableSelectionOnClick={true}
                         key={theRow.oppId}
                       />
-                    </div>
-                  </div>
+                    </PopTableDiv>
+                  </DecreaseDiv>
                 ) : (
                   <h4
                     style={{
@@ -514,16 +540,7 @@ export default function BasicTable() {
                     PX Factors Increasing Win
                   </h4>
 
-                  <div
-                    style={{
-                      background: "rgba(255, 255, 255, 0.2)",
-                      borderRadius: "20px",
-                      maxHeight: 260,
-                      width: 560,
-                      paddingLeft: 0,
-                      paddingRight: 0,
-                    }}
-                  >
+                  <PopTableDiv>
                     <DataGrid
                       sx={{
                         height: 260,
@@ -540,21 +557,33 @@ export default function BasicTable() {
                       disableSelectionOnClick={true}
                       key={theRow.oppId}
                     />
-                  </div>
+                  </PopTableDiv>
                 </div>
               ) : (
-                <h4
+                <div
                   style={{
-                    textAlign: "center",
-                    marginTop: "40px",
-                    backgroundColor: "rgba(245, 245, 245, 0.4)",
-                    width: "32%",
                     borderRadius: "20px",
-                    padding: 4,
+                    maxHeight: 260,
+                    width: 560,
+                    paddingLeft: 0,
+                    paddingRight: 0,
+                    display: "flex",
+                    justifyContent: "center",
                   }}
                 >
-                  No PX Factors Increasing Win
-                </h4>
+                  <h4
+                    style={{
+                      textAlign: "center",
+                      marginTop: "40px",
+                      backgroundColor: "rgba(245, 245, 245, 0.4)",
+                      width: "42%",
+                      borderRadius: "20px",
+                      padding: 4,
+                    }}
+                  >
+                    No PX Factors Increasing Win
+                  </h4>
+                </div>
               )}
             </div>
             <div
