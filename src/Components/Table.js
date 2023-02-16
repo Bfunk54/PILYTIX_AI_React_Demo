@@ -1,24 +1,14 @@
 import * as React from "react";
 import { useState } from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
-import Container from "@mui/material/Container";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import TableSortLabel from "@mui/material/TableSortLabel";
 import Popover from "@mui/material/Popover";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { DataGrid } from "@mui/x-data-grid";
-import Tooltip from "@mui/material/Tooltip";
 import "./Table/Table.css";
 import { styled } from "@mui/system";
 
@@ -109,6 +99,11 @@ export const pxIncreaseOptions = {
 };
 
 export default function BasicTable() {
+  // React Use States
+  const [theRow, setTheRow] = React.useState([]);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [theProbChartData, setProbChartData] = useState([]);
+
   /**
    * A basic table to display all non-nested information from opportunities.json
    */
@@ -223,8 +218,6 @@ export default function BasicTable() {
   function handleRowClick(params, event) {
     const row = params.row;
     setTheRow(row);
-    setIncreaseData(row.pilytixFactorsIncreasingWin);
-    setDecreaseData(row.pilytixFactorsDecreasingWin);
     setAnchorEl(event.currentTarget);
     console.log(event, params);
     probChartData(row);
@@ -251,25 +244,11 @@ export default function BasicTable() {
     }
   }
 
-  const [theRow, setTheRow] = React.useState([]);
-  const [increaseData, setIncreaseData] = React.useState([]);
-  const [decreaseData, setDecreaseData] = React.useState([]);
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
-
-  const [rowData, setRowData] = useState(data);
-  const [theProbChartData, setProbChartData] = useState([]);
 
   let probHistoryData = [];
 
@@ -285,10 +264,18 @@ export default function BasicTable() {
     probHistoryData = {
       labels: daysAgo,
       datasets: [
-        { label: "PX Probability", data: pilytixProb, borderColor: '#36A2EB',
-        backgroundColor: '#9BD0F5' },
-        { label: "Rep Probability", data: repProb, borderColor: 'rgb(16, 207, 140)',
-        backgroundColor: 'rgb(95, 245, 215)' },
+        {
+          label: "PX Probability",
+          data: pilytixProb,
+          borderColor: "#36A2EB",
+          backgroundColor: "#9BD0F5",
+        },
+        {
+          label: "Rep Probability",
+          data: repProb,
+          borderColor: "rgb(16, 207, 140)",
+          backgroundColor: "rgb(95, 245, 215)",
+        },
       ],
     };
     setProbChartData(probHistoryData);
@@ -319,8 +306,8 @@ export default function BasicTable() {
       >
         PILYTIX Scored Opportunities
       </Typography>
-      <Container
-        sx={{
+      <div
+        style={{
           borderRadius: "20px",
           height: 620,
           width: "100%",
@@ -333,18 +320,18 @@ export default function BasicTable() {
         <div style={{ height: 530, width: "90%" }}>
           <DataGrid
             sx={{ height: 530, textAlign: "center", borderRadius: "20px" }}
-            rows={rowData}
+            rows={data}
             columns={mainColumns}
-            getRowId={(rowData) => rowData.oppId}
+            getRowId={(data) => data.oppId}
             density="comfortable"
             disableColumnSelector={true}
             hideFooter={true}
             disableSelectionOnClick={true}
             onRowClick={(params, event) => handleRowClick(params, event)}
-            key={rowData.oppId}
+            key={data.oppId}
           />
         </div>
-      </Container>
+      </div>
       <Popover
         id={theRow.oppId}
         key={theRow.oppId}
@@ -368,8 +355,18 @@ export default function BasicTable() {
           }}
         >
           <CardContent className="theCard">
-            <h3 style={{ textAlign: "center", backgroundColor: "rgba(245, 245, 245, 0.6)",
-                width: "24%", borderRadius: "20px", margin: 0, padding: 8 }}>{theRow.oppName}</h3>
+            <h3
+              style={{
+                textAlign: "center",
+                backgroundColor: "rgba(245, 245, 245, 0.6)",
+                width: "24%",
+                borderRadius: "20px",
+                margin: 0,
+                padding: 8,
+              }}
+            >
+              {theRow.oppName}
+            </h3>
             <div
               style={{
                 display: "flex",
@@ -396,11 +393,20 @@ export default function BasicTable() {
                       marginBottom: 10,
                       display: "flex",
                       flexDirection: "column",
-                      alignItems: "center"
+                      alignItems: "center",
                     }}
                   >
-                    <h4 style={{ textAlign: "center", backgroundColor: "rgba(245, 245, 245, 0.4)",
-                width: "32%", borderRadius: "20px", padding: 4  }}>Probability History</h4>
+                    <h4
+                      style={{
+                        textAlign: "center",
+                        backgroundColor: "rgba(245, 245, 245, 0.4)",
+                        width: "32%",
+                        borderRadius: "20px",
+                        padding: 4,
+                      }}
+                    >
+                      Probability History
+                    </h4>
                     <ChartDiv>
                       <Line
                         height="270px"
@@ -411,21 +417,42 @@ export default function BasicTable() {
                     </ChartDiv>
                   </div>
                 ) : (
-                  <h4 style={{ textAlign: "center", marginTop: "40px", backgroundColor: "rgba(245, 245, 245, 0.4)",
-                width: "32%", borderRadius: "20px", padding: 4 }}>
+                  <h4
+                    style={{
+                      textAlign: "center",
+                      marginTop: "40px",
+                      backgroundColor: "rgba(245, 245, 245, 0.4)",
+                      width: "32%",
+                      borderRadius: "20px",
+                      padding: 4,
+                    }}
+                  >
                     No Probability Chart Data
                   </h4>
                 )}
                 {theRow.pilytixFactorsDecreasingWin ? (
-                  <div style={{ marginTop: 10, marginRight: 10, display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center"}}>
-                    <h4 style={{ textAlign: "center", backgroundColor: "rgba(245, 245, 245, 0.4)",
-                width: "38%", borderRadius: "20px", padding: 4 }}>
+                  <div
+                    style={{
+                      marginTop: 10,
+                      marginRight: 10,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}
+                  >
+                    <h4
+                      style={{
+                        textAlign: "center",
+                        backgroundColor: "rgba(245, 245, 245, 0.4)",
+                        width: "38%",
+                        borderRadius: "20px",
+                        padding: 4,
+                      }}
+                    >
                       PX Factors Decreasing Win
                     </h4>
-                    <Box
-                      sx={{
+                    <div
+                      style={{
                         background: "rgba(255, 255, 255, 0.2)",
                         borderRadius: "20px",
                         maxHeight: 260,
@@ -450,26 +477,45 @@ export default function BasicTable() {
                         disableSelectionOnClick={true}
                         key={theRow.oppId}
                       />
-                    </Box>
+                    </div>
                   </div>
                 ) : (
-                  <h4 style={{ textAlign: "center", marginTop: "40px", backgroundColor: "rgba(245, 245, 245, 0.4)",
-                width: "32%", borderRadius: "20px", padding: 4 }}>
+                  <h4
+                    style={{
+                      textAlign: "center",
+                      marginTop: "40px",
+                      backgroundColor: "rgba(245, 245, 245, 0.4)",
+                      width: "32%",
+                      borderRadius: "20px",
+                      padding: 4,
+                    }}
+                  >
                     No PX Factors Decreasing Win
                   </h4>
                 )}
               </div>
               {theRow.pilytixFactorsIncreasingWin ? (
-                <div style={{display: "flex",
-                flexDirection: "column",
-                alignItems: "center"}}>
-                  <h4 style={{ textAlign: "center", backgroundColor: "rgba(245, 245, 245, 0.4)",
-                width: "38%", borderRadius: "20px", padding: 4 }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  <h4
+                    style={{
+                      textAlign: "center",
+                      backgroundColor: "rgba(245, 245, 245, 0.4)",
+                      width: "38%",
+                      borderRadius: "20px",
+                      padding: 4,
+                    }}
+                  >
                     PX Factors Increasing Win
                   </h4>
 
-                  <Box
-                    sx={{
+                  <div
+                    style={{
                       background: "rgba(255, 255, 255, 0.2)",
                       borderRadius: "20px",
                       maxHeight: 260,
@@ -494,11 +540,19 @@ export default function BasicTable() {
                       disableSelectionOnClick={true}
                       key={theRow.oppId}
                     />
-                  </Box>
+                  </div>
                 </div>
               ) : (
-                <h4 style={{ textAlign: "center", marginTop: "40px", backgroundColor: "rgba(245, 245, 245, 0.4)",
-                width: "32%", borderRadius: "20px", padding: 4 }}>
+                <h4
+                  style={{
+                    textAlign: "center",
+                    marginTop: "40px",
+                    backgroundColor: "rgba(245, 245, 245, 0.4)",
+                    width: "32%",
+                    borderRadius: "20px",
+                    padding: 4,
+                  }}
+                >
                   No PX Factors Increasing Win
                 </h4>
               )}

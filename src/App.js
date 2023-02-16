@@ -2,7 +2,7 @@ import "./styles.css";
 import BasicTable from "./Components/Table";
 import NavBar from "./Components/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import background from "./images/textureBackground.jpg"
+import background from "./images/textureBackground.WebP"
 
 const backgroundStyle = {
   backgroundImage: `url(${background})`,

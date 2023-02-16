@@ -13,7 +13,7 @@
     "@mui/base": "^5.0.0-alpha.118",
     "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.11.9",
-    "@mui/x-data-grid": "^5.17.23",
+    "@mui/x-data-grid": "^5.17.24",
     "chart.js": "^4.2.1",
     "hamburger-react": "^2.5.0",
     "react": "^18.2.0",
@@ -23,7 +23,8 @@
     "react-scripts": "^5.0.1"
   },
   "devDependencies": {
-    "@babel/runtime": "7.13.8"
+    "@babel/runtime": "7.20.13",
+    "typescript": "4.9.5"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -26,6 +26,10 @@ export default function MobileDrawer() {
     fontSize: "16px",
   });
 
+  const MenuItems = styled(MenuItem)({
+    ":hover": { backgroundColor: "transparent" },
+  });
+
   return (
     <>
       <Toolbar disableGutters>
@@ -39,37 +43,37 @@ export default function MobileDrawer() {
             flexDirection: "column",
           }}
         >
-          <MenuItem>
+          <MenuItems>
             <Link to="/solutions" style={{ textDecoration: "none" }}>
               <Buttons size="small" variant="contained">
                 Solutions
               </Buttons>
             </Link>
-          </MenuItem>
+          </MenuItems>
 
-          <MenuItem>
+          <MenuItems>
             <Link to="/insights" style={{ textDecoration: "none" }}>
               <Buttons size="small" variant="contained">
                 Insights
               </Buttons>
             </Link>
-          </MenuItem>
+          </MenuItems>
 
-          <MenuItem>
+          <MenuItems>
             <Link to="/about-us" style={{ textDecoration: "none" }}>
               <Buttons size="small" variant="contained">
                 About Us
               </Buttons>
             </Link>
-          </MenuItem>
+          </MenuItems>
 
-          <MenuItem>
+          <MenuItems>
             <Link to="/contact-us" style={{ textDecoration: "none" }}>
               <Buttons size="small" variant="contained">
                 Contact Us
               </Buttons>
             </Link>
-          </MenuItem>
+          </MenuItems>
         </Box>
       </Toolbar>
     </>

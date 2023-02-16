@@ -9,7 +9,7 @@ import Menu from "@mui/material/Menu";
 import ButtonUnstyled from "@mui/base/ButtonUnstyled";
 import { Link } from "react-router-dom";
 import Hamburger from "hamburger-react";
-import logo from "../images/pilytix-logo.png";
+import logo from "../images/pilytix-logo.WebP";
 import { styled } from "@mui/system";
 import "./Header/Header.css";
 import useTheme from "@mui/material/styles/useTheme";
