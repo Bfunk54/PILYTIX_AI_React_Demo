@@ -3,6 +3,7 @@ import { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
+import Container from "@mui/material/Container";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
@@ -15,6 +16,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { DataGrid } from '@mui/x-data-grid';
 import Tooltip from "@mui/material/Tooltip";
 import "./Table/Table.css";
 import { styled } from "@mui/system";
@@ -69,7 +71,7 @@ const HeadersText = styled(Typography)({
 
 const HeaderCell = styled(TableCell)({
   backgroundColor: "rgba(23, 185, 255, 0.85)",
-  fontSize: "16px",
+  fontSize: "16px"
 });
 
 const ChartDiv = styled("div")({
@@ -111,12 +113,23 @@ export default function BasicTable() {
    * A basic table to display all non-nested information from opportunities.json
    */
   const data = opportunities.default;
+  const mainColumns = [{ field: 'oppName', headerName: 'Opp Name', width: 280, headerAlign: "center" },
+  { field: 'stage', headerName: 'Opp Stage', width: 180, headerAlign: "center" },
+  { field: 'repProbability', headerName: 'Rep Probability', width: 120, headerAlign: "center" },
+  { field: 'pilytixProbability', headerName: 'PX Probability', width: 120, headerAlign: "center" },
+  { field: 'pilytixTier', headerName: 'PX Tier', width: 70, headerAlign: "center" },
+  { field: 'amount', headerName: 'Amount', width: 80, headerAlign: "center" },
+  { field: 'product', headerName: 'Product', width: 90, headerAlign: "center" },
+  { field: 'salesRepName', headerName: 'Sales Rep', width: 95, headerAlign: "center" },
+];
 
-  function handleRowClick(event, row) {
+  function handleRowClick(params, event) {
+    const row = params.row;
     setTheRow(row);
     setIncreaseData(row.pilytixFactorsIncreasingWin);
     setDecreaseData(row.pilytixFactorsDecreasingWin);
     setAnchorEl(event.currentTarget);
+    console.log(event, params);
     probChartData(row);
   }
 
@@ -359,7 +372,7 @@ export default function BasicTable() {
           width: "48%",
           borderRadius: "20px",
           "@media (max-width: 525px)": {
-            width: "78%",
+            width: "82%",
           },
         }}
         variant="h4"
@@ -367,11 +380,29 @@ export default function BasicTable() {
       >
         PILYTIX Scored Opportunities
       </Typography>
-      <TableContainer
-        sx={{ borderRadius: "20px", maxHeight: 620 }}
+      <Container
+        sx={{ borderRadius: "20px", height: 620, width: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}
         className="theCard"
       >
-        <Table stickyHeader aria-label="sticky table">
+        <div style={{ height: 530, width: "90%" }}>
+        <DataGrid
+        sx={{height: 530, textAlign: "center", borderRadius: "20px"}}
+rows={rowData}
+columns={mainColumns}
+getRowId={(rowData) => rowData.oppId}
+// autoHeight
+density= "comfortable"
+disableColumnSelector= {true}
+hideFooter= {true}
+onRowClick={(params, event) => handleRowClick(params, event)}
+key={rowData.oppId}
+        />
+        </div>
+        {/* <Table
+        options={{
+          responsive: "scroll",
+        }}
+         stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
               <HeaderCell sx={{ borderTopLeftRadius: "20px" }} align="left">
@@ -421,7 +452,7 @@ export default function BasicTable() {
                 key={row.oppId}
                 sx={{
                   "&:last-child td, &:last-child th": { border: 0 },
-                  ":hover": { backgroundColor: "#2ecdb0" },
+                  // ":hover": { backgroundColor: "#2ecdb0" },
                   "&:last-child th": { borderBottomLeftRadius: "20px" },
                   "&tr td": { fontSize: "14px" },
                 }}
@@ -441,8 +472,8 @@ export default function BasicTable() {
               </TableRow>
             ))}
           </TableBody>
-        </Table>
-      </TableContainer>
+        </Table> */}
+      </Container>
       <Popover
         id={theRow.oppId}
         key={theRow.oppId}
