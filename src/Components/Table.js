@@ -14,9 +14,10 @@ import Popover from "@mui/material/Popover";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid } from "@mui/x-data-grid";
 import Tooltip from "@mui/material/Tooltip";
 import "./Table/Table.css";
 import { styled } from "@mui/system";
@@ -71,7 +72,7 @@ const HeadersText = styled(Typography)({
 
 const HeaderCell = styled(TableCell)({
   backgroundColor: "rgba(23, 185, 255, 0.85)",
-  fontSize: "16px"
+  fontSize: "16px",
 });
 
 const ChartDiv = styled("div")({
@@ -113,15 +114,112 @@ export default function BasicTable() {
    * A basic table to display all non-nested information from opportunities.json
    */
   const data = opportunities.default;
-  const mainColumns = [{ field: 'oppName', headerName: 'Opp Name', width: 280, headerAlign: "center" },
-  { field: 'stage', headerName: 'Opp Stage', width: 180, headerAlign: "center" },
-  { field: 'repProbability', headerName: 'Rep Probability', width: 120, headerAlign: "center" },
-  { field: 'pilytixProbability', headerName: 'PX Probability', width: 120, headerAlign: "center" },
-  { field: 'pilytixTier', headerName: 'PX Tier', width: 70, headerAlign: "center" },
-  { field: 'amount', headerName: 'Amount', width: 80, headerAlign: "center" },
-  { field: 'product', headerName: 'Product', width: 90, headerAlign: "center" },
-  { field: 'salesRepName', headerName: 'Sales Rep', width: 95, headerAlign: "center" },
-];
+  const mainColumns = [
+    {
+      field: "oppName",
+      headerName: "Opp Name",
+      width: 280,
+      headerAlign: "center",
+      align: "center",
+      headerClassName: "headers",
+    },
+    {
+      field: "stage",
+      headerName: "Opp Stage",
+      width: 180,
+      headerAlign: "center",
+      align: "center",
+      headerClassName: "headers",
+    },
+    {
+      field: "repProbability",
+      headerName: "Rep Probability",
+      width: 120,
+      headerAlign: "center",
+      align: "center",
+      headerClassName: "headers",
+    },
+    {
+      field: "pilytixProbability",
+      headerName: "PX Probability",
+      width: 120,
+      headerAlign: "center",
+      align: "center",
+      headerClassName: "headers",
+    },
+    {
+      field: "pilytixTier",
+      headerName: "PX Tier",
+      width: 70,
+      headerAlign: "center",
+      align: "center",
+      headerClassName: "headers",
+    },
+    {
+      field: "amount",
+      headerName: "Amount",
+      width: 80,
+      headerAlign: "center",
+      headerClassName: "headers",
+    },
+    {
+      field: "product",
+      headerName: "Product",
+      width: 90,
+      headerAlign: "center",
+      align: "center",
+      headerClassName: "headers",
+    },
+    {
+      field: "salesRepName",
+      headerName: "Sales Rep",
+      width: 95,
+      headerAlign: "center",
+      align: "center",
+      headerClassName: "headers",
+    },
+  ];
+
+  const cardColumns = [
+    {
+      field: "name",
+      headerName: "Name",
+      width: 105,
+      headerAlign: "center",
+      align: "center",
+      headerClassName: "headers",
+    },
+    {
+      field: "message",
+      headerName: "Message",
+      width: 213,
+      headerAlign: "center",
+      align: "center",
+      headerClassName: "headers",
+    },
+    {
+      field: "weight.value",
+      headerName: "Weight Value",
+      width: 105,
+      headerAlign: "center",
+      align: "center",
+      headerClassName: "headers",
+      valueGetter: (params) => {
+        return params.row.weight.value;
+      },
+    },
+    {
+      field: "weight.description",
+      headerName: "Weight Description",
+      width: 135,
+      headerAlign: "center",
+      align: "center",
+      headerClassName: "headers",
+      valueGetter: (params) => {
+        return params.row.weight.description;
+      },
+    },
+  ];
 
   function handleRowClick(params, event) {
     const row = params.row;
@@ -381,22 +479,29 @@ export default function BasicTable() {
         PILYTIX Scored Opportunities
       </Typography>
       <Container
-        sx={{ borderRadius: "20px", height: 620, width: "100%", display: "flex", flexDirection: "column", justifyContent: "center" }}
+        sx={{
+          borderRadius: "20px",
+          height: 620,
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
         className="theCard"
       >
         <div style={{ height: 530, width: "90%" }}>
-        <DataGrid
-        sx={{height: 530, textAlign: "center", borderRadius: "20px"}}
-rows={rowData}
-columns={mainColumns}
-getRowId={(rowData) => rowData.oppId}
-// autoHeight
-density= "comfortable"
-disableColumnSelector= {true}
-hideFooter= {true}
-onRowClick={(params, event) => handleRowClick(params, event)}
-key={rowData.oppId}
-        />
+          <DataGrid
+            sx={{ height: 530, textAlign: "center", borderRadius: "20px" }}
+            rows={rowData}
+            columns={mainColumns}
+            getRowId={(rowData) => rowData.oppId}
+            density="comfortable"
+            disableColumnSelector={true}
+            hideFooter={true}
+            disableSelectionOnClick={true}
+            onRowClick={(params, event) => handleRowClick(params, event)}
+            key={rowData.oppId}
+          />
         </div>
         {/* <Table
         options={{
@@ -544,14 +649,34 @@ key={rowData.oppId}
                     <h4 style={{ textAlign: "center" }}>
                       PX Factors Decreasing Win
                     </h4>
-                    <TableContainer
+                    <Box
                       sx={{
                         background: "rgba(255, 255, 255, 0.2)",
                         borderRadius: "20px",
                         maxHeight: 260,
+                        width: 560,
+                        paddingLeft: 0,
+                        paddingRight: 0,
                       }}
                     >
-                      <Table
+                      <DataGrid
+                        sx={{
+                          height: 260,
+                          textAlign: "center",
+                          borderRadius: "20px",
+                          width: "100%",
+                        }}
+                        rows={decreaseData}
+                        columns={cardColumns}
+                        getRowId={(row) => row.name}
+                        density="comfortable"
+                        disableColumnSelector={true}
+                        hideFooter={true}
+                        disableSelectionOnClick={true}
+                        key={theRow.oppId}
+                      />
+
+                      {/* <Table
                         size="small"
                         style={{ maxWidth: "540px" }}
                         stickyHeader
@@ -621,8 +746,8 @@ key={rowData.oppId}
                             )
                           )}
                         </TableBody>
-                      </Table>
-                    </TableContainer>
+                      </Table> */}
+                    </Box>
                   </div>
                 ) : (
                   <h4 style={{ textAlign: "center", marginTop: "40px" }}>
@@ -635,7 +760,34 @@ key={rowData.oppId}
                   <h4 style={{ textAlign: "center" }}>
                     PX Factors Increasing Win
                   </h4>
-                  <TableContainer
+
+                  <Box
+                    sx={{
+                      background: "rgba(255, 255, 255, 0.2)",
+                      borderRadius: "20px",
+                      maxHeight: 260,
+                      width: 560,
+                      paddingLeft: 0,
+                      paddingRight: 0,
+                    }}
+                  >
+                    <DataGrid
+                      sx={{
+                        height: 260,
+                        textAlign: "center",
+                        borderRadius: "20px",
+                        width: "100%",
+                      }}
+                      rows={increaseData}
+                      columns={cardColumns}
+                      getRowId={(row) => row.name}
+                      density="comfortable"
+                      disableColumnSelector={true}
+                      hideFooter={true}
+                      disableSelectionOnClick={true}
+                      key={theRow.oppId}
+                    />
+                    {/* <TableContainer
                     sx={{
                       background: "rgba(255, 255, 255, 0.2)",
                       borderRadius: "20px",
@@ -713,7 +865,8 @@ key={rowData.oppId}
                         )}
                       </TableBody>
                     </Table>
-                  </TableContainer>
+                  </TableContainer> */}
+                  </Box>
                 </div>
               ) : (
                 <h4 style={{ textAlign: "center", marginTop: "40px" }}>

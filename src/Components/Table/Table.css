@@ -14,11 +14,33 @@
   backdrop-filter: blur(10px) !important;
 }
 
+.MuiDataGrid-root .MuiDataGrid-cell {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+  }
+
+  .wrapHeader .MuiDataGrid-colCellTitle {
+    white-space: normal !important;
+  }
+
 @media screen and (max-width: 1174px) {
     .nextButtonContainer {
         order: -1 !important;
     }
 }
+
+.MuiDataGrid-main {
+    border-radius: 20px;
+}
+
+.css-yrdy0g-MuiDataGrid-columnHeaderRow {
+    background-color: rgba(23, 185, 255, 0.35);
+}
+
+.MuiDataGrid-virtualScroller {
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
 
 table > *:last-child > tr:last-of-type > td:last-of-type {
   border-bottom-right-radius: 20px;
