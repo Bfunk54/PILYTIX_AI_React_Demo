@@ -150,7 +150,7 @@ export default function BasicTable() {
     {
       field: "oppName",
       headerName: "Opp Name",
-      width: 280,
+      width: 240,
       headerAlign: "center",
       align: "center",
       headerClassName: "headers",
@@ -387,7 +387,7 @@ export default function BasicTable() {
         className="theCard"
       >
       
-        <div style={{ height: 530, width: "90%" }}>
+        <div style={{ height: 530, width: "87.7%" }}>
           <DataGrid
             sx={{ height: 530, textAlign: "center", borderRadius: "20px" }}
             rows={data}
@@ -464,7 +464,7 @@ export default function BasicTable() {
                 Next<ArrowForwardIosIcon fontSize="small"></ArrowForwardIosIcon>
               </NextButtons>
               </div>
-            <div style={{display: "flex", marginTop: 20, height: 100, width: "1037px", background: "rgba(255, 255, 255, 0.2)",
+            <div style={{display: "flex", marginTop: 20, height: 100, width: "998px", background: "rgba(255, 255, 255, 0.2)",
   borderRadius: "20px"}}>
                 <DataGrid
             sx={{ height: 100, textAlign: "center", borderRadius: "20px", flexDirection: "column"}}
