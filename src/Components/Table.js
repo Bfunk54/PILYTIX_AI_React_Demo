@@ -1,6 +1,9 @@
+//  React components
 import * as React from "react";
 import { useState } from "react";
-import TableCell from "@mui/material/TableCell";
+
+// MUI components
+import { styled } from "@mui/system";
 import Typography from "@mui/material/Typography";
 import Popover from "@mui/material/Popover";
 import Card from "@mui/material/Card";
@@ -10,13 +13,14 @@ import Button from "@mui/material/Button";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { DataGrid } from "@mui/x-data-grid";
-import "./Table/Table.css";
-import { styled } from "@mui/system";
 
-// Data JSON Import
+// External CSS
+import "./Table/Table.css";
+
+// Data JSON 
 import * as opportunities from "./Table/opportunities.json";
 
-// Chart Js Imports
+// Chart Js components
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -38,7 +42,7 @@ ChartJS.register(
   Legend
 );
 
-// MUI Styled Components
+// MUI styled components
 
 const NextButtons = styled(Button)({
   borderRadius: "40px",
@@ -49,10 +53,7 @@ const NextButtons = styled(Button)({
   backdropFilter: "blur(10px)",
   textTransform: "none",
   fontSize: "14px",
-  ":hover": { backgroundColor: "rgb(23, 162, 221)", fontSize: "14.2px" },
-  // "@media (max-width: 640px)": {
-  //   fontSize: "10px",
-  // },
+  ":hover": { backgroundColor: "rgb(23, 162, 221)", fontSize: "14.2px" }
 });
 
 const ChartDiv = styled("div")({
@@ -80,7 +81,7 @@ const PopRowDiv = styled("div")({
   background: "rgba(255, 255, 255, 0.2)",
   borderRadius: "20px",
   "@media (max-width: 1042px)": { width: "700px" },
-  "@media (max-width: 740px)": { width: "330px" }
+  "@media (max-width: 740px)": { width: "330px" },
 });
 
 const PopTableDiv = styled("div")({
@@ -121,6 +122,7 @@ const InnerChartDiv = styled("div")({
   },
 });
 
+// Export ChartJs options
 export const probOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -130,19 +132,6 @@ export const probOptions = {
     },
     title: {
       display: false,
-    },
-  },
-};
-
-export const pxIncreaseOptions = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top",
-    },
-    title: {
-      display: true,
-      text: "Probability History",
     },
   },
 };
@@ -333,6 +322,7 @@ export default function BasicTable() {
     setAnchorEl(null);
   };
 
+  // Format Probability History data to work with ChartJs
   let probHistoryData = [];
 
   const probChartData = (row) => {
@@ -365,6 +355,7 @@ export default function BasicTable() {
   };
 
   return (
+    // Main Table
     <div
       style={{
         display: "flex",
@@ -415,6 +406,8 @@ export default function BasicTable() {
           />
         </div>
       </div>
+
+      {/* Popover on row click */}
       <Popover
         id={theRow.oppId}
         key={theRow.oppId}
@@ -441,6 +434,7 @@ export default function BasicTable() {
             style={{ background: "rgba(255, 255, 255, 0.5)" }}
             className="theCard"
           >
+            {/* Close Icon */}
             <div
               style={{
                 display: "flex",
@@ -456,6 +450,8 @@ export default function BasicTable() {
                 <CloseIcon sx={{ fontSize: 36 }} />
               </Button>
             </div>
+
+            {/* Next and Previous Buttons and Popover row name */}
             <div
               style={{
                 display: "flex",
@@ -464,7 +460,7 @@ export default function BasicTable() {
               }}
             >
               <NextButtons
-                sx={{ marginRight: 3, height: 38.5, display: prevBtn  }}
+                sx={{ marginRight: 3, height: 38.5, display: prevBtn }}
                 onClick={(event) => handlePreviousClick(event, theRow)}
                 className="prevBtnDesktop"
               >
@@ -506,6 +502,8 @@ export default function BasicTable() {
                 Next<ArrowForwardIosIcon fontSize="small"></ArrowForwardIosIcon>
               </NextButtons>
             </div>
+
+            {/* Original row data */}
             <PopRowDiv>
               <DataGrid
                 sx={{
@@ -526,6 +524,8 @@ export default function BasicTable() {
                 key={theRow.oppId}
               />
             </PopRowDiv>
+
+            {/* New data, originally not visible */}
             <div
               style={{
                 display: "flex",
@@ -542,6 +542,8 @@ export default function BasicTable() {
                   flexDirection: "column",
                 }}
               >
+
+                {/* Check if there is Probability History data, render chart if true */}
                 {theRow.probabilityHistory ? (
                   <ChartDiv>
                     <h4
@@ -579,6 +581,7 @@ export default function BasicTable() {
                     No Probability Chart Data
                   </h4>
                 )}
+                {/* Check if there is Decreasing data, render chart if true */}
                 {theRow.pilytixFactorsDecreasingWin ? (
                   <DecreaseDiv>
                     <h4
@@ -626,6 +629,8 @@ export default function BasicTable() {
                   </h4>
                 )}
               </div>
+
+              {/* Check if there is Increasing Win data, render chart if true */}
               {theRow.pilytixFactorsIncreasingWin ? (
                 <div
                   style={{

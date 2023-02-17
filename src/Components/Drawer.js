@@ -1,27 +1,21 @@
+// React component
 import * as React from "react";
-import { useState } from "react";
-import Menu from "@mui/material/Menu";
-import Hamburger from "hamburger-react";
+
+// Router
+import { Link } from "react-router-dom";
+
+// MUI components
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import { Link } from "react-router-dom";
 import { styled } from "@mui/system";
 
-export default function MobileDrawer() {
-  const [menuOpen, setMenuOpen] = React.useState(false);
-  const toggleDrawer = (newOpen) => () => {
-    setMenuOpen(newOpen);
-    console.log(open);
-  };
-
-  const Buttons = styled(Button)({
-    my: 2,
+// MUI styled components
+const Buttons = styled(Button)({
     backgroundColor: "#3abaff",
     color: "white",
     display: "block",
-    marginRight: "20px",
     textTransform: "none",
     fontSize: "16px",
   });
@@ -30,7 +24,10 @@ export default function MobileDrawer() {
     ":hover": { backgroundColor: "transparent" },
   });
 
+export default function MobileDrawer() {
   return (
+    /* Only the actual buttons for the menu,
+        the menu is rendered onClick in the Header component */
     <>
       <Toolbar disableGutters>
         <Box
@@ -38,7 +35,6 @@ export default function MobileDrawer() {
             justifyContent: "space-evenly",
             alignItems: "center",
             flexGrow: 1,
-            marginLeft: "20px",
             display: { xs: "flex", sm: "flex", md: "none" },
             flexDirection: "column",
           }}
@@ -73,6 +69,25 @@ export default function MobileDrawer() {
                 Contact Us
               </Buttons>
             </Link>
+          </MenuItems>
+
+          <MenuItems>
+          <Link to="/request-demo" style={{ textDecoration: "none" }}>
+                <Button
+                  size="small"
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "#2ecdb0",
+                    color: "white",
+                    display: "block",
+                    borderRadius: "30px",
+                    textTransform: "none",
+                    fontSize: "20px",
+                  }}
+                >
+                  Request Demo
+                </Button>
+              </Link>
           </MenuItems>
         </Box>
       </Toolbar>

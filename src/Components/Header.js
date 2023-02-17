@@ -1,21 +1,33 @@
+// React components
 import * as React from "react";
+
+// Router
+import { Link } from "react-router-dom";
+
+// MUI components
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import ButtonUnstyled from "@mui/base/ButtonUnstyled";
-import { Link } from "react-router-dom";
-import Hamburger from "hamburger-react";
-import logo from "../images/pilytix-logo.WebP";
 import { styled } from "@mui/system";
-import "./Header/Header.css";
 import useTheme from "@mui/material/styles/useTheme";
 import useMediaQuery from "@mui/material/useMediaQuery";
+
+// Drawer component for mobile
 import MobileDrawer from "./Drawer";
 
+// Logo image
+import logo from "../images/pilytix-logo.WebP";
+
+// Hamburger menu
+import Hamburger from "hamburger-react";
+
+// External CSS
+import "./Header/Header.css";
+
+// MUI styled component
 const Buttons = styled(Button)({
   my: 2,
   backgroundColor: "#3abaff",
@@ -27,15 +39,20 @@ const Buttons = styled(Button)({
 });
 
 export default function NavBar() {
-  const [menuOpen, setMenuOpen] = React.useState(false);
+  // React states
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
+  // Handle opening and closing the mobile nav menu
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  // Set media query to check if the user is on mobile
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -46,11 +63,12 @@ export default function NavBar() {
         position="fixed"
         className="wholeNav"
       >
+        {/* The logo */}
         <Box
           className="headerBox"
           sx={{
             alignItems: "center",
-            display: "flex"
+            display: "flex",
           }}
         >
           <Box sx={{ display: "flex" }}>
@@ -59,6 +77,8 @@ export default function NavBar() {
             </Link>
           </Box>
         </Box>
+
+        {/* Check if the user in on mobile, show Hamburger menu if true */}
         {isMobile ? (
           <>
             <ButtonUnstyled
@@ -78,8 +98,17 @@ export default function NavBar() {
             </Menu>
           </>
         ) : (
-          <Toolbar sx={{display: "flex", justifyContent: "space-evenly",
-          alignItems: "center", width: "100%"}} className="toolbar" disableGutters>
+          <Toolbar
+            sx={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              alignItems: "center",
+              width: "100%",
+            }}
+            className="toolbar"
+            disableGutters
+          >
+            {/* Check if the user in on mobile, if false, show buttons horizontally */}
             <Box
               sx={{
                 justifyContent: "space-evenly",
@@ -118,9 +147,9 @@ export default function NavBar() {
                 justifyContent: "flex-end",
                 alignItems: "center",
                 flexGrow: 1,
-               
+
                 display: { xs: "none", sm: "none", md: "flex" },
-                width: "fit-content"
+                width: "fit-content",
               }}
             >
               <Link to="/request-demo" style={{ textDecoration: "none" }}>
