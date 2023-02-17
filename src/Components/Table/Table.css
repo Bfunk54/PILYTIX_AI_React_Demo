@@ -37,6 +37,10 @@
     border-bottom-left-radius: 20px;
   }
 
+  .css-204u17-MuiDataGrid-main {
+    cursor: pointer;
+  }
+
 table > *:last-child > tr:last-of-type > td:last-of-type {
   border-bottom-right-radius: 20px;
 }

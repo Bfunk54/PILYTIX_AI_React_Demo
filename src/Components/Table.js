@@ -428,6 +428,11 @@ export default function BasicTable() {
             style={{ background: "rgba(255, 255, 255, 0.5)" }}
             className="theCard"
           >
+            <div style={{display: "flex", justifyContent: "flex-end", alignItems: "center", width: "100%" }}>
+            <Button sx={{padding: 0, maxWidth: "36px", minWidth: "36px"}} onClick={handleClose}>
+              <CloseIcon sx={{ fontSize: 36 }} />
+            </Button>
+            </div>
             <div style={{display: "flex", justifyContent: "center", alignItems: "center" }}>
             <NextButtons
                 sx={{ marginRight: 3,  height: 38.5}}
@@ -467,7 +472,7 @@ export default function BasicTable() {
             <div style={{display: "flex", marginTop: 20, height: 100, width: "998px", background: "rgba(255, 255, 255, 0.2)",
   borderRadius: "20px"}}>
                 <DataGrid
-            sx={{ height: 100, textAlign: "center", borderRadius: "20px", flexDirection: "column"}}
+            sx={{ height: 100, textAlign: "center", borderRadius: "20px", flexDirection: "column", cursor: "pointer"}}
             rows={theDataRow}
             columns={mainColumns}
             getRowId={(theDataRow) => theDataRow.oppId}
