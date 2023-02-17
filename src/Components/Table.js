@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Popover from "@mui/material/Popover";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import CloseIcon from '@mui/icons-material/Close';
 import Button from "@mui/material/Button";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -135,6 +136,7 @@ export const pxIncreaseOptions = {
 export default function BasicTable() {
   // React Use States
   const [theRow, setTheRow] = React.useState([]);
+  const [theDataRow, setTheDataRow] = React.useState([theRow]);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [theProbChartData, setProbChartData] = useState([]);
   const [nextBtn, setNextBtn] = useState();
@@ -256,17 +258,20 @@ export default function BasicTable() {
     const row = params.row;
     if (row.oppId === 10) {
       setTheRow(row);
+      setTheDataRow([row]);
       setAnchorEl(event.currentTarget);
       probChartData(row);
       setNextBtn("none");
     }
     if (row.oppId === 1) {
       setTheRow(row);
+      setTheDataRow([row]);
       setAnchorEl(event.currentTarget);
       probChartData(row);
       setPrevBtn("none");
     } else {
       setTheRow(row);
+      setTheDataRow([row]);
       setAnchorEl(event.currentTarget);
       probChartData(row);
       setNextBtn("visible");
@@ -287,6 +292,7 @@ export default function BasicTable() {
       const newRowId = row.oppId + 1;
       const newRow = data.find(({ oppId }) => oppId === newRowId);
       setTheRow(newRow);
+      setTheDataRow([newRow]);
       probChartData(newRow);
     }
   }
@@ -302,6 +308,7 @@ export default function BasicTable() {
       const newRowId = row.oppId - 1;
       const newRow = data.find(({ oppId }) => oppId === newRowId);
       setTheRow(newRow);
+      setTheDataRow([newRow]);
     } else {
       return;
     }
@@ -379,6 +386,7 @@ export default function BasicTable() {
         }}
         className="theCard"
       >
+      
         <div style={{ height: 530, width: "90%" }}>
           <DataGrid
             sx={{ height: 530, textAlign: "center", borderRadius: "20px" }}
@@ -417,9 +425,18 @@ export default function BasicTable() {
           }}
         >
           <CardContent
-            style={{ background: "rgba(255, 255, 255, 0.4)" }}
+            style={{ background: "rgba(255, 255, 255, 0.5)" }}
             className="theCard"
           >
+            <div style={{display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <NextButtons
+                sx={{ marginRight: 3,  height: 38.5}}
+                onClick={(event) => handlePreviousClick(event, theRow)}
+                style={{ display: prevBtn }}
+              >
+                <ArrowBackIosNewIcon fontSize="small"></ArrowBackIosNewIcon>
+                Previous
+              </NextButtons>
             <Typography
               variant="h5"
               sx={{
@@ -439,6 +456,30 @@ export default function BasicTable() {
             >
               {theRow.oppName}
             </Typography>
+            <NextButtons
+                sx={{ marginLeft: 3,  height: 38.5}}
+                style={{ display: nextBtn }}
+                onClick={(event) => handleNextClick(event, theRow)}
+              >
+                Next<ArrowForwardIosIcon fontSize="small"></ArrowForwardIosIcon>
+              </NextButtons>
+              </div>
+            <div style={{display: "flex", marginTop: 20, height: 100, width: "1037px", background: "rgba(255, 255, 255, 0.2)",
+  borderRadius: "20px"}}>
+                <DataGrid
+            sx={{ height: 100, textAlign: "center", borderRadius: "20px", flexDirection: "column"}}
+            rows={theDataRow}
+            columns={mainColumns}
+            getRowId={(theDataRow) => theDataRow.oppId}
+            density="comfortable"
+            disableColumnSelector={true}
+            hideFooter={true}
+            disableSelectionOnClick={true}
+            headerHeight={32}
+            onRowClick={(params, event) => handleRowClick(params, event)}
+            key={theRow.oppId}
+          />
+          </div>
             <div
               style={{
                 display: "flex",
@@ -604,25 +645,6 @@ export default function BasicTable() {
                   </h4>
                 </div>
               )}
-            </div>
-            <div
-              className="nextButtonContainer"
-              style={{ marginTop: 20, marginBottom: 26 }}
-            >
-              <NextButtons
-                sx={{ marginRight: 5 }}
-                onClick={(event) => handlePreviousClick(event, theRow)}
-                style={{ display: prevBtn }}
-              >
-                <ArrowBackIosNewIcon fontSize="small"></ArrowBackIosNewIcon>
-                Previous
-              </NextButtons>
-              <NextButtons
-                style={{ display: nextBtn }}
-                onClick={(event) => handleNextClick(event, theRow)}
-              >
-                Next<ArrowForwardIosIcon fontSize="small"></ArrowForwardIosIcon>
-              </NextButtons>
             </div>
           </CardContent>
         </Card>

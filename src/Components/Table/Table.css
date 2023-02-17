@@ -57,9 +57,17 @@ th {
     }
 }
 
-@media screen and (max-width: 1174px) {
-    .nextButtonContainer {
-        order: -1 !important;
+@media screen and (max-width: 1183px) {
+    .MuiPopover-paper {
+        margin-left: 180px;
+        margin-right: 180px;
+    }
+}
+
+@media screen and (max-width: 641px) {
+    .MuiPopover-paper {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
     }
 }
 
