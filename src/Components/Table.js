@@ -51,20 +51,6 @@ const NextButtons = styled(Button)({
   ":hover": { backgroundColor: "rgb(23, 162, 221)", fontSize: "14.2px" },
 });
 
-const HeadersText = styled(Typography)({
-  backgroundColor: "rgba(245, 245, 245, 0.6)",
-  backdropFilter: "blur(10px)",
-  width: "86%",
-  borderRadius: "20px",
-  textAlign: "center",
-  padding: "6px",
-});
-
-const HeaderCell = styled(TableCell)({
-  backgroundColor: "rgba(23, 185, 255, 0.85)",
-  fontSize: "16px",
-});
-
 const ChartDiv = styled("div")({
   height: "280px",
   width: "550px",
@@ -91,7 +77,7 @@ const PopTableDiv = styled("div")({
   paddingRight: 0,
   "@media (max-width: 640px)": {
     width: "320px",
-    marginTop: "10px"
+    marginTop: "10px",
   },
 });
 
@@ -113,6 +99,11 @@ const InnerChartDiv = styled("div")({
   borderRadius: "20px",
   background: "rgba(255, 255, 255, 0.3)",
   height: "280px",
+  width: "520px",
+  "@media (max-width: 640px)": {
+    width: "320px",
+    marginBottom: "5px",
+  },
 });
 
 export const probOptions = {
@@ -146,11 +137,13 @@ export default function BasicTable() {
   const [theRow, setTheRow] = React.useState([]);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [theProbChartData, setProbChartData] = useState([]);
+  const [nextBtn, setNextBtn] = useState();
+  const [prevBtn, setPrevBtn] = useState();
 
-  /**
-   * A basic table to display all non-nested information from opportunities.json
-   */
+  //  Data from opportunities.json
   const data = opportunities.default;
+
+  // MUI DataGrid Column Props
   const mainColumns = [
     {
       field: "oppName",
@@ -258,26 +251,53 @@ export default function BasicTable() {
     },
   ];
 
+  // Handle a row click
   function handleRowClick(params, event) {
     const row = params.row;
-    setTheRow(row);
-    setAnchorEl(event.currentTarget);
-    console.log(event, params);
-    probChartData(row);
+    if (row.oppId === 10) {
+      setTheRow(row);
+      setAnchorEl(event.currentTarget);
+      probChartData(row);
+      setNextBtn("none");
+    }
+    if (row.oppId === 1) {
+      setTheRow(row);
+      setAnchorEl(event.currentTarget);
+      probChartData(row);
+      setPrevBtn("none");
+    } else {
+      setTheRow(row);
+      setAnchorEl(event.currentTarget);
+      probChartData(row);
+      setNextBtn("visible");
+      setPrevBtn("visible");
+    }
   }
+  const open = Boolean(anchorEl);
 
+  // Handle the Next and Previous button clicks in the Popover
   function handleNextClick(event, row) {
+    if (row.oppId == 1) {
+      setPrevBtn("visible");
+    }
+    if (row.oppId == 9) {
+      setNextBtn("none");
+    }
     if (row.oppId < 10) {
       const newRowId = row.oppId + 1;
       const newRow = data.find(({ oppId }) => oppId === newRowId);
       setTheRow(newRow);
       probChartData(newRow);
-    } else {
-      return;
     }
   }
 
   function handlePreviousClick(event, row) {
+    if (row.oppId == 2) {
+      setPrevBtn("none");
+    }
+    if (row.oppId == 10) {
+      setNextBtn("visible");
+    }
     if (row.oppId > 1) {
       const newRowId = row.oppId - 1;
       const newRow = data.find(({ oppId }) => oppId === newRowId);
@@ -287,11 +307,10 @@ export default function BasicTable() {
     }
   }
 
+  // Handle closing the Popover
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  const open = Boolean(anchorEl);
 
   let probHistoryData = [];
 
@@ -402,11 +421,11 @@ export default function BasicTable() {
             className="theCard"
           >
             <Typography
-            variant="h5"
+              variant="h5"
               sx={{
                 textAlign: "center",
                 backgroundColor: "rgba(245, 245, 245, 0.4)",
-                width: "24%",
+                width: "34%",
                 borderRadius: "20px",
                 margin: 0,
                 padding: 2,
@@ -449,13 +468,13 @@ export default function BasicTable() {
                     >
                       Probability History
                     </h4>
-                    <InnerChartDiv>
+                    <InnerChartDiv className="lineChart">
                       <Line
-                        height="270px"
-                        width="550px"
+                        // height="240px"
+                        // width="550px"
                         options={probOptions}
                         data={theProbChartData}
-                        className="lineChart"
+                        // className="lineChart"
                       />
                     </InnerChartDiv>
                   </ChartDiv>
@@ -489,7 +508,7 @@ export default function BasicTable() {
                     <PopTableDiv>
                       <DataGrid
                         sx={{
-                          height: 260,
+                          height: 240,
                           textAlign: "center",
                           borderRadius: "20px",
                           width: "100%",
@@ -543,7 +562,7 @@ export default function BasicTable() {
                   <PopTableDiv>
                     <DataGrid
                       sx={{
-                        height: 260,
+                        height: 240,
                         textAlign: "center",
                         borderRadius: "20px",
                         width: "100%",
@@ -593,11 +612,15 @@ export default function BasicTable() {
               <NextButtons
                 sx={{ marginRight: 5 }}
                 onClick={(event) => handlePreviousClick(event, theRow)}
+                style={{ display: prevBtn }}
               >
                 <ArrowBackIosNewIcon fontSize="small"></ArrowBackIosNewIcon>
                 Previous
               </NextButtons>
-              <NextButtons onClick={(event) => handleNextClick(event, theRow)}>
+              <NextButtons
+                style={{ display: nextBtn }}
+                onClick={(event) => handleNextClick(event, theRow)}
+              >
                 Next<ArrowForwardIosIcon fontSize="small"></ArrowForwardIosIcon>
               </NextButtons>
             </div>
