@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography";
 import Popover from "@mui/material/Popover";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 import Button from "@mui/material/Button";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -50,6 +50,9 @@ const NextButtons = styled(Button)({
   textTransform: "none",
   fontSize: "14px",
   ":hover": { backgroundColor: "rgb(23, 162, 221)", fontSize: "14.2px" },
+  // "@media (max-width: 640px)": {
+  //   fontSize: "10px",
+  // },
 });
 
 const ChartDiv = styled("div")({
@@ -67,6 +70,17 @@ const ChartDiv = styled("div")({
   "@media (max-width: 640px)": {
     width: "320px",
   },
+});
+
+const PopRowDiv = styled("div")({
+  display: "flex",
+  marginTop: 20,
+  height: 100,
+  width: "998px",
+  background: "rgba(255, 255, 255, 0.2)",
+  borderRadius: "20px",
+  "@media (max-width: 1042px)": { width: "700px" },
+  "@media (max-width: 740px)": { width: "330px" }
 });
 
 const PopTableDiv = styled("div")({
@@ -386,7 +400,6 @@ export default function BasicTable() {
         }}
         className="theCard"
       >
-      
         <div style={{ height: 530, width: "87.7%" }}>
           <DataGrid
             sx={{ height: 530, textAlign: "center", borderRadius: "20px" }}
@@ -428,63 +441,91 @@ export default function BasicTable() {
             style={{ background: "rgba(255, 255, 255, 0.5)" }}
             className="theCard"
           >
-            <div style={{display: "flex", justifyContent: "flex-end", alignItems: "center", width: "100%" }}>
-            <Button sx={{padding: 0, maxWidth: "36px", minWidth: "36px"}} onClick={handleClose}>
-              <CloseIcon sx={{ fontSize: 36 }} />
-            </Button>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                width: "100%",
+              }}
+            >
+              <Button
+                sx={{ padding: 0, maxWidth: "36px", minWidth: "36px" }}
+                onClick={handleClose}
+              >
+                <CloseIcon sx={{ fontSize: 36 }} />
+              </Button>
             </div>
-            <div style={{display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <NextButtons
-                sx={{ marginRight: 3,  height: 38.5}}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <NextButtons
+                sx={{ marginRight: 3, height: 38.5, display: prevBtn  }}
                 onClick={(event) => handlePreviousClick(event, theRow)}
-                style={{ display: prevBtn }}
+                className="prevBtnDesktop"
               >
                 <ArrowBackIosNewIcon fontSize="small"></ArrowBackIosNewIcon>
                 Previous
               </NextButtons>
-            <Typography
-              variant="h5"
-              sx={{
-                textAlign: "center",
-                backgroundColor: "rgba(245, 245, 245, 0.4)",
-                width: "34%",
-                borderRadius: "20px",
-                margin: 0,
-                padding: 2,
-                "@media (max-width: 770px)": {
-                  width: "68%",
-                },
-                "@media (max-width: 525px)": {
-                  width: "98%",
-                },
-              }}
-            >
-              {theRow.oppName}
-            </Typography>
-            <NextButtons
-                sx={{ marginLeft: 3,  height: 38.5}}
+              <NextButtons
+                sx={{ marginRight: 3, height: 38.5, display: prevBtn }}
+                onClick={(event) => handlePreviousClick(event, theRow)}
+                className="prevBtnMobile"
+              >
+                <ArrowBackIosNewIcon fontSize="small"></ArrowBackIosNewIcon>
+                Prev
+              </NextButtons>
+              <Typography
+                variant="h5"
+                sx={{
+                  textAlign: "center",
+                  backgroundColor: "rgba(245, 245, 245, 0.4)",
+                  width: "34%",
+                  borderRadius: "20px",
+                  margin: 0,
+                  padding: 2,
+                  "@media (max-width: 770px)": {
+                    width: "68%",
+                  },
+                  "@media (max-width: 525px)": {
+                    width: "100%",
+                  },
+                }}
+              >
+                {theRow.oppName}
+              </Typography>
+              <NextButtons
+                sx={{ marginLeft: 3, height: 38.5 }}
                 style={{ display: nextBtn }}
                 onClick={(event) => handleNextClick(event, theRow)}
               >
                 Next<ArrowForwardIosIcon fontSize="small"></ArrowForwardIosIcon>
               </NextButtons>
-              </div>
-            <div style={{display: "flex", marginTop: 20, height: 100, width: "998px", background: "rgba(255, 255, 255, 0.2)",
-  borderRadius: "20px"}}>
-                <DataGrid
-            sx={{ height: 100, textAlign: "center", borderRadius: "20px", flexDirection: "column", cursor: "pointer"}}
-            rows={theDataRow}
-            columns={mainColumns}
-            getRowId={(theDataRow) => theDataRow.oppId}
-            density="comfortable"
-            disableColumnSelector={true}
-            hideFooter={true}
-            disableSelectionOnClick={true}
-            headerHeight={32}
-            onRowClick={(params, event) => handleRowClick(params, event)}
-            key={theRow.oppId}
-          />
-          </div>
+            </div>
+            <PopRowDiv>
+              <DataGrid
+                sx={{
+                  height: 100,
+                  textAlign: "center",
+                  borderRadius: "20px",
+                  flexDirection: "column",
+                }}
+                rows={theDataRow}
+                columns={mainColumns}
+                getRowId={(theDataRow) => theDataRow.oppId}
+                density="comfortable"
+                disableColumnSelector={true}
+                hideFooter={true}
+                disableSelectionOnClick={true}
+                headerHeight={32}
+                onRowClick={(params, event) => handleRowClick(params, event)}
+                key={theRow.oppId}
+              />
+            </PopRowDiv>
             <div
               style={{
                 display: "flex",

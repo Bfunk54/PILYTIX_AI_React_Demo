@@ -50,7 +50,7 @@ export default function NavBar() {
           className="headerBox"
           sx={{
             alignItems: "center",
-            display: "flex",
+            display: "flex"
           }}
         >
           <Box sx={{ display: "flex" }}>
@@ -78,13 +78,14 @@ export default function NavBar() {
             </Menu>
           </>
         ) : (
-          <Toolbar className="toolbar" disableGutters>
+          <Toolbar sx={{display: "flex", justifyContent: "space-evenly",
+          alignItems: "center", width: "100%"}} className="toolbar" disableGutters>
             <Box
               sx={{
                 justifyContent: "space-evenly",
                 alignItems: "center",
                 flexGrow: 1,
-                marginLeft: "50px",
+                marginLeft: "20px",
                 display: { xs: "none", sm: "none", md: "flex" },
               }}
             >
@@ -117,8 +118,9 @@ export default function NavBar() {
                 justifyContent: "flex-end",
                 alignItems: "center",
                 flexGrow: 1,
-                marginLeft: "20px",
+               
                 display: { xs: "none", sm: "none", md: "flex" },
+                width: "fit-content"
               }}
             >
               <Link to="/request-demo" style={{ textDecoration: "none" }}>
@@ -131,7 +133,7 @@ export default function NavBar() {
                     color: "white",
                     display: "block",
                     marginLeft: "-1px",
-                    marginRight: "10px",
+                    marginRight: "30px",
                     borderRadius: "30px",
                     textTransform: "none",
                     fontSize: "20px",

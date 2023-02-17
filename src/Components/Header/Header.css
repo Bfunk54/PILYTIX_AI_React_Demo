@@ -1,8 +1,7 @@
 .wholeNav {
       background-color: rgba(245, 245, 245, 0.6) !important;
       backdrop-filter: blur(10px) !important;
-      flex-direction: row !important;
-      justify-content: space-evenly !important;
+      flex-direction: row !important; 
 }
 
 .buttonsBox {

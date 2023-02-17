@@ -54,10 +54,28 @@ table > *:last-child > tr:last-of-type > td,
 th {
   font-size: 15px !important;
 }
+@media (min-width: 740px) {
+    .prevBtnMobile {
+        display: none !important;
+      }
+}
 
-@media screen and (max-width: 640px) {
+@media (max-width: 740px) {
+    .prevBtnMobile {
+        display: visible !important;
+      }
+      .prevBtnDesktop {
+        display: none !important;
+      }
+}
+
+@media screen and (max-width: 641px) {
     .lineChart {
         width: 320px !important;
+    }
+    .MuiPopover-paper {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
     }
 }
 
@@ -65,13 +83,6 @@ th {
     .MuiPopover-paper {
         margin-left: 180px;
         margin-right: 180px;
-    }
-}
-
-@media screen and (max-width: 641px) {
-    .MuiPopover-paper {
-        margin-left: 0px !important;
-        margin-right: 0px !important;
     }
 }
 
