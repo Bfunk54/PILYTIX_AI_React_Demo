@@ -1,7 +1,7 @@
 .wholeNav {
-      background-color: rgba(245, 245, 245, 0.6) !important;
-      backdrop-filter: blur(10px) !important;
-      flex-direction: row !important; 
+  background-color: rgba(245, 245, 245, 0.6) !important;
+  backdrop-filter: blur(10px) !important;
+  flex-direction: row !important;
 }
 
 .buttonsBox {
@@ -17,23 +17,25 @@
   margin-right: 20px;
 }
 
+/* Center the mobile menu */
 .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
-    margin-left: -66px !important;
+  margin-left: -66px !important;
+}
+
+/* Media query for mobile menu */
+@media screen and (max-width: 899px) {
+  .headerBox {
+    flex-direction: column !important;
+    align-items: center !important;
   }
 
-@media screen and (max-width: 899px) {
-    .headerBox {
-        flex-direction: column !important;
-        align-items: center !important;
-    }
+  .wholeNav {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
 
-    .wholeNav { 
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-    }
-
-    .toolbar {
-        justify-content: center !important;
-    }
+  .toolbar {
+    justify-content: center !important;
+  }
 }

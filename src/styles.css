@@ -7,8 +7,9 @@ body {
   margin: 0;
 }
 
+/* Padding to account for mobile menu */
 @media screen and (max-width: 900px) {
-    main {
-      padding-top: 135px !important;
-    }
+  main {
+    padding-top: 135px !important;
+  }
 }

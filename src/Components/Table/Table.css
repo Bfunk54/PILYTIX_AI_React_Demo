@@ -1,3 +1,4 @@
+/* Popover background and card styles */
 .theCard {
   background: rgba(255, 255, 255, 0.5);
   -webkit-backdrop-filter: blur(20px);
@@ -10,84 +11,76 @@
 
 .MuiPopover-paper {
   border-radius: 20px !important;
-  background-color: rgba(23, 185, 255, .2) !important;
+  background-color: rgba(23, 185, 255, 0.2) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
 }
 
-.MuiDataGrid-root .MuiDataGrid-cell {
-    white-space: normal !important;
-    word-wrap: break-word !important;
-  }
+/* Data grid styles */
 
-  .wrapHeader .MuiDataGrid-colCellTitle {
-    white-space: normal !important;
-  }
+.MuiDataGrid-root .MuiDataGrid-cell {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+}
+
+.wrapHeader .MuiDataGrid-colCellTitle {
+  white-space: normal !important;
+}
 
 .MuiDataGrid-main {
-    border-radius: 20px;
+  border-radius: 20px;
 }
 
 .css-yrdy0g-MuiDataGrid-columnHeaderRow {
-    background-color: rgba(23, 185, 255, 0.35);
+  background-color: rgba(23, 185, 255, 0.35);
 }
 
 .MuiDataGrid-virtualScroller {
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-  }
-
-  .css-204u17-MuiDataGrid-main {
-    cursor: pointer;
-  }
-
-table > *:last-child > tr:last-of-type > td:last-of-type {
   border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
-table > *:last-child > tr:last-of-type > th,
-td {
-  font-size: 15px !important;
+/* Pointer on data grids */
+.css-204u17-MuiDataGrid-main {
+  cursor: pointer;
 }
 
-table > *:last-child > tr:last-of-type > td,
-th {
-  font-size: 15px !important;
+/* Media Queries */
+
+@media screen and (max-width: 641px) {
+  .lineChart {
+    width: 320px !important;
+  }
+  .MuiPopover-paper {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
 }
+
 @media (min-width: 740px) {
-    .prevBtnMobile {
-        display: none !important;
-      }
+  .prevBtnMobile {
+    display: none !important;
+  }
 }
 
 @media (max-width: 740px) {
-    .prevBtnMobile {
-        display: visible !important;
-      }
-      .prevBtnDesktop {
-        display: none !important;
-      }
-}
-
-@media screen and (max-width: 641px) {
-    .lineChart {
-        width: 320px !important;
-    }
-    .MuiPopover-paper {
-        margin-left: 0px !important;
-        margin-right: 0px !important;
-    }
+  .prevBtnMobile {
+    display: visible !important;
+  }
+  .prevBtnDesktop {
+    display: none !important;
+  }
 }
 
 @media screen and (max-width: 1183px) {
-    .MuiPopover-paper {
-        margin-left: 180px;
-        margin-right: 180px;
-    }
+  .MuiPopover-paper {
+    margin-left: 180px;
+    margin-right: 180px;
+  }
 }
 
 @media screen and (min-width: 1223px) {
-    .theCard {
-        width: 1151px !important;
-    }
+  .theCard {
+    width: 1151px !important;
+  }
 }
