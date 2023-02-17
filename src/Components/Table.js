@@ -391,7 +391,7 @@ export default function BasicTable() {
         }}
         className="theCard"
       >
-        <div style={{ height: 530, width: "87.7%" }}>
+        <div style={{ height: 530, width: "86.58%" }}>
           <DataGrid
             sx={{ height: 530, textAlign: "center", borderRadius: "20px" }}
             rows={data}

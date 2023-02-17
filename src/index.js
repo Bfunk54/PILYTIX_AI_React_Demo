@@ -1,6 +1,6 @@
 // React components
 import { StrictMode } from "react";
-import ReactDOM from "react-dom/client";
+import { createRoot } from "react-dom/client";
 
 // React router
 import {

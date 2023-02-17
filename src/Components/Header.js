@@ -162,7 +162,7 @@ export default function NavBar() {
                     color: "white",
                     display: "block",
                     marginLeft: "-1px",
-                    marginRight: "30px",
+                    marginRight: "65px",
                     borderRadius: "30px",
                     textTransform: "none",
                     fontSize: "20px",
