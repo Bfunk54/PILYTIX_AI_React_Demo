@@ -6,8 +6,6 @@ import { useState } from "react";
 import { styled } from "@mui/system";
 import Typography from "@mui/material/Typography";
 import Popover from "@mui/material/Popover";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
 import CloseIcon from "@mui/icons-material/Close";
 import Button from "@mui/material/Button";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -284,10 +282,10 @@ export default function BasicTable() {
 
   // Handle the Next and Previous button clicks in the Popover
   function handleNextClick(event, row) {
-    if (row.oppId == 1) {
+    if (row.oppId === 1) {
       setPrevBtn("visible");
     }
-    if (row.oppId == 9) {
+    if (row.oppId === 9) {
       setNextBtn("none");
     }
     if (row.oppId < 10) {
@@ -300,10 +298,10 @@ export default function BasicTable() {
   }
 
   function handlePreviousClick(event, row) {
-    if (row.oppId == 2) {
+    if (row.oppId === 2) {
       setPrevBtn("none");
     }
-    if (row.oppId == 10) {
+    if (row.oppId === 10) {
       setNextBtn("visible");
     }
     if (row.oppId > 1) {
