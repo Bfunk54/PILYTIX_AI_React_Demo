@@ -6,7 +6,7 @@ import DataTable from "./Components/Table";
 import NavBar from "./Components/Header";
 
 // Background image
-import background from "./images/textureBackground.WebP"
+import background from "./images/textureBackground.WebP";
 
 // External CSS
 import "./styles.css";
@@ -30,9 +30,9 @@ export default function App() {
       <div style={backgroundStyle} className="App">
         <NavBar />
         <main style={{ padding: 18, paddingTop: 85 }}>
-        <Routes>
-          <Route path="/" element={<DataTable />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<DataTable />} />
+          </Routes>
         </main>
       </div>
     </Router>

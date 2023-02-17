@@ -3,10 +3,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
 // React router
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // App component
 import App from "./App";
@@ -18,7 +15,7 @@ import BasicTable from "./Components/Table";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <BasicTable/>
+    element: <BasicTable />,
   },
 ]);
 
@@ -30,7 +27,7 @@ const root = createRoot(rootElement);
 root.render(
   <StrictMode>
     <App>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </App>
   </StrictMode>
 );

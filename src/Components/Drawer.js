@@ -13,16 +13,16 @@ import { styled } from "@mui/system";
 
 // MUI styled components
 const Buttons = styled(Button)({
-    backgroundColor: "#3abaff",
-    color: "white",
-    display: "block",
-    textTransform: "none",
-    fontSize: "16px",
-  });
+  backgroundColor: "#3abaff",
+  color: "white",
+  display: "block",
+  textTransform: "none",
+  fontSize: "16px",
+});
 
-  const MenuItems = styled(MenuItem)({
-    ":hover": { backgroundColor: "transparent" },
-  });
+const MenuItems = styled(MenuItem)({
+  ":hover": { backgroundColor: "transparent" },
+});
 
 export default function MobileDrawer() {
   return (
@@ -72,22 +72,22 @@ export default function MobileDrawer() {
           </MenuItems>
 
           <MenuItems>
-          <Link to="/request-demo" style={{ textDecoration: "none" }}>
-                <Button
-                  size="small"
-                  variant="contained"
-                  sx={{
-                    backgroundColor: "#2ecdb0",
-                    color: "white",
-                    display: "block",
-                    borderRadius: "30px",
-                    textTransform: "none",
-                    fontSize: "20px",
-                  }}
-                >
-                  Request Demo
-                </Button>
-              </Link>
+            <Link to="/request-demo" style={{ textDecoration: "none" }}>
+              <Button
+                size="small"
+                variant="contained"
+                sx={{
+                  backgroundColor: "#2ecdb0",
+                  color: "white",
+                  display: "block",
+                  borderRadius: "30px",
+                  textTransform: "none",
+                  fontSize: "20px",
+                }}
+              >
+                Request Demo
+              </Button>
+            </Link>
           </MenuItems>
         </Box>
       </Toolbar>

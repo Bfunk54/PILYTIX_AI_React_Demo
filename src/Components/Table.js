@@ -17,7 +17,7 @@ import { DataGrid } from "@mui/x-data-grid";
 // External CSS
 import "./Table/Table.css";
 
-// Data JSON 
+// Data JSON
 import * as opportunities from "./Table/opportunities.json";
 
 // Chart Js components
@@ -53,7 +53,7 @@ const NextButtons = styled(Button)({
   backdropFilter: "blur(10px)",
   textTransform: "none",
   fontSize: "14px",
-  ":hover": { backgroundColor: "rgb(23, 162, 221)", fontSize: "14.2px" }
+  ":hover": { backgroundColor: "rgb(23, 162, 221)", fontSize: "14.2px" },
 });
 
 const ChartDiv = styled("div")({
@@ -542,7 +542,6 @@ export default function BasicTable() {
                   flexDirection: "column",
                 }}
               >
-
                 {/* Check if there is Probability History data, render chart if true */}
                 {theRow.probabilityHistory ? (
                   <ChartDiv>
