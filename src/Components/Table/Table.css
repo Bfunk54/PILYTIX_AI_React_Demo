@@ -6,14 +6,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: auto;
 }
 
 .MuiPopover-paper {
   border-radius: 20px !important;
-  background-color: rgba(23, 185, 255, 0.2) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  backdrop-filter: blur(10px) !important;
+  background-color: rgba(23, 185, 255, 0.35) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  backdrop-filter: blur(20px) !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  padding: 10px;
+}
+
+.MuiBackdrop-root {
+    background: rgba(255, 255, 255, 0) !important;
+    -webkit-backdrop-filter: blur(0px) !important;
+    backdrop-filter: blur(0px) !important;
 }
 
 /* Data grid styles */

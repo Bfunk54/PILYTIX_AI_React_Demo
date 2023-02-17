@@ -74,7 +74,6 @@ const ChartDiv = styled("div")({
 });
 
 const PopRowDiv = styled("div")({
-  display: "flex",
   marginTop: 20,
   height: 100,
   width: "998px",
@@ -421,18 +420,25 @@ export default function BasicTable() {
             boxShadow: "none",
           },
         }}
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          width: "auto",
+          height: "100vh",
+        }}
       >
-        <Card
-          sx={{
-            backgroundColor: "rgba(255, 255, 255, 0)",
-            backdropFilter: "blur(10px)",
-            marginBottom: "-40px",
-          }}
-        >
-          <CardContent
-            style={{ background: "rgba(255, 255, 255, 0.5)" }}
-            className="theCard"
+        <div style={{ height: "90vh" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+              height: "fit-content",
+              paddingBottom: "20px",
+            }}
           >
             {/* Close Icon */}
             <div
@@ -696,8 +702,8 @@ export default function BasicTable() {
                 </div>
               )}
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </Popover>
     </div>
   );
