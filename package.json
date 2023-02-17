@@ -23,8 +23,9 @@
   },
   "devDependencies": {
     "@babel/runtime": "7.20.13",
-    "typescript": "4.9.5",
-    "react-scripts": "^5.0.1"
+    "nth-check": "^2.1.1",
+    "react-scripts": "^5.0.1",
+    "typescript": "4.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
