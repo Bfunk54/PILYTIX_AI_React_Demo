@@ -594,7 +594,7 @@ export default function BasicTable() {
                   </HeaderCell>
                 </TableRow>
               </TableHead>
-              <TableBody sx={{ borderBottomLeftRadius: "20px" }}>
+              <TableBody sx={{ borderBottomLeftRadius: "20px", cursor: "pointer" }}>
                 {rowData.map((row) => (
                   <TableRow
                     onClick={(event) => handleRowClick(event, row)}
