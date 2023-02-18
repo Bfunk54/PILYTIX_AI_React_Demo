@@ -1,9 +1,6 @@
 // React components
 import * as React from "react";
 
-// Router
-import { Link } from "react-router-dom";
-
 // MUI components
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -118,29 +115,21 @@ export default function NavBar() {
                 display: { xs: "none", sm: "none", md: "flex" },
               }}
             >
-              <Link to="/solutions" style={{ textDecoration: "none" }}>
                 <Buttons size="small" variant="contained">
                   Solutions
                 </Buttons>
-              </Link>
 
-              <Link to="/insights" style={{ textDecoration: "none" }}>
                 <Buttons size="small" variant="contained">
                   Insights
                 </Buttons>
-              </Link>
 
-              <Link to="/about-us" style={{ textDecoration: "none" }}>
                 <Buttons size="small" variant="contained">
                   About Us
                 </Buttons>
-              </Link>
 
-              <Link to="/contact-us" style={{ textDecoration: "none" }}>
                 <Buttons size="small" variant="contained">
                   Contact Us
                 </Buttons>
-              </Link>
             </Box>
             <Box
               sx={{
@@ -152,7 +141,6 @@ export default function NavBar() {
                 width: "fit-content",
               }}
             >
-              <Link to="/request-demo" style={{ textDecoration: "none" }}>
                 <Button
                   size="small"
                   variant="contained"
@@ -170,7 +158,6 @@ export default function NavBar() {
                 >
                   Request Demo
                 </Button>
-              </Link>
             </Box>
           </Toolbar>
         )}

@@ -1,9 +1,6 @@
 // React component
 import * as React from "react";
 
-// Router
-import { Link } from "react-router-dom";
-
 // MUI components
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -40,39 +37,30 @@ export default function MobileDrawer() {
           }}
         >
           <MenuItems>
-            <Link to="/solutions" style={{ textDecoration: "none" }}>
               <Buttons size="small" variant="contained">
                 Solutions
               </Buttons>
-            </Link>
           </MenuItems>
 
           <MenuItems>
-            <Link to="/insights" style={{ textDecoration: "none" }}>
               <Buttons size="small" variant="contained">
                 Insights
               </Buttons>
-            </Link>
           </MenuItems>
 
           <MenuItems>
-            <Link to="/about-us" style={{ textDecoration: "none" }}>
               <Buttons size="small" variant="contained">
                 About Us
               </Buttons>
-            </Link>
           </MenuItems>
 
           <MenuItems>
-            <Link to="/contact-us" style={{ textDecoration: "none" }}>
               <Buttons size="small" variant="contained">
                 Contact Us
               </Buttons>
-            </Link>
           </MenuItems>
 
           <MenuItems>
-            <Link to="/request-demo" style={{ textDecoration: "none" }}>
               <Button
                 size="small"
                 variant="contained"
@@ -87,7 +75,6 @@ export default function MobileDrawer() {
               >
                 Request Demo
               </Button>
-            </Link>
           </MenuItems>
         </Box>
       </Toolbar>
