@@ -4,6 +4,13 @@ import { useState } from "react";
 
 // MUI components
 import { styled } from "@mui/system";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import TableSortLabel from "@mui/material/TableSortLabel";
 import Typography from "@mui/material/Typography";
 import Popover from "@mui/material/Popover";
 import CloseIcon from "@mui/icons-material/Close";
@@ -121,6 +128,20 @@ const InnerChartDiv = styled("div")({
   },
 });
 
+const HeadersText = styled(Typography)({
+  backgroundColor: "rgba(245, 245, 245, 0.5)",
+  backdropFilter: "blur(10px)",
+  width: "86%",
+  borderRadius: "20px",
+  textAlign: "center",
+  padding: "6px",
+});
+
+const HeaderCell = styled(TableCell)({
+  backgroundColor: "rgba(23, 185, 255, 0.85)",
+  fontSize: "16px",
+});
+
 // Export ChartJs options
 export const probOptions = {
   responsive: true,
@@ -136,16 +157,21 @@ export const probOptions = {
 };
 
 export default function BasicTable() {
+  //  Data from opportunities.json
+  const data = opportunities.default;
+
   // React Use States
+  const [rowData, setRowData] = useState(data);
   const [theRow, setTheRow] = React.useState([]);
   const [theDataRow, setTheDataRow] = React.useState([theRow]);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [theProbChartData, setProbChartData] = useState([]);
+  const [amountOrderDirection, setAmountOrderDirection] = useState("asc");
+  const [pxProbOrderDirection, setPxProbOrderDirection] = useState("asc");
+  const [pxTierOrderDirection, setPxTierOrderDirection] = useState("asc");
+  const [repProbOrderDirection, setRepProbOrderDirection] = useState("asc");
   const [nextBtn, setNextBtn] = useState();
   const [prevBtn, setPrevBtn] = useState();
-
-  //  Data from opportunities.json
-  const data = opportunities.default;
 
   // MUI DataGrid Column Props
   const mainColumns = [
@@ -256,20 +282,44 @@ export default function BasicTable() {
   ];
 
   // Handle a row click
-  function handleRowClick(params, event) {
-    const row = params.row;
-    setTheRow(row);
-    setTheDataRow([row]);
-    setAnchorEl(event.currentTarget);
-    probChartData(row);
+  function handleRowClick(event, row) {
+    if (data.indexOf(row) === 9) {
+      setTheRow(row);
+      setTheDataRow([row]);
+      setAnchorEl(event.currentTarget);
+      probChartData(row);
+      setNextBtn("none");
+      setPrevBtn("visible");
+    } else if (data.indexOf(row) === 0) {
+      setTheRow(row);
+      setTheDataRow([row]);
+      setAnchorEl(event.currentTarget);
+      probChartData(row);
+      setPrevBtn("none");
+      setNextBtn("visible");
+    } else {
+      setTheRow(row);
+      setTheDataRow([row]);
+      setAnchorEl(event.currentTarget);
+      probChartData(row);
+      setNextBtn("visible");
+      setPrevBtn("visible");
+    }
   }
   const open = Boolean(anchorEl);
 
   // Handle the Next and Previous button clicks in the Popover
   function handleNextClick(event, row) {
-    if (row.oppId < 10) {
-      const newRowId = row.oppId + 1;
-      const newRow = data.find(({ oppId }) => oppId === newRowId);
+    console.log(data.indexOf(row));
+    if (data.indexOf(row) === 0) {
+      setPrevBtn("visible");
+    }
+    if (data.indexOf(row) === 8) {
+      setNextBtn("none");
+    }
+    if (data.indexOf(row) < 9) {
+      const newRowIndex = data.indexOf(row) + 1;
+      const newRow = data[newRowIndex];
       setTheRow(newRow);
       setTheDataRow([newRow]);
       probChartData(newRow);
@@ -277,19 +327,124 @@ export default function BasicTable() {
   }
 
   function handlePreviousClick(event, row) {
-    if (row.oppId > 1) {
-      const newRowId = row.oppId - 1;
-      const newRow = data.find(({ oppId }) => oppId === newRowId);
+    if (data.indexOf(row) === 1) {
+      setPrevBtn("none");
+    }
+    if (data.indexOf(row) === 9) {
+      setNextBtn("visible");
+    }
+    if (data.indexOf(row) > 0) {
+      const newRowIndex = data.indexOf(row) - 1;
+      const newRow = data[newRowIndex];
       setTheRow(newRow);
       setTheDataRow([newRow]);
-    } else {
-      return;
+      probChartData(newRow);
     }
   }
 
   // Handle closing the Popover
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const sortAmountArray = (arr, orderBy) => {
+    switch (orderBy) {
+      case "asc":
+      default:
+        return arr.sort((a, b) =>
+          a.amount > b.amount ? 1 : b.amount > a.amount ? -1 : 0
+        );
+      case "desc":
+        return arr.sort((a, b) =>
+          a.amount < b.amount ? 1 : b.amount < a.amount ? -1 : 0
+        );
+    }
+  };
+
+  const handleAmountSortRequest = () => {
+    setRowData(sortAmountArray(data, amountOrderDirection));
+    setAmountOrderDirection(amountOrderDirection === "asc" ? "desc" : "asc");
+  };
+
+  const sortPxProbArray = (arr, orderBy) => {
+    switch (orderBy) {
+      case "asc":
+      default:
+        return arr.sort((a, b) =>
+          a.pilytixProbability > b.pilytixProbability
+            ? 1
+            : b.pilytixProbability > a.pilytixProbability
+            ? -1
+            : 0
+        );
+      case "desc":
+        return arr.sort((a, b) =>
+          a.pilytixProbability < b.pilytixProbability
+            ? 1
+            : b.pilytixProbability < a.pilytixProbability
+            ? -1
+            : 0
+        );
+    }
+  };
+
+  const handlePxProbSortRequest = () => {
+    setRowData(sortPxProbArray(data, pxProbOrderDirection));
+    setPxProbOrderDirection(pxProbOrderDirection === "asc" ? "desc" : "asc");
+  };
+
+  const sortPxTierArray = (arr, orderBy) => {
+    switch (orderBy) {
+      case "asc":
+      default:
+        return arr.sort((a, b) =>
+          a.pilytixTier > b.pilytixTier
+            ? 1
+            : b.pilytixTier > a.pilytixTier
+            ? -1
+            : 0
+        );
+      case "desc":
+        return arr.sort((a, b) =>
+          a.pilytixTier < b.pilytixTier
+            ? 1
+            : b.pilytixTier < a.pilytixTier
+            ? -1
+            : 0
+        );
+    }
+  };
+
+  const handlePxTierSortRequest = () => {
+    setRowData(sortPxTierArray(data, pxTierOrderDirection));
+    setPxTierOrderDirection(pxTierOrderDirection === "asc" ? "desc" : "asc");
+  };
+
+  const sortRepProbArray = (arr, orderBy) => {
+    switch (orderBy) {
+      case "asc":
+      default:
+        return arr.sort((a, b) =>
+          a.repProbability > b.repProbability
+            ? 1
+            : b.repProbability > a.repProbability
+            ? -1
+            : 0
+        );
+      case "desc":
+        return arr.sort((a, b) =>
+          a.repProbability < b.repProbability
+            ? 1
+            : b.repProbability < a.repProbability
+            ? -1
+            : 0
+        );
+    }
+  };
+
+  const handleRepProbSortRequest = () => {
+    setRowData(sortRepProbArray(data, repProbOrderDirection));
+    setRepProbOrderDirection(repProbOrderDirection === "asc" ? "desc" : "asc");
   };
 
   // Format Probability History data to work with ChartJs
@@ -366,18 +521,101 @@ export default function BasicTable() {
         className="theCard"
       >
         <div style={{ height: 530, width: "86.58%" }}>
-          <DataGrid
-            sx={{ height: 530, textAlign: "center", borderRadius: "20px" }}
-            rows={data}
-            columns={mainColumns}
-            getRowId={(data) => data.oppId}
-            density="comfortable"
-            disableColumnSelector={true}
-            hideFooter={true}
-            disableSelectionOnClick={true}
-            onRowClick={(params, event) => handleRowClick(params, event)}
-            key={data.oppId}
-          />
+          <TableContainer
+            sx={{ height: 530, width: "auto", borderRadius: "20px" }}
+          >
+            <Table
+              options={{
+                responsive: "scroll",
+              }}
+              stickyHeader
+              aria-label="sticky table"
+            >
+              <TableHead>
+                <TableRow>
+                  <HeaderCell sx={{ borderTopLeftRadius: "20px" }} align="left">
+                    {" "}
+                    <HeadersText sx={{ width: "60%" }}>Opp Name</HeadersText>
+                  </HeaderCell>
+                  <HeaderCell align="left">
+                    <HeadersText sx={{ width: "60%" }}>Opp Stage</HeadersText>
+                  </HeaderCell>
+                  <HeaderCell align="right" onClick={handleRepProbSortRequest}>
+                    <TableSortLabel
+                      active={true}
+                      direction={repProbOrderDirection}
+                    >
+                      <HeadersText>Rep Probability</HeadersText>
+                    </TableSortLabel>
+                  </HeaderCell>
+                  <HeaderCell align="right" onClick={handlePxProbSortRequest}>
+                    <TableSortLabel
+                      active={true}
+                      direction={pxProbOrderDirection}
+                    >
+                      <HeadersText>PX Probability</HeadersText>
+                    </TableSortLabel>
+                  </HeaderCell>
+                  <HeaderCell align="left" onClick={handlePxTierSortRequest}>
+                    <TableSortLabel
+                      active={true}
+                      direction={pxTierOrderDirection}
+                    >
+                      <HeadersText>PX Tier</HeadersText>
+                    </TableSortLabel>
+                  </HeaderCell>
+                  <HeaderCell align="right" onClick={handleAmountSortRequest}>
+                    <TableSortLabel
+                      active={true}
+                      direction={amountOrderDirection}
+                    >
+                      <HeadersText>Amount</HeadersText>
+                    </TableSortLabel>
+                  </HeaderCell>
+                  <HeaderCell align="left">
+                    <HeadersText>Product</HeadersText>
+                  </HeaderCell>
+                  <HeaderCell
+                    sx={{
+                      borderTopRightRadius: "20px",
+                    }}
+                    align="left"
+                  >
+                    <HeadersText>Sales Rep</HeadersText>
+                  </HeaderCell>
+                </TableRow>
+              </TableHead>
+              <TableBody sx={{ borderBottomLeftRadius: "20px" }}>
+                {rowData.map((row) => (
+                  <TableRow
+                    onClick={(event) => handleRowClick(event, row)}
+                    key={row.oppId}
+                    sx={{
+                      "&:last-child td, &:last-child th": { border: 0 },
+                      // ":hover": { backgroundColor: "#2ecdb0" },
+                      "&:last-child th": { borderBottomLeftRadius: "20px" },
+                      "&tr td": { fontSize: "14px" },
+                    }}
+                  >
+                    <TableCell component="th" scope="row">
+                      {row.oppName}
+                    </TableCell>
+                    <TableCell align="left">{row.stage}</TableCell>
+                    <TableCell align="right">{row.repProbability}</TableCell>
+                    <TableCell align="right">
+                      {row.pilytixProbability}
+                    </TableCell>
+                    <TableCell align="left">{row.pilytixTier}</TableCell>
+                    <TableCell align="right">{row.amount}</TableCell>
+                    <TableCell align="left">{row.product}</TableCell>
+                    <TableCell style={{ color: "black" }} align="left">
+                      {row.salesRepName}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </div>
       </div>
 
