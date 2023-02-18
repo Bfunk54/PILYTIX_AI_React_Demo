@@ -35,7 +35,7 @@ import {
   PointElement,
   LineElement,
   Title,
-  Legend
+  Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
@@ -60,7 +60,7 @@ const NextButtons = styled(Button)({
   backdropFilter: "blur(10px)",
   textTransform: "none",
   fontSize: "14px",
-  ":hover": { backgroundColor: "rgb(23, 162, 221)", fontSize: "14.2px" }
+  ":hover": { backgroundColor: "rgb(23, 162, 221)", fontSize: "14.2px" },
 });
 
 const ChartDiv = styled("div")({
@@ -73,11 +73,11 @@ const ChartDiv = styled("div")({
   flexDirection: "column",
   alignItems: "center",
   "@media (max-width: 1196px)": {
-    margin: 0
+    margin: 0,
   },
   "@media (max-width: 640px)": {
-    width: "320px"
-  }
+    width: "320px",
+  },
 });
 
 const PopRowDiv = styled("div")({
@@ -87,7 +87,7 @@ const PopRowDiv = styled("div")({
   background: "rgba(255, 255, 255, 0.2)",
   borderRadius: "20px",
   "@media (max-width: 1042px)": { width: "700px" },
-  "@media (max-width: 740px)": { width: "330px" }
+  "@media (max-width: 740px)": { width: "330px" },
 });
 
 const PopTableDiv = styled("div")({
@@ -99,8 +99,8 @@ const PopTableDiv = styled("div")({
   paddingRight: 0,
   "@media (max-width: 640px)": {
     width: "320px",
-    marginTop: "10px"
-  }
+    marginTop: "10px",
+  },
 });
 
 const DecreaseDiv = styled("div")({
@@ -110,11 +110,11 @@ const DecreaseDiv = styled("div")({
   flexDirection: "column",
   alignItems: "center",
   "@media (max-width: 1196px)": {
-    margin: 0
+    margin: 0,
   },
   "@media (max-width: 640px)": {
-    width: "320px"
-  }
+    width: "320px",
+  },
 });
 
 const InnerChartDiv = styled("div")({
@@ -124,8 +124,8 @@ const InnerChartDiv = styled("div")({
   width: "520px",
   "@media (max-width: 640px)": {
     width: "320px",
-    marginBottom: "5px"
-  }
+    marginBottom: "5px",
+  },
 });
 
 const HeadersText = styled(Typography)({
@@ -133,12 +133,12 @@ const HeadersText = styled(Typography)({
   width: "86%",
   borderRadius: "18px",
   textAlign: "center",
-  padding: "6px"
+  padding: "6px",
 });
 
 const HeaderCell = styled(TableCell)({
   backgroundColor: "rgba(23, 185, 255, 0.85)",
-  fontSize: "16px"
+  fontSize: "16px",
 });
 
 // Export ChartJs options
@@ -147,12 +147,12 @@ export const probOptions = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      position: "top"
+      position: "top",
     },
     title: {
-      display: false
-    }
-  }
+      display: false,
+    },
+  },
 };
 
 export default function BasicTable() {
@@ -180,7 +180,7 @@ export default function BasicTable() {
       width: 240,
       headerAlign: "center",
       align: "center",
-      headerClassName: "headers"
+      headerClassName: "headers",
     },
     {
       field: "stage",
@@ -188,7 +188,7 @@ export default function BasicTable() {
       width: 180,
       headerAlign: "center",
       align: "center",
-      headerClassName: "headers"
+      headerClassName: "headers",
     },
     {
       field: "repProbability",
@@ -196,7 +196,7 @@ export default function BasicTable() {
       width: 120,
       headerAlign: "center",
       align: "center",
-      headerClassName: "headers"
+      headerClassName: "headers",
     },
     {
       field: "pilytixProbability",
@@ -204,7 +204,7 @@ export default function BasicTable() {
       width: 120,
       headerAlign: "center",
       align: "center",
-      headerClassName: "headers"
+      headerClassName: "headers",
     },
     {
       field: "pilytixTier",
@@ -212,14 +212,14 @@ export default function BasicTable() {
       width: 70,
       headerAlign: "center",
       align: "center",
-      headerClassName: "headers"
+      headerClassName: "headers",
     },
     {
       field: "amount",
       headerName: "Amount",
       width: 80,
       headerAlign: "center",
-      headerClassName: "headers"
+      headerClassName: "headers",
     },
     {
       field: "product",
@@ -227,7 +227,7 @@ export default function BasicTable() {
       width: 90,
       headerAlign: "center",
       align: "center",
-      headerClassName: "headers"
+      headerClassName: "headers",
     },
     {
       field: "salesRepName",
@@ -235,8 +235,8 @@ export default function BasicTable() {
       width: 95,
       headerAlign: "center",
       align: "center",
-      headerClassName: "headers"
-    }
+      headerClassName: "headers",
+    },
   ];
 
   const cardColumns = [
@@ -246,7 +246,7 @@ export default function BasicTable() {
       width: 105,
       headerAlign: "center",
       align: "center",
-      headerClassName: "headers"
+      headerClassName: "headers",
     },
     {
       field: "message",
@@ -254,7 +254,7 @@ export default function BasicTable() {
       width: 213,
       headerAlign: "center",
       align: "center",
-      headerClassName: "headers"
+      headerClassName: "headers",
     },
     {
       field: "weight.value",
@@ -265,7 +265,7 @@ export default function BasicTable() {
       headerClassName: "headers",
       valueGetter: (params) => {
         return params.row.weight.value;
-      }
+      },
     },
     {
       field: "weight.description",
@@ -276,8 +276,8 @@ export default function BasicTable() {
       headerClassName: "headers",
       valueGetter: (params) => {
         return params.row.weight.description;
-      }
-    }
+      },
+    },
   ];
 
   // Handle a row click
@@ -465,15 +465,15 @@ export default function BasicTable() {
           label: "PX Probability",
           data: pilytixProb,
           borderColor: "#36A2EB",
-          backgroundColor: "#9BD0F5"
+          backgroundColor: "#9BD0F5",
         },
         {
           label: "Rep Probability",
           data: repProb,
           borderColor: "rgb(16, 207, 140)",
-          backgroundColor: "rgb(95, 245, 215)"
-        }
-      ]
+          backgroundColor: "rgb(95, 245, 215)",
+        },
+      ],
     };
     setProbChartData(probHistoryData);
   };
@@ -489,7 +489,7 @@ export default function BasicTable() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        padding: 18
+        padding: 18,
       }}
     >
       <Typography
@@ -500,8 +500,8 @@ export default function BasicTable() {
           width: "48%",
           borderRadius: "20px",
           "@media (max-width: 525px)": {
-            width: "82%"
-          }
+            width: "82%",
+          },
         }}
         variant="h4"
         component="h2"
@@ -515,7 +515,7 @@ export default function BasicTable() {
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center"
+          justifyContent: "center",
         }}
         className="theCard"
       >
@@ -525,7 +525,7 @@ export default function BasicTable() {
           >
             <Table
               options={{
-                responsive: "scroll"
+                responsive: "scroll",
               }}
               stickyHeader
               aria-label="sticky table"
@@ -586,7 +586,7 @@ export default function BasicTable() {
                   </HeaderCell>
                   <HeaderCell
                     sx={{
-                      borderTopRightRadius: "20px"
+                      borderTopRightRadius: "20px",
                     }}
                     align="left"
                   >
@@ -603,7 +603,7 @@ export default function BasicTable() {
                       "&:last-child td, &:last-child th": { border: 0 },
                       // ":hover": { backgroundColor: "#2ecdb0" },
                       "&:last-child th": { borderBottomLeftRadius: "20px" },
-                      "&tr td": { fontSize: "14px" }
+                      "&tr td": { fontSize: "14px" },
                     }}
                   >
                     <TableCell component="th" scope="row">
@@ -639,8 +639,8 @@ export default function BasicTable() {
         BackdropProps={{
           style: {
             backgroundColor: "transparent",
-            boxShadow: "none"
-          }
+            boxShadow: "none",
+          },
         }}
         sx={{
           display: "flex",
@@ -648,7 +648,7 @@ export default function BasicTable() {
           alignItems: "center",
           flexDirection: "column",
           width: "auto",
-          height: "100vh"
+          height: "100vh",
         }}
       >
         <div style={{ height: "90vh" }}>
@@ -660,7 +660,7 @@ export default function BasicTable() {
               flexDirection: "column",
               height: "fit-content",
               paddingBottom: "20px",
-              width: "94vw"
+              width: "94vw",
             }}
           >
             {/* Close Icon */}
@@ -669,7 +669,7 @@ export default function BasicTable() {
                 display: "flex",
                 justifyContent: "flex-end",
                 alignItems: "center",
-                width: "100%"
+                width: "100%",
               }}
             >
               <Button
@@ -685,7 +685,7 @@ export default function BasicTable() {
               style={{
                 display: "flex",
                 justifyContent: "center",
-                alignItems: "center"
+                alignItems: "center",
               }}
             >
               {!isMobile ? (
@@ -715,11 +715,11 @@ export default function BasicTable() {
                   margin: 0,
                   padding: 2,
                   "@media (max-width: 770px)": {
-                    width: "180px"
+                    width: "180px",
                   },
                   "@media (max-width: 525px)": {
-                    width: "140px"
-                  }
+                    width: "140px",
+                  },
                 }}
               >
                 {theRow.oppName}
@@ -739,7 +739,7 @@ export default function BasicTable() {
                   height: 100,
                   textAlign: "center",
                   borderRadius: "20px",
-                  flexDirection: "column"
+                  flexDirection: "column",
                 }}
                 rows={theDataRow}
                 columns={mainColumns}
@@ -761,14 +761,14 @@ export default function BasicTable() {
                 justifyContent: "center",
                 flexWrap: "wrap",
                 alignItems: "center",
-                maxWidth: 1260
+                maxWidth: 1260,
               }}
             >
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  flexDirection: "column"
+                  flexDirection: "column",
                 }}
               >
                 {/* Check if there is Probability History data, render chart if true */}
@@ -780,7 +780,7 @@ export default function BasicTable() {
                         backgroundColor: "rgba(245, 245, 245, 0.4)",
                         width: "32%",
                         borderRadius: "20px",
-                        padding: 4
+                        padding: 4,
                       }}
                     >
                       Probability History
@@ -803,7 +803,7 @@ export default function BasicTable() {
                       backgroundColor: "rgba(245, 245, 245, 0.4)",
                       width: "32%",
                       borderRadius: "20px",
-                      padding: 4
+                      padding: 4,
                     }}
                   >
                     No Probability Chart Data
@@ -818,7 +818,7 @@ export default function BasicTable() {
                         backgroundColor: "rgba(245, 245, 245, 0.4)",
                         width: "38%",
                         borderRadius: "20px",
-                        padding: 4
+                        padding: 4,
                       }}
                     >
                       PX Factors Decreasing Win
@@ -829,7 +829,7 @@ export default function BasicTable() {
                           height: 240,
                           textAlign: "center",
                           borderRadius: "20px",
-                          width: "100%"
+                          width: "100%",
                         }}
                         rows={theRow.pilytixFactorsDecreasingWin}
                         columns={cardColumns}
@@ -850,7 +850,7 @@ export default function BasicTable() {
                       backgroundColor: "rgba(245, 245, 245, 0.4)",
                       width: "32%",
                       borderRadius: "20px",
-                      padding: 4
+                      padding: 4,
                     }}
                   >
                     No PX Factors Decreasing Win
@@ -864,7 +864,7 @@ export default function BasicTable() {
                   style={{
                     display: "flex",
                     flexDirection: "column",
-                    alignItems: "center"
+                    alignItems: "center",
                   }}
                 >
                   <h4
@@ -873,7 +873,7 @@ export default function BasicTable() {
                       backgroundColor: "rgba(245, 245, 245, 0.4)",
                       width: "38%",
                       borderRadius: "20px",
-                      padding: 4
+                      padding: 4,
                     }}
                   >
                     PX Factors Increasing Win
@@ -885,7 +885,7 @@ export default function BasicTable() {
                         height: 240,
                         textAlign: "center",
                         borderRadius: "20px",
-                        width: "100%"
+                        width: "100%",
                       }}
                       rows={theRow.pilytixFactorsIncreasingWin}
                       columns={cardColumns}
@@ -907,7 +907,7 @@ export default function BasicTable() {
                     paddingLeft: 0,
                     paddingRight: 0,
                     display: "flex",
-                    justifyContent: "center"
+                    justifyContent: "center",
                   }}
                 >
                   <h4
@@ -917,7 +917,7 @@ export default function BasicTable() {
                       backgroundColor: "rgba(245, 245, 245, 0.4)",
                       width: "42%",
                       borderRadius: "20px",
-                      padding: 4
+                      padding: 4,
                     }}
                   >
                     No PX Factors Increasing Win

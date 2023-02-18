@@ -1,6 +1,9 @@
 // React component
 import * as React from "react";
 
+// Router
+import { Link } from "react-router-dom";
+
 // MUI components
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -37,44 +40,44 @@ export default function MobileDrawer() {
           }}
         >
           <MenuItems>
-              <Buttons size="small" variant="contained">
-                Solutions
-              </Buttons>
+            <Buttons size="small" variant="contained">
+              Solutions
+            </Buttons>
           </MenuItems>
 
           <MenuItems>
-              <Buttons size="small" variant="contained">
-                Insights
-              </Buttons>
+            <Buttons size="small" variant="contained">
+              Insights
+            </Buttons>
           </MenuItems>
 
           <MenuItems>
-              <Buttons size="small" variant="contained">
-                About Us
-              </Buttons>
+            <Buttons size="small" variant="contained">
+              About Us
+            </Buttons>
           </MenuItems>
 
           <MenuItems>
-              <Buttons size="small" variant="contained">
-                Contact Us
-              </Buttons>
+            <Buttons size="small" variant="contained">
+              Contact Us
+            </Buttons>
           </MenuItems>
 
           <MenuItems>
-              <Button
-                size="small"
-                variant="contained"
-                sx={{
-                  backgroundColor: "#2ecdb0",
-                  color: "white",
-                  display: "block",
-                  borderRadius: "30px",
-                  textTransform: "none",
-                  fontSize: "20px",
-                }}
-              >
-                Request Demo
-              </Button>
+            <Button
+              size="small"
+              variant="contained"
+              sx={{
+                backgroundColor: "#2ecdb0",
+                color: "white",
+                display: "block",
+                borderRadius: "30px",
+                textTransform: "none",
+                fontSize: "20px",
+              }}
+            >
+              Request Demo
+            </Button>
           </MenuItems>
         </Box>
       </Toolbar>

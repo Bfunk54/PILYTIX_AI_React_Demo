@@ -1,6 +1,9 @@
 // React components
 import * as React from "react";
 
+// Router
+import { Link } from "react-router-dom";
+
 // MUI components
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -70,7 +73,7 @@ export default function NavBar() {
         >
           <Box sx={{ display: "flex" }}>
             <Link to="/" style={{ color: "white", textDecoration: "none" }}>
-              <img height="80px" width="210px" src={logo} />
+              <Box component="img" height="80px" width="210px" src={logo} />
             </Link>
           </Box>
         </Box>
@@ -115,21 +118,21 @@ export default function NavBar() {
                 display: { xs: "none", sm: "none", md: "flex" },
               }}
             >
-                <Buttons size="small" variant="contained">
-                  Solutions
-                </Buttons>
+              <Buttons size="small" variant="contained">
+                Solutions
+              </Buttons>
 
-                <Buttons size="small" variant="contained">
-                  Insights
-                </Buttons>
+              <Buttons size="small" variant="contained">
+                Insights
+              </Buttons>
 
-                <Buttons size="small" variant="contained">
-                  About Us
-                </Buttons>
+              <Buttons size="small" variant="contained">
+                About Us
+              </Buttons>
 
-                <Buttons size="small" variant="contained">
-                  Contact Us
-                </Buttons>
+              <Buttons size="small" variant="contained">
+                Contact Us
+              </Buttons>
             </Box>
             <Box
               sx={{
@@ -141,23 +144,23 @@ export default function NavBar() {
                 width: "fit-content",
               }}
             >
-                <Button
-                  size="small"
-                  variant="contained"
-                  sx={{
-                    my: 2,
-                    backgroundColor: "#2ecdb0",
-                    color: "white",
-                    display: "block",
-                    marginLeft: "-1px",
-                    marginRight: "65px",
-                    borderRadius: "30px",
-                    textTransform: "none",
-                    fontSize: "20px",
-                  }}
-                >
-                  Request Demo
-                </Button>
+              <Button
+                size="small"
+                variant="contained"
+                sx={{
+                  my: 2,
+                  backgroundColor: "#2ecdb0",
+                  color: "white",
+                  display: "block",
+                  marginLeft: "-1px",
+                  marginRight: "65px",
+                  borderRadius: "30px",
+                  textTransform: "none",
+                  fontSize: "20px",
+                }}
+              >
+                Request Demo
+              </Button>
             </Box>
           </Toolbar>
         )}
