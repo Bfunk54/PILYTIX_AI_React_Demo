@@ -11,6 +11,8 @@ import Button from "@mui/material/Button";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { DataGrid } from "@mui/x-data-grid";
+import useTheme from "@mui/material/styles/useTheme";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 // External CSS
 import "./Table/Table.css";
@@ -256,38 +258,15 @@ export default function BasicTable() {
   // Handle a row click
   function handleRowClick(params, event) {
     const row = params.row;
-    if (row.oppId === 10) {
-      setTheRow(row);
-      setTheDataRow([row]);
-      setAnchorEl(event.currentTarget);
-      probChartData(row);
-      setNextBtn("none");
-    }
-    if (row.oppId === 1) {
-      setTheRow(row);
-      setTheDataRow([row]);
-      setAnchorEl(event.currentTarget);
-      probChartData(row);
-      setPrevBtn("none");
-    } else {
-      setTheRow(row);
-      setTheDataRow([row]);
-      setAnchorEl(event.currentTarget);
-      probChartData(row);
-      setNextBtn("visible");
-      setPrevBtn("visible");
-    }
+    setTheRow(row);
+    setTheDataRow([row]);
+    setAnchorEl(event.currentTarget);
+    probChartData(row);
   }
   const open = Boolean(anchorEl);
 
   // Handle the Next and Previous button clicks in the Popover
   function handleNextClick(event, row) {
-    if (row.oppId === 1) {
-      setPrevBtn("visible");
-    }
-    if (row.oppId === 9) {
-      setNextBtn("none");
-    }
     if (row.oppId < 10) {
       const newRowId = row.oppId + 1;
       const newRow = data.find(({ oppId }) => oppId === newRowId);
@@ -298,12 +277,6 @@ export default function BasicTable() {
   }
 
   function handlePreviousClick(event, row) {
-    if (row.oppId === 2) {
-      setPrevBtn("none");
-    }
-    if (row.oppId === 10) {
-      setNextBtn("visible");
-    }
     if (row.oppId > 1) {
       const newRowId = row.oppId - 1;
       const newRow = data.find(({ oppId }) => oppId === newRowId);
@@ -350,6 +323,10 @@ export default function BasicTable() {
     };
     setProbChartData(probHistoryData);
   };
+
+  // Set media query to check if the user is on mobile
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     // Main Table
@@ -436,6 +413,7 @@ export default function BasicTable() {
               flexDirection: "column",
               height: "fit-content",
               paddingBottom: "20px",
+              width: "94vw",
             }}
           >
             {/* Close Icon */}
@@ -463,44 +441,44 @@ export default function BasicTable() {
                 alignItems: "center",
               }}
             >
-              <NextButtons
-                sx={{ marginRight: 3, height: 38.5, display: prevBtn }}
-                onClick={(event) => handlePreviousClick(event, theRow)}
-                className="prevBtnDesktop"
-              >
-                <ArrowBackIosNewIcon fontSize="small"></ArrowBackIosNewIcon>
-                Previous
-              </NextButtons>
-              <NextButtons
-                sx={{ marginRight: 3, height: 38.5, display: prevBtn }}
-                onClick={(event) => handlePreviousClick(event, theRow)}
-                className="prevBtnMobile"
-              >
-                <ArrowBackIosNewIcon fontSize="small"></ArrowBackIosNewIcon>
-                Prev
-              </NextButtons>
+              {!isMobile ? (
+                <NextButtons
+                  sx={{ marginRight: 3, height: 38.5, display: prevBtn }}
+                  onClick={(event) => handlePreviousClick(event, theRow)}
+                >
+                  <ArrowBackIosNewIcon fontSize="small"></ArrowBackIosNewIcon>
+                  Previous
+                </NextButtons>
+              ) : (
+                <NextButtons
+                  sx={{ marginRight: 3, height: 38.5, display: prevBtn }}
+                  onClick={(event) => handlePreviousClick(event, theRow)}
+                >
+                  <ArrowBackIosNewIcon fontSize="small"></ArrowBackIosNewIcon>
+                  Prev
+                </NextButtons>
+              )}
               <Typography
                 variant="h5"
                 sx={{
                   textAlign: "center",
                   backgroundColor: "rgba(245, 245, 245, 0.4)",
-                  width: "34%",
+                  width: "420px",
                   borderRadius: "20px",
                   margin: 0,
                   padding: 2,
                   "@media (max-width: 770px)": {
-                    width: "68%",
+                    width: "180px",
                   },
                   "@media (max-width: 525px)": {
-                    width: "100%",
+                    width: "140px",
                   },
                 }}
               >
                 {theRow.oppName}
               </Typography>
               <NextButtons
-                sx={{ marginLeft: 3, height: 38.5 }}
-                style={{ display: nextBtn }}
+                sx={{ marginLeft: 3, height: 38.5, display: nextBtn }}
                 onClick={(event) => handleNextClick(event, theRow)}
               >
                 Next<ArrowForwardIosIcon fontSize="small"></ArrowForwardIosIcon>

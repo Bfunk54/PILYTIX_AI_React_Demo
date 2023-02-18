@@ -24,9 +24,9 @@
 }
 
 .MuiBackdrop-root {
-    background: rgba(255, 255, 255, 0) !important;
-    -webkit-backdrop-filter: blur(0px) !important;
-    backdrop-filter: blur(0px) !important;
+  background: rgba(255, 255, 255, 0) !important;
+  -webkit-backdrop-filter: blur(0px) !important;
+  backdrop-filter: blur(0px) !important;
 }
 
 /* Data grid styles */
@@ -67,21 +67,6 @@
   .MuiPopover-paper {
     margin-left: 0px !important;
     margin-right: 0px !important;
-  }
-}
-
-@media (min-width: 740px) {
-  .prevBtnMobile {
-    display: none !important;
-  }
-}
-
-@media (max-width: 740px) {
-  .prevBtnMobile {
-    display: visible !important;
-  }
-  .prevBtnDesktop {
-    display: none !important;
   }
 }
 

@@ -19,7 +19,7 @@
 
 /* Center the mobile menu */
 .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
-  margin-left: -66px !important;
+  margin-left: -76px !important;
 }
 
 /* Media query for mobile menu */
@@ -39,3 +39,9 @@
     justify-content: center !important;
   }
 }
+
+@media screen and (max-width: 390px) {
+    .css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+      margin-left: -66px !important;
+    }
+  }
