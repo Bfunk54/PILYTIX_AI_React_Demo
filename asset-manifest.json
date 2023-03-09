@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8cd3296c.css",
+    "main.js": "/static/js/main.9cf0dd3f.js",
+    "static/media/textureBackground.WebP": "/static/media/textureBackground.a8b33460fbd6b1bddb3f.WebP",
+    "static/media/pilytix-logo.WebP": "/static/media/pilytix-logo.8b2e34fcbdd0219c2372.WebP",
+    "index.html": "/index.html",
+    "main.8cd3296c.css.map": "/static/css/main.8cd3296c.css.map",
+    "main.9cf0dd3f.js.map": "/static/js/main.9cf0dd3f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8cd3296c.css",
+    "static/js/main.9cf0dd3f.js"
+  ]
+}
